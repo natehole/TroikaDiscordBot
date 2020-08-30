@@ -67,9 +67,7 @@ class InitiativeCog(commands.Cog):
                 output_string += f"Added {count} {token} tokens.\n"
             except Exception as e:
                 print(e)
-                output_string += "What did you do? Something here caused an issue: {} {}\n".format(
-                    args[i], args[i + 1]
-                )
+                output_string = f"Unable to parse: {arg}"
         await ctx.send(output_string)
 
     @init.command(name="remove", help="Removes [number] [tokens] from the bag")
