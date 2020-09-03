@@ -79,3 +79,22 @@ async def test_roll_d66(mocker):
 
     await dpytest.message("!roll d66")
     dpytest.verify_message("d66 = `23`")
+
+
+@pytest.mark.asyncio
+async def test_roll_character(mocker):
+    tbot = TroikaBot('!')
+    mocker.patch.object(dice, "roll_d3", return_value=2)
+    mocker.patch.object(dice, "roll_d6", return_value=4)
+    mocker.patch.object(dice, "roll_2d6", return_value=(1, 4, 5))
+    mocker.patch.object(dice, "roll_d66", return_value=21)
+    tbot.add_cog(DiceCog(tbot))
+
+    dpytest.configure(tbot)
+
+    await dpytest.message("!roll character")
+    dpytest.verify_message("""SKILL d3 (2)+3 = `5`
+STAMINA 2d6 (1+4)+12 = `17`
+LUCK d6 (4)+6 = `10`
+BACKGROUND d66 = `21`
+COIN: `5` silver pence""")

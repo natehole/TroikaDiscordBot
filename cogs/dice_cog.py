@@ -33,6 +33,20 @@ class DiceCog(commands.Cog):
         regexp_matched = False
         modifier = 0
 
+        if roll_string == "character":
+            regexp_matched = True
+            skill_roll = dice.roll_d3()
+            s1, s2, stamina_roll = dice.roll_2d6()
+            luck_roll = dice.roll_d6()
+            bg_roll = dice.roll_d66()
+            _, _, coin_roll = dice.roll_2d6()
+
+            await ctx.send(f"""SKILL d3 ({skill_roll})+3 = `{skill_roll+3}`
+STAMINA 2d6 ({s1}+{s2})+12 = `{stamina_roll+12}`
+LUCK d6 ({luck_roll})+6 = `{luck_roll+6}`
+BACKGROUND d66 = `{bg_roll}`
+COIN: `{coin_roll}` silver pence""")
+
         match = D66_REGEXP.match(roll_string)
         if match:
             regexp_matched = True

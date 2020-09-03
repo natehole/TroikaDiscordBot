@@ -29,6 +29,7 @@ Originally developed by AwkwardTurtle42, with contributions from natehole and ha
 |`!roll 2d6+2`|2d6 (2+3)+2 = `7`||
 |`!roll 2d6-1`|2d6 (4+5)-1 = `8`||
 |`!roll d66`|d66 = `23`|`!d66`|
+|`!roll character`|_rolls starting statistics for a character/bg||
 
 ### Luck
 
@@ -70,6 +71,7 @@ Manage initiative and random draws of tokens for each new round.
 |Command|Output|Alias|
 |---|---|---|
 |`!init begin`|Battle started. Now add tokens with !init add... (_can also take add tokens in this command_)|`!i begin`, `!begin`, `!start`|
+|`!init begin 2 Goblin 2 Fred`|_alternate invocation that also calls add_||
 |`!init add 4 Goblin 6 Ogre 2 Fred`|Added 4 Goblin tokens. Added 6 Ogre tokens. Added 2 Fred tokens.|`!i add`, `!add`|
 |`!init show`|Show the contents of the initiative bag|`!show`|
 |`!init round`|Starting round 1 of combat! Shuffling the bag... Current Turn: **Goblin**|`!i round`, `!round`|
