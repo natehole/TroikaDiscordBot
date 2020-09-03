@@ -17,16 +17,25 @@ async def test_roll_d3(mocker):
     await dpytest.message("!roll d3")
     dpytest.verify_message("d3 (2) = `2`")
 
+    await dpytest.message("!roll 1d3")
+    dpytest.verify_message("d3 (2) = `2`")
+
+    await dpytest.message("!roll 1d3+6")
+    dpytest.verify_message("d3 (2)+6 = `8`")
+
 
 @pytest.mark.asyncio
 async def test_roll_d6(mocker):
     tbot = TroikaBot('!')
     mocker.patch.object(dice, "roll_d6", return_value=4)
     tbot.add_cog(DiceCog(tbot))
-    
+
     dpytest.configure(tbot)
 
     await dpytest.message("!roll d6")
+    dpytest.verify_message("d6 (4) = `4`")
+
+    await dpytest.message("!roll 1d6")
     dpytest.verify_message("d6 (4) = `4`")
 
     await dpytest.message("!d6")
@@ -35,7 +44,7 @@ async def test_roll_d6(mocker):
     await dpytest.message("!roll d6+2")
     dpytest.verify_message("d6 (4)+2 = `6`")
 
-    await dpytest.message("!roll d6-3")
+    await dpytest.message("!roll 1d6-3")
     dpytest.verify_message("d6 (4)-3 = `1`")
 
 
