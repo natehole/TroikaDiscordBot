@@ -30,13 +30,15 @@ Originally developed by AwkwardTurtle42, with contributions from natehole and ha
 |`!roll 2d6-1`|2d6 (4+5)-1 = `8`||
 |`!roll d66`|d66 = `23`|`!d66`|
 
-### Luck
+### Luck & Skill
 
 Test your luck against a specific luck count
 
 |Command|Output|Aliases|
 |----|----|----|
-|`!luck 8`|**SUCCESS** 2d6(3+4) = `7` ≤ `8`|`!l 7`
+|`!luck 8`|**SUCCESS** 2d6(3+4) = `7` ≤ `8`|`!l 7`|
+|`!skill 5`|**FAILURE** 2d6(5+6) = `11` > `5`|`!s 5`|
+|`!advance 5`|**SUCCESS** 2d6(5+6) = `11` > `5`. Increase skill level by 1|`!improve 5`, `!better 5`, `!adv 5`|
 
 ### Spells
 
