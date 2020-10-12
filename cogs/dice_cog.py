@@ -18,16 +18,20 @@ class DiceCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="roll",
-                      aliases=["r", "dice"],
-                      brief="Roll dice manually",
-                      usage="roll d6|d6+4|2d6|d66|d3")
+    @commands.command(
+        name="roll",
+        aliases=["r", "dice"],
+        brief="Roll dice manually",
+        usage="roll d6|d6+4|2d6|d66|d3",
+    )
     async def roll(self, ctx, roll_string: str):
         """Rolls the dice"""
-        D3_REGEXP = re.compile("1?d3([+-][0-9]+)?")
-        D6_REGEXP = re.compile("1?d6([+-][0-9]+)?")
-        TWO_D6_REGEXP = re.compile("2d6([+-][0-9]+)?")
-        D66_REGEXP = re.compile("d66")
+        D2_REGEXP = re.compile("1?d2([+-][0-9]+)?$")
+        D3_REGEXP = re.compile("1?d3([+-][0-9]+)?$")
+        D6_REGEXP = re.compile("1?d6([+-][0-9]+)?$")
+        TWO_D6_REGEXP = re.compile("2d6([+-][0-9]+)?$")
+        D20_REGEXP = re.compile("1?d20([+-][0-9]+)?$")
+        D66_REGEXP = re.compile("d66$")
 
         # initialize
         regexp_matched = False
@@ -41,17 +45,31 @@ class DiceCog(commands.Cog):
             bg_roll = dice.roll_d66()
             _, _, coin_roll = dice.roll_2d6()
 
-            await ctx.send(f"""SKILL d3 ({skill_roll})+3 = `{skill_roll+3}`
+            await ctx.send(
+                f"""SKILL d3 ({skill_roll})+3 = `{skill_roll+3}`
 STAMINA 2d6 ({s1}+{s2})+12 = `{stamina_roll+12}`
 LUCK d6 ({luck_roll})+6 = `{luck_roll+6}`
 BACKGROUND d66 = `{bg_roll}`
-COIN: `{coin_roll}` silver pence""")
+COIN: `{coin_roll}` silver pence"""
+            )
 
         match = D66_REGEXP.match(roll_string)
         if match:
             regexp_matched = True
             total = dice.roll_d66()
             await ctx.send(f"d66 = `{total}`")
+
+        match = D2_REGEXP.match(roll_string)
+        if not regexp_matched and match:
+            regexp_matched = True
+            roll = dice.roll_d2()
+
+            if match.group(1):
+                modifier = int(match.group(1))
+
+            await ctx.send(
+                f"d2 ({roll}){modifier_string(modifier)} = `{roll+modifier}`"
+            )
 
         match = D3_REGEXP.match(roll_string)
         if not regexp_matched and match:
@@ -61,7 +79,9 @@ COIN: `{coin_roll}` silver pence""")
             if match.group(1):
                 modifier = int(match.group(1))
 
-            await ctx.send(f"d3 ({roll}){modifier_string(modifier)} = `{roll+modifier}`")
+            await ctx.send(
+                f"d3 ({roll}){modifier_string(modifier)} = `{roll+modifier}`"
+            )
 
         match = D6_REGEXP.match(roll_string)
         if not regexp_matched and match:
@@ -71,7 +91,9 @@ COIN: `{coin_roll}` silver pence""")
             if match.group(1):
                 modifier = int(match.group(1))
 
-            await ctx.send(f"d6 ({roll}){modifier_string(modifier)} = `{roll+modifier}`")
+            await ctx.send(
+                f"d6 ({roll}){modifier_string(modifier)} = `{roll+modifier}`"
+            )
 
         match = TWO_D6_REGEXP.match(roll_string)
         if not regexp_matched and match:
@@ -81,7 +103,21 @@ COIN: `{coin_roll}` silver pence""")
             if match.group(1):
                 modifier = int(match.group(1))
 
-            await ctx.send(f"2d6 ({r1}+{r2}){modifier_string(modifier)} = `{total+modifier}`")
+            await ctx.send(
+                f"2d6 ({r1}+{r2}){modifier_string(modifier)} = `{total+modifier}`"
+            )
+
+        match = D20_REGEXP.match(roll_string)
+        if not regexp_matched and match:
+            regexp_matched = True
+            roll = dice.roll_d20()
+
+            if match.group(1):
+                modifier = int(match.group(1))
+
+            await ctx.send(
+                f"d20 ({roll}){modifier_string(modifier)} = `{roll+modifier}`"
+            )
 
         if not regexp_matched:
             raise ArgumentParsingError("Unable to understand your command")

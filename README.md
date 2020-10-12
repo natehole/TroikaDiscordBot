@@ -21,6 +21,7 @@ Originally developed by AwkwardTurtle42, with contributions from natehole and ha
 
 |Command|Output|Aliases|
 |----|---|-----|
+|`!roll d2`|d2 (1) = `1`||
 |`!roll d3`|d3 (2) = `2`||
 |`!roll d6`|d6 (2) = `2`|`!d6`|
 |`!roll d6+2`|d6 (4)+2 = `6`||
@@ -28,6 +29,7 @@ Originally developed by AwkwardTurtle42, with contributions from natehole and ha
 |`!roll 2d6`|2d6 (1+4) = `5`|`!2d6`|
 |`!roll 2d6+2`|2d6 (2+3)+2 = `7`||
 |`!roll 2d6-1`|2d6 (4+5)-1 = `8`||
+|`!roll 1d20`|d20 (7) = `7`||
 |`!roll d66`|d66 = `23`|`!d66`|
 |`!roll character`|_rolls starting statistics for a character/bg||
 
