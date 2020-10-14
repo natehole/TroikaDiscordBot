@@ -70,9 +70,16 @@ class InitiativeCog(commands.Cog):
                 output_string = f"Unable to parse: {arg}"
         await ctx.send(output_string)
 
-    @init.command(name="remove", help="Removes [number] [tokens] from the bag")
-    async def remove(self, ctx, count: int, token: str):
+    @init.command(name="remove", aliases=["delete", "del"], help="Removes [number] [tokens] from the bag")
+    async def remove(self, ctx, *, arg):
         '''Removes N tokens from the bag'''
+        r = re.match(r'([0-9]+) (.+)$', arg)
+        if not r:
+            raise ArgumentParsingError("Must be of the format `number token_name`")
+
+        token = r.group(2)
+        count = int(r.group(1))
+
         if self.init_tracker is None:
             await ctx.send(NO_INIT_TRACKER_MESSAGE)
             return
@@ -81,11 +88,11 @@ class InitiativeCog(commands.Cog):
         removed = self.init_tracker.remove_token(token, count)
 
         if removed < count:
-            await ctx.send(f"You asked to remove {count} {token} tokens, but there were only {removed} left in the bag")
+            await ctx.send(f"You asked to remove {count} {token} tokens, but only {removed} were in the bag (0 left)")
         elif removed < in_bag:
-            await ctx.send(f"Removed {removed} out of {in_bag} {token} tokens in the bag")
+            await ctx.send(f"Removed {removed} {token} tokens from the bag ({in_bag - removed} left)")
         else:
-            await ctx.send(f"Removed all {removed} {token} tokens from the bag")
+            await ctx.send(f"Removed all {removed} {token} tokens from the bag (0 left)")
 
     @init.command(name="show", aliases=["bag"])
     async def show(self, ctx):
