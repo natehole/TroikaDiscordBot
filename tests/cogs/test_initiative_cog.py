@@ -84,14 +84,17 @@ async def test_init_cog_remove_tokens():
     await dpytest.message("!i begin")
     dpytest.verify_message("Battle started. Now add tokens with !init add...")
 
-    await dpytest.message("!i add 4 Goblin 6 Ogre 2 Troll")
-    dpytest.verify_message("Added 4 Goblin tokens.\nAdded 6 Ogre tokens.\nAdded 2 Troll tokens.\n")
+    await dpytest.message("!i add 4 Goblin 6 Ogre 2 Troll 2 Vince McFighty")
+    dpytest.verify_message("Added 4 Goblin tokens.\nAdded 6 Ogre tokens.\nAdded 2 Troll tokens.\nAdded 2 Vince McFighty tokens.\n")
 
     await dpytest.message("!i remove 4 Ogre")
-    dpytest.verify_message("Removed 4 out of 6 Ogre tokens in the bag")
+    dpytest.verify_message("Removed 4 Ogre tokens from the bag (2 left)")
 
     await dpytest.message("!i remove 4 Ogre")
-    dpytest.verify_message("You asked to remove 4 Ogre tokens, but there were only 2 left in the bag")
+    dpytest.verify_message("You asked to remove 4 Ogre tokens, but only 2 were in the bag (0 left)")
 
     await dpytest.message("!i remove 4 Goblin")
-    dpytest.verify_message("Removed all 4 Goblin tokens from the bag")
+    dpytest.verify_message("Removed all 4 Goblin tokens from the bag (0 left)")
+
+    await dpytest.message("!i remove 2 Vince McFighty")
+    dpytest.verify_message("Removed all 2 Vince McFighty tokens from the bag (0 left)")

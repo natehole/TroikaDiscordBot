@@ -43,6 +43,17 @@ def test_remove_all_tokens_init_tracker():
     assert t.count_token("Goblin") == 0
 
 
+def test_remove_spaces_in_name_init_tracker():
+    t = InitiativeTracker()
+    assert t.count_tokens() == 0
+    t.add_token("Goblin", 4)
+    t.add_token("Vince McFighty", 2)
+    assert t.count_tokens() == 6
+    removed = t.remove_token("Vince McFighty", 2)
+    assert removed == 2
+    assert t.count_tokens() == 4
+
+
 def test_remove_missing_tokens_init_tracker():
     t = InitiativeTracker()
     assert t.count_tokens() == 0
@@ -133,6 +144,26 @@ def test_initiative_shuffles():
     t.start_round()
     turn2 = t.round_bag.copy()
 
+    assert turn1 != turn2
+
+
+def test_remove_shuffle():
+    t = InitiativeTracker()
+    t.add_token("Goblin", 8)
+    t.add_token("Vince McFighty", 2)
+    t.add_token("Ogre", 2)
+
+    t.start_round()
+    turn1 = t.round_bag.copy()
+
+    removed = t.remove_token("Ogre", 2)
+    assert removed == 2
+    turn2 = t.round_bag.copy()
+    assert len(turn1) == 2 + len(turn2)
+
+    turn1.remove("Ogre")
+    turn1.remove("Ogre")
+    assert len(turn1) == len(turn2)
     assert turn1 != turn2
 
 

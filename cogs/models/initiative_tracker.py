@@ -43,6 +43,10 @@ class InitiativeTracker:
         to_remove = min(count, in_bag)
         for _ in range(to_remove):
             self.bag.remove(token)
+            if self.in_round:
+                self.round_bag.remove(token)
+
+        self.shuffle_tokens()
         return to_remove
 
     def current_tokens(self):
