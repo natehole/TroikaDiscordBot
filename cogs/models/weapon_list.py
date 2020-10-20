@@ -21,8 +21,10 @@ class WeaponList:
         if weapon.name is None:
             raise ValueError("The weapon must have a name")
 
-        key = normalize_weapon_name(weapon.name)
-        self.weapons[key] = weapon
+        keys = [weapon.name] + weapon.aliases
+        for key in keys:
+            key = normalize_weapon_name(key)
+            self.weapons[key] = weapon
 
     def lookup_weapon(self, name):
         key = normalize_weapon_name(name)
@@ -44,7 +46,7 @@ STANDARD_WEAPONS = [
     Weapon([1, 2, 3, 6, 12, 13, 14], name="Maul", style="melee", ignore_armor=True, two_handed=True),
     Weapon([2, 4, 8, 10, 12, 14, 18], name="Greatsword", style="melee", two_handed=True),
     Weapon([1, 1, 2, 3, 6, 8, 10], name="Club", style="melee"),
-    Weapon([1, 1, 1, 2, 2, 3, 4], name="Unarmed", style="melee"),
+    Weapon([1, 1, 1, 2, 2, 3, 4], name="Unarmed", style="melee", aliases=["punch", "kick", "fist", "fists", "foot", "feet", "none"]),
     Weapon([2, 2, 2, 4, 4, 6, 8], name="Shield", style="melee"),
 
     # Ranged weapons

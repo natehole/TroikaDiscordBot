@@ -26,3 +26,11 @@ def test_weapons_lookup_weapon_found():
     w = ALL_WEAPONS.lookup_weapon('KnIfE')
     assert w is not None
     assert w.name == 'Knife'
+
+
+def test_weapons_lookup_alias():
+    aliases = ["Punch", "Kick", "fist", "Fists", "foot", "feet", "none"]
+    for a in aliases:
+        w = ALL_WEAPONS.lookup_weapon(a)
+        assert w is not None
+        assert w.name == 'Unarmed'

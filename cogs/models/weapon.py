@@ -24,7 +24,7 @@ class Weapon:
     support potential future options where DMs can support adding
     new weapons via bot calls'''
 
-    def __init__(self, damage_table, name=None, style=None, two_handed=False, ignore_armor=False):
+    def __init__(self, damage_table, name=None, style=None, two_handed=False, ignore_armor=False, aliases=[]):
         '''Defines a single weapon'''
 
         if len(damage_table) != 7:
@@ -35,6 +35,7 @@ class Weapon:
         self.style = style
         self.two_handed = two_handed
         self.ignore_armor = ignore_armor
+        self.aliases = aliases
 
     def lookup_armor_offset(self, armor):
         if armor.isnumeric():
