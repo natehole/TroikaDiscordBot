@@ -1,5 +1,8 @@
 """A place for useful utility functions"""
 import random
+import re
+from functools import reduce
+import operator
 
 
 class RollResult:
@@ -52,3 +55,24 @@ def roll_d66():
     die2 = roll_d6()
     total = (die1 * 10) + die2
     return total
+
+
+def _replace_fragment(text):
+    r = re.match(r'([0-9]*)d6$', text)
+    if r:
+        if r.group(1):
+            rolls = int(r.group(1))
+        else:
+            rolls = 1
+
+        total = reduce(operator.add, [roll_d6() for r in range(rolls)])
+        return f"`{total}`"
+    else:
+        return text
+
+
+def replace_rolls(text):
+    """Replace dice strings with rolls"""
+    pieces = re.split(r'([`]?[0-9]*d6[`]?)', text)
+    out_pieces = [_replace_fragment(t) for t in pieces]
+    return ''.join(out_pieces)
