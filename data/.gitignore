@@ -4,5 +4,4 @@
 tmp/
 
 *.yaml
-!troika.yaml
-
+!base.yaml
