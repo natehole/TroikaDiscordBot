@@ -11,7 +11,7 @@ backgrounds:
       enough but oh, what of today? We should drink and cheer, we’ll search once
       again in the morning!
     items:
-      - Choose One
+      - choice:
         - an enormous Blue Star Map which can tell you where any portal leads (with a successful Astrology test)
         - a pocket barometer for forecasting the weather (5 in 6 accuracy)
         - Ruby Lorgnette granting +2 Second Sight.
@@ -223,7 +223,7 @@ backgrounds:
       - a weird & wonderful weapon
       - strange clothes
       - exciting accent
-      - choose one
+      - choice:
         - a tea Set
         - 3 pocket gods
         - astrological equipment
@@ -375,7 +375,7 @@ backgrounds:
       swallowed and passed. This does not grant special immunity to any effects
       the object may possess.
     items:
-      - Choose one
+      - choice:
         - >-
           Sharp Metal Dentures (damage as Sword)
         - >-
@@ -434,7 +434,7 @@ backgrounds:
       This loneliness encourages students to make their own friends.
     items:
       - Dusty Robes
-      - Choose one
+      - choice:
         - The skull of your Master
         - Zombie servant
         - Ghost with whom you have developed a codependent relationship

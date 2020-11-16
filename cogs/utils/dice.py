@@ -71,7 +71,7 @@ def _replace_fragment(text):
         return text
 
 
-def replace_rolls(text):
+def interpolate_dice(text):
     """Replace dice strings with rolls"""
     pieces = re.split(r'([`]?[0-9]*d6[`]?)', text)
     out_pieces = [_replace_fragment(t) for t in pieces]

@@ -1,12 +1,14 @@
+from typing import List
+
 from cogs.models.weapon import Weapon
 
 
-def normalize_weapon_name(name):
+def normalize_weapon_name(name: str) -> str:
     '''Converts a name to all-lower case and removes spaces'''
     return name.lower().replace(" ", "")
 
 
-def normalize_armor_name(name):
+def normalize_armor_name(name: str) -> str:
     '''Converts armot name to lower case and removes " armor" from the back'''
     return name.lower().replace(" armor", "").replace(" armour", "")
 
@@ -17,7 +19,7 @@ class WeaponList:
     def __init__(self):
         self.weapons = {}
 
-    def add_weapon(self, weapon):
+    def add_weapon(self, weapon: Weapon) -> None:
         if weapon.name is None:
             raise ValueError("The weapon must have a name")
 
@@ -26,13 +28,13 @@ class WeaponList:
             key = normalize_weapon_name(key)
             self.weapons[key] = weapon
 
-    def lookup_weapon(self, name):
+    def lookup_weapon(self, name: str) -> Weapon:
         key = normalize_weapon_name(name)
         return self.weapons.get(key, None)
 
 
 # define standard weapons
-STANDARD_WEAPONS = [
+STANDARD_WEAPONS: List[Weapon] = [
     # Melee weapons
     Weapon([4, 6, 6, 6, 6, 8, 10], name="Sword", style="melee"),
     Weapon([2, 2, 6, 6, 8, 10, 12], name="Axe", style="melee"),

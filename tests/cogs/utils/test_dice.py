@@ -47,6 +47,6 @@ def test_roll_d20():
     ('`2d6` monkeys', '`2d6` monkeys'),
     ('10d6 silver pence', '`30` silver pence')
 ])
-def test_insert_rolls(mocker, input, output):
+def test_interpolate_dice(mocker, input, output):
     mocker.patch.object(dice, 'roll_d6', return_value=3)
-    assert dice.replace_rolls(input) == output
+    assert dice.interpolate_dice(input) == output
