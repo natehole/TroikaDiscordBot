@@ -1,3 +1,4 @@
+from __future__ import annotations
 from typing import Dict, List
 from cogs.utils import dice
 
@@ -21,17 +22,13 @@ def normalize_armor_name(name: str) -> str:
 
 
 class Weapon:
-    '''Defining the weapons as objects might be overkill, but I'd like to
-    support potential future options where DMs can support adding
-    new weapons via bot calls'''
-
-    def __init__(self, damage_table: List[int], name: str = None, style: str = None, two_handed: bool = False, ignore_armor: bool = False, aliases: List[str] = None):
+    def __init__(self, damage: List[int], name: str = None, style: str = None, two_handed: bool = False, ignore_armor: bool = False, aliases: List[str] = None):
         '''Defines a single weapon'''
 
-        if len(damage_table) != 7:
+        if len(damage) != 7:
             raise ValueError("You must provide a damage table of 7 elements for this weapon")
 
-        self.damage_table = damage_table
+        self.damage = damage
         self.name = name
         self.style = style
         self.two_handed = two_handed
@@ -78,4 +75,20 @@ class Weapon:
             roll_total = 7
 
         # rolls range 1-7, arrays range 0-6
-        return self.damage_table[roll_total - 1]
+        return self.damage[roll_total - 1]
+
+    @classmethod
+    def parse(cls, in_weapon: dict) -> Weapon:
+        style = in_weapon.get('style', 'melee')
+        ignore_armor = in_weapon.get('ignore_armor', False)
+        two_handed = in_weapon.get('two_handed', False)
+        aliases = in_weapon.get('aliases', [])
+
+        return cls(
+            name=in_weapon['name'],
+            damage=in_weapon['damage'],
+            style=style,
+            ignore_armor=ignore_armor,
+            two_handed=two_handed,
+            aliases=aliases
+        )

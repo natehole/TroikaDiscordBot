@@ -11,8 +11,7 @@ backgrounds:
       enough but oh, what of today? We should drink and cheer, we’ll search once
       again in the morning!
     items:
-      - choice:
-        - an enormous Blue Star Map which can tell you where any portal leads (with a successful Astrology test)
+      - - an enormous Blue Star Map which can tell you where any portal leads (with a successful Astrology test)
         - a pocket barometer for forecasting the weather (5 in 6 accuracy)
         - Ruby Lorgnette granting +2 Second Sight.
     skills:
@@ -189,7 +188,7 @@ backgrounds:
       - 1 Hammer Fighting
   - id: 23
     name: Epopt
-    Desc: >-
+    desc: >-
       You are a roaming seer, selling your visions at courts and fetes. You are
       instantly recognisable by your yellow coif and habit as being open for
       business. Road weary and worldwise, your unpopular visions cause you to
@@ -223,8 +222,7 @@ backgrounds:
       - a weird & wonderful weapon
       - strange clothes
       - exciting accent
-      - choice:
-        - a tea Set
+      - - a tea Set
         - 3 pocket gods
         - astrological equipment
     skills:
@@ -375,8 +373,7 @@ backgrounds:
       swallowed and passed. This does not grant special immunity to any effects
       the object may possess.
     items:
-      - choice:
-        - >-
+      - - >-
           Sharp Metal Dentures (damage as Sword)
         - >-
           Forked Metal Dentures (damage as Knife. On a Mighty Blow you may
@@ -434,8 +431,7 @@ backgrounds:
       This loneliness encourages students to make their own friends.
     items:
       - Dusty Robes
-      - choice:
-        - The skull of your Master
+      - - The skull of your Master
         - Zombie servant
         - Ghost with whom you have developed a codependent relationship
     skills:
