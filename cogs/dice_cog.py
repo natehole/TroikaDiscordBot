@@ -44,12 +44,21 @@ class DiceCog(commands.Cog):
             luck_roll = dice.roll_d6()
             bg_roll = dice.roll_d66()
             _, _, coin_roll = dice.roll_2d6()
+            backgrounds = self.bot.library.lookup_background(bg_roll)
+            if len(backgrounds) > 0:
+                # Pick one randomly eventually
+                background = backgrounds[0]
+            else:
+                background = "_No background found..._"
 
             await ctx.send(
                 f"""SKILL d3 ({skill_roll})+3 = `{skill_roll+3}`
 STAMINA 2d6 ({s1}+{s2})+12 = `{stamina_roll+12}`
 LUCK d6 ({luck_roll})+6 = `{luck_roll+6}`
-BACKGROUND d66 = `{bg_roll}`"""
+BACKGROUND d66 = `{bg_roll}`
+
+{background}
+"""
             )
 
         match = D66_REGEXP.match(roll_string)

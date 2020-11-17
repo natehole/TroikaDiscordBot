@@ -64,13 +64,26 @@ class ItemChoice:
             raise ValueError("For items, only a string or an array of strings is accepted")
 
 @dataclass
-class Background:
+class Background(Background):
     roll: int
     name: str
     description: str
     skills: List[Skill]
     items: List[Union[Item, ItemChoice]]
     spells: List[SpellSkill] = field(default_factory=list)
+
+    def __str__(self):
+        items = "\n".join([f"- {i}" for i in self.items])
+        skills = "\n".join([f"- {s}" for s in self.skills])
+        return f"""**{self.rol}** {self.name}
+_{self.description}_
+
+ITEMS:
+{items}
+
+SKILLS:
+{skill}
+"""
 
     @classmethod
     def parse(cls, yaml: dict):
