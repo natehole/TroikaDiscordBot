@@ -21,7 +21,7 @@ class Skill:
     rank: int
 
     def __str__(self) -> str:
-        return f"- {self.rank} {self.name}"
+        return f"{self.rank} {self.name}"
 
     @classmethod
     def parse(cls, skill: str) -> Skill:
@@ -64,7 +64,7 @@ class ItemChoice:
             raise ValueError("For items, only a string or an array of strings is accepted")
 
 @dataclass
-class Background(Background):
+class Background:
     roll: int
     name: str
     description: str
@@ -75,15 +75,24 @@ class Background(Background):
     def __str__(self):
         items = "\n".join([f"- {i}" for i in self.items])
         skills = "\n".join([f"- {s}" for s in self.skills])
-        return f"""**{self.rol}** {self.name}
+
+        output = f"""**{self.roll}** {self.name}
 _{self.description}_
 
 ITEMS:
 {items}
 
 SKILLS:
-{skill}
+{skills}
 """
+
+        if len(self.spells) > 0:
+            spells = "\n".join([f"- {s}" for s in self.spells])
+            output += f"""
+SPELLS:
+{spells}
+"""
+        return output
 
     @classmethod
     def parse(cls, yaml: dict):
@@ -100,6 +109,6 @@ SKILLS:
 
         spells: List[SpellSkill] = []
         if 'spells' in yaml:
-            spells.append([SpellSkill.parse(i) for i in yaml['spells']])
+            spells += [SpellSkill.parse(i) for i in yaml['spells']]
 
         return cls(roll=yaml['id'], name=yaml['name'], description=yaml['desc'], skills=skills, items=items, spells=spells)

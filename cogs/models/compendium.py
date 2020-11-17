@@ -6,6 +6,7 @@ from typing import List, Union, Optional, Dict
 from dataclasses import dataclass, field
 import yaml
 
+from cogs.models.spell import Spell
 from cogs.models.background import Background
 from cogs.models.weapon import Weapon
 
@@ -19,7 +20,7 @@ class Compendium:
     author: Optional[str] = None
     backgrounds: Dict[int, Background] = field(default_factory=dict)
     weapons: List[Weapon] = field(default_factory=list)
-    # spells: List[Spell] = field(default_factory=list)
+    spells: List[Spell] = field(default_factory=list)
     # creatures: List[Creature] = field(default_factory=list)
     # tables: List[RollTable] = field(default_factory=list)
 
@@ -57,7 +58,13 @@ class Compendium:
                 weapon = Weapon.parse(in_weapon)
                 weapons.append(weapon)
 
-        return cls(key=key, title=title, url=url, author=author, backgrounds=backgrounds, weapons=weapons)
+        spells: List[Spell] = []
+        if 'spells' in infile:
+            for in_spell in infile['spells']:
+                spell = Spell.parse(in_spell)
+                spells.append(spell)
+
+        return cls(key=key, title=title, url=url, author=author, backgrounds=backgrounds, weapons=weapons, spells=spells)
 
     def lookup_weapon(self, name: str) -> Union[Weapon, None]:
         '''Looks up a weapon by name'''
