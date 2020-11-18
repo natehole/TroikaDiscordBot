@@ -1,9 +1,11 @@
+from __future__ import annotations
+from typing import Dict, List
 from cogs.utils import dice
 
-MIGHTY_BLOW_ROLL = 12
-FUMBLE_ROLL = 2
+MIGHTY_BLOW_ROLL: int = 12
+FUMBLE_ROLL: int = 2
 
-ARMOR_OFFSETS = {
+ARMOR_OFFSETS: Dict[str, int] = {
     "no": 0,
     "none": 0,
     "unarmored": 0,
@@ -14,39 +16,35 @@ ARMOR_OFFSETS = {
     "heavy": 3
 }
 
-ARMOR_REGEXP_STRING = "(no|none|unarmored|unarmoured|light|moderate|medium|heavy)"
+ARMOR_REGEXP_STRING: str = "(no|none|unarmored|unarmoured|light|moderate|medium|heavy)"
 
 
-def normalize_armor_name(name):
+def normalize_armor_name(name: str) -> str:
     '''Converts armot name to lower case and removes " armor" from the back'''
     return name.lower().replace(" armor", "").replace(" armour", "")
 
 
 class Weapon:
-    '''Defining the weapons as objects might be overkill, but I'd like to
-    support potential future options where DMs can support adding
-    new weapons via bot calls'''
-
-    def __init__(self, damage_table, name=None, style=None, two_handed=False, ignore_armor=False, aliases=[]):
+    def __init__(self, damage: List[int], name: str = None, style: str = None, two_handed: bool = False, ignore_armor: bool = False, aliases: List[str] = None):
         '''Defines a single weapon'''
 
-        if len(damage_table) != 7:
+        if len(damage) != 7:
             raise ValueError("You must provide a damage table of 7 elements for this weapon")
 
-        self.damage_table = damage_table
+        self.damage = damage
         self.name = name
         self.style = style
         self.two_handed = two_handed
         self.ignore_armor = ignore_armor
-        self.aliases = aliases
+        self.aliases = aliases or []
 
-    def lookup_armor_offset(self, armor):
+    def lookup_armor_offset(self, armor: str) -> int:
         if armor.isnumeric():
             return int(armor)
         else:
             return ARMOR_OFFSETS[normalize_armor_name(armor)]
 
-    def roll_damage(self, armor="No", damage_bonus=0):
+    def roll_damage(self, armor: str = "No", damage_bonus: int = 0) -> dice.RollResult:
         '''Computes a damage roll, adjusting various modifiers'''
         roll = dice.roll_d6()
         roll_display = f"1d6 ({roll})"
@@ -71,13 +69,29 @@ class Weapon:
 
         return dice.RollResult(roll, roll_display)
 
-    def lookup_damage(self, roll_total):
+    def lookup_damage(self, roll_total: int) -> int:
         '''Given a roll result, look up the damage from the weapon'''
-        if (roll_total < 1):
+        if roll_total < 1:
             raise ValueError("The roll must be a positive value")
 
-        if (roll_total > 7):
+        if roll_total > 7:
             roll_total = 7
 
         # rolls range 1-7, arrays range 0-6
-        return self.damage_table[roll_total - 1]
+        return self.damage[roll_total - 1]
+
+    @classmethod
+    def parse(cls, in_weapon: dict) -> Weapon:
+        style = in_weapon.get('style', 'melee')
+        ignore_armor = in_weapon.get('ignore_armor', False)
+        two_handed = in_weapon.get('two_handed', False)
+        aliases = in_weapon.get('aliases', [])
+
+        return cls(
+            name=in_weapon['name'],
+            damage=in_weapon['damage'],
+            style=style,
+            ignore_armor=ignore_armor,
+            two_handed=two_handed,
+            aliases=aliases
+        )

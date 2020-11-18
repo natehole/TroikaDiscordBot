@@ -1,3 +1,4 @@
+import pytest
 from cogs.utils import dice
 
 
@@ -37,3 +38,15 @@ def test_roll_d20():
     for _ in range(100):
         r = dice.roll_d20()
         assert r >= 1 and r <= 20
+
+
+@pytest.mark.parametrize('input,output', [
+    ('d6 monkeys', '`3` monkeys'),
+    ('There are 3d6 monkeys', 'There are `9` monkeys'),
+    ('2d6 monkeys', '`6` monkeys'),
+    ('`2d6` monkeys', '`2d6` monkeys'),
+    ('10d6 silver pence', '`30` silver pence')
+])
+def test_interpolate_dice(mocker, input, output):
+    mocker.patch.object(dice, 'roll_d6', return_value=3)
+    assert dice.interpolate_dice(input) == output
