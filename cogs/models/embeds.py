@@ -22,9 +22,9 @@ class EmbedDamage(EmbedWithAuthor):
         self.title = f"{weapon.name} Damage ({damage_dealt})"
 
         table = ""
-        for indx, d in enumerate(weapon.damage_table):
+        for indx, d in enumerate(weapon.damage):
             table += str(d) if indx + 1 is not roll.total else f"__**{d}**__"
-            if len(weapon.damage_table) - 1 is not indx:
+            if len(weapon.damage) - 1 is not indx:
                 table += " | "
         table = f" {table} "
 
