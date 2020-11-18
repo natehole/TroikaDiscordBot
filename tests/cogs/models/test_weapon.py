@@ -12,7 +12,7 @@ def test_init_exception():
 def test_init_default_values():
     '''Test how it sets optional values by default'''
     weapon = Weapon(range(7))
-    assert weapon.damage_table == range(7)
+    assert weapon.damage == range(7)
     assert not weapon.two_handed
     assert not weapon.ignore_armor
     assert weapon.name is None
@@ -83,3 +83,37 @@ def test_weapon_lookup_damage_ceiling():
     damage = range(7)
     w = Weapon(damage)
     assert w.lookup_damage(9) == damage[6]
+
+
+def test_parse_explicit():
+    in_weapon = {
+        "damage": [1, 2, 3, 4, 5, 6, 7],
+        "name": "Test Weapon",
+        "style": "melee",
+        "two_handed": True,
+        "ignore_armor": True,
+        "aliases": ["fred"]
+    }
+
+    weapon = Weapon.parse(in_weapon)
+    assert weapon.damage == [1, 2, 3, 4, 5, 6, 7]
+    assert weapon.name == "Test Weapon"
+    assert weapon.style == "melee"
+    assert weapon.two_handed
+    assert weapon.ignore_armor
+    assert weapon.aliases == ["fred"]
+
+
+def test_parse_defaults():
+    in_weapon = {
+        "damage": [1, 2, 3, 4, 5, 6, 7],
+        "name": "Test Weapon"
+    }
+
+    weapon = Weapon.parse(in_weapon)
+    assert weapon.damage == [1, 2, 3, 4, 5, 6, 7]
+    assert weapon.name == "Test Weapon"
+    assert weapon.style == "melee"
+    assert not weapon.two_handed
+    assert not weapon.ignore_armor
+    assert weapon.aliases == []

@@ -1,0 +1,2344 @@
+title: Troika Numinous Edition
+author: Daniel Sell
+url: https://docs.google.com/document/d/1haUfSVekt2gNab3V2CrL1Pg_sZ-ZlskphwXmSnGT9aw/edit
+key: base
+backgrounds:
+  - id: 11
+    name: Ardent Giant of Corda
+    desc: >-
+      Every giant has a different story about Corda, well told and interrupted
+      with tears and laughter, of how they lost it and mean to find it soon
+      enough but oh, what of today? We should drink and cheer, we’ll search once
+      again in the morning!
+    items:
+      - - an enormous Blue Star Map which can tell you where any portal leads (with a successful Astrology test)
+        - a pocket barometer for forecasting the weather (5 in 6 accuracy)
+        - Ruby Lorgnette granting +2 Second Sight.
+    skills:
+      - 4 Strength
+      - 3 Astrology
+      - 2 Run
+      - 2 Climb
+  - id: 12
+    name: Befouler of Ponds
+    desc: >-
+      You’re a wise man, a high priest, a pond-pisser, a typical but committed
+      adherent of P!P!Ssshrp. The bloated Toad God has no church other than the
+      periphery of ponds where the foulness catches in the reeds and no
+      congregation other than the gnats and dragonflies. You minister to them
+      all the same.
+    special: You never contract disease as a result of drinking stagnant liquids.
+    items:
+      - >-
+        Sackcloth robes, caked in stinking mud and undergrowth. +1 to Sneak
+        rolls in marshy terrain while wearing them, -1 everywhere else ‘cos it
+        stinks!
+      - 'A large, Worn Wooden ladle (Damage as Mace).'
+    skills:
+      - 3 Swim
+      - 1 Sneak
+      - 1 Second Sight
+    spells:
+      - 3 Drown
+      - 2 Tongue Twister
+      - 2 Undo
+      - 1 Web
+  - id: 13
+    name: Burglar
+    desc: >-
+      As a second-story man you often have cause to wander. Enemies come
+      naturally from both sides of the law and it pays to keep ahead of trouble.
+    special: >-
+      You may Test your Luck to find and get in with the local criminal
+      underbelly if one exists.
+    items:
+      - Crossbow
+      - 18 Crossbow Bolts
+      - Roll of Lock Picks
+      - Grappling Hook
+    skills:
+      - 2 Sneak
+      - 2 Locks
+      - 1 Awareness
+      - 1 Climb
+      - 1 Trapping
+      - 1 Knife Fighting
+      - 1 Crossbow Fighting
+  - id: 14
+    name: Cacogen
+    desc: >-
+      You are Those-Filthy-Born, spawned in the hump-backed sky lit only by
+      great black anti-suns and false light. Your mother was sailing on the
+      golden barges or caught in some more abstract fate when she passed you,
+      far from the protective malaise of the million spheres. You were receptive
+      to the power and the glory at a generative time and it shows in your
+      teratoid form.
+    items:
+      - fusil
+      - 2d6 plasmic cores
+      - sword
+      - velare
+    skills:
+      - 2 Fusil Fighting
+      - 2 Astrology
+      - 2 Second Sight
+      - 2 Golden Barge Pilot
+      - 1 Sword Fighting
+    spells:
+      - 2 Random
+      - 2 Random
+      - 1 Random
+  - id: 15
+    name: Chaos Champion
+    desc: >-
+      You no longer don the spiked brass armour but you still have the ear of
+      your Chaos patron. They’re happy for you to experiment with not plunging
+      your world into disorder and, ultimately, darkness, but the door is always
+      open.
+    special: >-
+      Name your patron. You may call upon your patron for aid once per day. To
+      do so roll three 6s on `3d6`. The GM will interpret their intervention.
+    items:
+      - ritual scars
+      - a huge maul
+      - assortment of ragged armour (counts as Modest Armour)
+      - Dream Journal, almost full
+    skills:
+      - 6 Language (Kurgan)
+      - 3 Maul Fighting
+      - 3 Secret Signs (Chaos Patron)
+      - 1 Second Sight
+    spells:
+      - 1 Random
+  - id: 16
+    name: Claviger
+    desc: >-
+      The Key Masters wander the universe fathoming the workings of all
+      entryways. Though they’re quite fascinated with simple chests and doors
+      they are most excited by metaphysical and metaphorical barriers. You might
+      find small conclaves of Clavigers camped around the feet of Demon Gates,
+      debating appropriate methods of attack, or building obscure machines of
+      entry.
+    items:
+      - Festooned with Keys (counts as Modest Armour)
+      - a distinguished Sledgehammer (Damage as Maul)
+      - lock picking tools
+    skills:
+      - 4 Locks
+      - 3 Strength
+      - 3 Trapping
+      - 1 Maul Fighting
+    spells:
+      - 2 Open
+      - 1 See Through
+      - 1 Lock
+  - id: 21
+    name: Demon Stalker
+    desc: >-
+      You stake your reputation upon your ability to hunt and kill demonic
+      creatures and those who break bread with them. Goat men in the wilds or
+      the Angel cults of the slums, all need to be driven back off the edge of
+      the map and onto the shores of chaos.
+    items:
+      - a Silver Sword
+      - a longbow
+      - 16 silver arrows
+      - Pouch of Salt
+      - vial of demon blood
+    skills:
+      - 5 Language (Abyssal)
+      - 2 Second Sight
+      - 2 Sword Fighting
+      - 2 Bow Fighting
+      - 1 Tracking
+      - 1 Sneak
+    spells:
+      - 3 Blood Shroud
+  - id: 22
+    name: Dwarf
+    desc: >-
+      You are a short, hairy, belligerent, alcohol dependent creature. The
+      latter two may be linked but you’ll fight anyone who suggests as much.
+      Since there are no Dwarf women (or men, technically) there are no Dwarf
+      children or Dwarf families so you can fully commit yourself to the
+      important Dwarfy endeavours of creating fine art in unusual places. You
+      intend to find the most unusual places ever seen in all the million
+      spheres.
+    special:
+      - >-
+        Dwarfs may eat gems and rare metals as food replacements. You, in fact,
+        vastly prefer the taste of rare minerals to mundane food.
+      - >-
+        Dwarfs are genderless. You are immune to all compulsions that play on a
+        creature’s desire for sex. This also means you don’t have sexual organs.
+        Instead of urinating you excrete through sweating, thus explaining your
+        odour.
+    items:
+      - Masonry Hammer
+      - Roll of Artist's Supplies
+    skills:
+      - 3 Awareness
+      - 2 Sculpting
+      - 2 Painting
+      - 2 Metalworking
+      - 2 Construction
+      - 2 Strength
+      - 2 Fist Fighting
+      - 2 Wrestling
+      - 1 Hammer Fighting
+  - id: 23
+    name: Epopt
+    desc: >-
+      You are a roaming seer, selling your visions at courts and fetes. You are
+      instantly recognisable by your yellow coif and habit as being open for
+      business. Road weary and worldwise, your unpopular visions cause you to
+      constantly move on.
+    special: >-
+      Epopts may Test their Luck to get a yes or no answer to a question about
+      mundane matters. The GM should make this Test in private, not informing
+      the Epopt if their visions are accurate.
+    items:
+      - >-
+        yellow epopt outfit, padded for protection against unhappy clients
+        (counts as Modest Armour).
+      - >-
+        epopt staff, being a walking staff with seeing crystal on one end
+        (Damage as Staff).
+      - 'collapsible tent, large enough for your stall'
+    skills:
+      - 2 Awareness
+      - 2 Evaluate
+      - 1 Second Sight
+      - 1 Etiquette
+      - 1 Fist Fighting
+      - 1 Run
+  - id: 24
+    name: Exotic Warrior
+    desc: >-
+      No one has heard of your homeland. Your habits are peculiar, your clothes
+      are outrageous, and in a land jaded to the outlandish and new you still
+      somehow manage to stand out.
+    items:
+      - a weird & wonderful weapon
+      - strange clothes
+      - exciting accent
+      - - a tea Set
+        - 3 pocket gods
+        - astrological equipment
+    skills:
+      - 6 Language (Exotic Language)
+      - 3 Fighting in your Weird Weapon
+      - 2 Language (Local Language)
+      - 1 Astrology
+      - 1 Etiquette
+    spells:
+      - 2 Random
+  - id: 25
+    name: The Fellowship of Knidos
+    desc: >-
+      Mathmologists honour the clean and unambiguous truths of mathematics and
+      coordinate them with their observations of the multiverse. All things can
+      be measured and predicted with the application of the correct
+      mathmological ratios, those methods applied to penetrate the ethereal
+      surface and glimpse the fundamental numbers below.
+    items:
+      - Large Astrolabe (damage as Mace)
+      - Abacus
+      - Lots of scrolls and writing equipment
+    skills:
+      - 3 Mathmology
+      - 2 Astrology
+    spells:
+      - 2 Find
+  - id: 26
+    name: Fellow of the Peerage of Porters & Basin Fillers
+    desc: >-
+      Luggers are a servile group by nature, most often found in the service of
+      others, weighed down by loads that would buckle a donkey. You take pride
+      in this, so much so that the everyday assignments of the guild cannot sate
+      your desire to serve, causing you to venture out in search of a real
+      challenge for such a talented varlet.
+    items:
+      - A wooden yoke
+      - Brown overcoat
+      - Soft doffing cap of the guild
+      - A bale hook (Damage as Knife and +1 on rolls to lift heavy objects)
+      - Length of rope
+    skills:
+      - 4 Strength
+      - 2 Fist Fighting
+      - 2 Run
+      - 1 Hook Fighting
+      - 1 Sneak
+      - 1 Awareness
+  - id: 31
+    name: Gremlin Catcher
+    desc: >-
+      No matter what country, sphere, or abstract dimension you may find
+      yourself in, be assured that gremlins will be there digging their warrens
+      and bothering nice people willing to pay you a shiny penny to bash their
+      little heads in.
+    items:
+      - Small but vicious dog
+      - Flat cap
+      - A club
+      - A sack
+      - 1d6 empty gremlin jars
+      - 1 jar with a pissed-off gremlin inside
+    skills:
+      - 4 Tunnel Fighting
+      - 4 Trapping
+      - 2 Sneak
+      - 2 Awareness
+      - 2 Club Fighting
+      - 2 Tracking
+      - 1 Swim
+  - id: 32
+    name: Journeyman of the Guild of Sharp Corners
+    desc: >-
+      You are an assassin in training, graduated from fighting dummies and
+      branding practise clients, freshly imbued with a license to ply your
+      trade. You haven’t fully developed the idiosyncratic methods required of a
+      master but you are on the path.
+    items:
+      - Black clothes of the apprentice
+      - Garrotte
+      - Curved sword
+      - 3 vials of poison
+      - Crossbow
+      - 6 Crossbow bolts
+    skills:
+      - 1 Poison
+      - 1 Sneak
+      - 1 Locks
+      - 1 Knife Fighting
+      - 1 Climb
+      - 1 Awareness
+      - 1 Crossbow Fighting
+      - 1 Swim
+      - 1 Disguise
+  - id: 33
+    name: Lansquenet
+    desc: >-
+      You are a mercenary retained in the exclusive service of the Phoenix
+      Throne, handsomely paid and sent to distant spheres on golden ships to
+      spread the ineffable glory of your lords at the tip of your flaming sword.
+    items:
+      - Exquisite Pistolet
+      - Bandolier with 18 Plasmic Cores
+      - Greatsword
+      - >-
+        Brightly coloured clothing with lots of tassels and bells (impossible to
+        sneak). Though frivolous looking it is in fact built with the Autarch’s
+        divine alchemy and considered Modest Armour while weighing the same as
+        normal clothing (takes no slots in your inventory).
+    skills:
+      - 2 Greatsword Fighting
+      - 2 Pistolet Fighting
+      - 1 Run
+      - 1 Fist Fighting
+      - 1 Astrology
+  - id: 34
+    name: Lonesome Monarch
+    desc: >-
+      You were the ruler of all you surveyed, a great conqueror, a lawbringer!
+      Unfortunately your horse sped off into the pixie forest, or the court
+      magician ensured you disappeared, or you led a sortie into the stars to
+      put your stamp on them as well. Either way you are now a lost and lonely
+      sovereign without a kingdom—no one has heard of you or your people. Most
+      don’t believe you and laugh, or worse, they do believe you and shrug at
+      the vagaries of fate.
+    items:
+      - Nice Weapon of your choice
+      - Crown
+      - Tired horse
+    skills:
+      - 3 Etiquette
+      - 3 Fighting in your Nice Weapon
+      - 3 Ride
+      - 1 Tracking
+  - id: 35
+    name: Member of Miss Kinsey's Dining Club
+    desc: >-
+      The Eaters know that there are only two worlds: the Without and the
+      Within. They intend to insert as much of the prior into the latter as they
+      can while experiencing the finest delights available. All culinary
+      experience is open to them as nothing is forbidden at Miss Kinsey’s. Try
+      the other, other, other white meat.
+    special: >-
+      Eaters are immune to mundane ingested poisons. They may also identify any
+      object if eaten, gaining knowledge of its material, its origin (if
+      plausibly familiar), and its magical properties on a successful Test of
+      Gastrology though the object must be thoroughly masticated, not merely
+      swallowed and passed. This does not grant special immunity to any effects
+      the object may possess.
+    items:
+      - - >-
+          Sharp Metal Dentures (damage as Sword)
+        - >-
+          Forked Metal Dentures (damage as Knife. On a Mighty Blow you may
+          cleanly strip all the flesh from one small appendage)
+        - >-
+          Blunt Metal Dentures (Damage as Knife. May be used to eat hard
+          objects)
+      - Embroidered Napkin
+    skills:
+      - 3 Etiquette
+      - 1 Strength
+      - 1 Tracking
+      - 1 Trapping
+      - 1 Gastrology
+  - id: 36
+    name: Monkeymonger
+    desc: >-
+      Life on The Wall is hard. One is never more than a few yards from an
+      endless fall yet those precarious villages still need to eat. This is
+      where you come in with your Edible Monkeys (the distinction is purely for
+      appeal since all monkeys are of course edible). You used to spend days on
+      end dangling your feet off the edge of the world, watching over your
+      chittering livestock while they scampered hither and thither, but there
+      was no future in monkey meat. You wanted much more and so stepped off. Or
+      you fell off. Either way you and some unlucky monkeys are here now and
+      that’s all that matters.
+    items:
+      - Monkey Club
+      - Butcher’s Knife
+      - >-
+        1d6 small monkeys that do not heed commands but are too scared and
+        hungry to travel far from you
+      - a pocket full of monkey treats
+    skills:
+      - 4 Climb
+      - 2 Trapping
+      - 1 Club Fighting
+      - 1 Knife Fighting
+    special: >-
+      The GM may choose to roll on this table anytime the Mien of monkeys must
+      be determined.
+    mien:
+      - Playful
+      - Stalking
+      - Hungry
+      - Tired
+      - Austere
+      - Aggressive
+  - id: 41
+    name: Necromancer
+    desc: >-
+      The least popular of magical practitioners, Necromancers are shunned by
+      the major centres of learning, left to their own devices on the edges of
+      society, passing on knowledge in the time honoured master–student dynamic.
+      This loneliness encourages students to make their own friends.
+    items:
+      - Dusty Robes
+      - - The skull of your Master
+        - Zombie servant
+        - Ghost with whom you have developed a codependent relationship
+    skills:
+      - 2 Healing
+      - 2 Mortuary Science
+      - 2 Relationship Counseling
+      - 1 Sneak
+    spells:
+      - 1 Posthumous Vitality
+      - 1 Skeletal Counsel
+      - 1 Torpor
+  - id: 42
+    name: Parchment Witch
+    desc: >-
+      Known for their smooth skin, midnight gatherings, and preternatural fear
+      of rain and open flames; the Parchment Witches are long-dead sorcerers who
+      cannot give up the vanity of life. They cover themselves in perfect paper
+      skin, a patiently painted and immaculately folded imitation of life
+      intended to hide ancient bone and gristle.
+    special: >-
+      You are undead and so do not need to breathe or circulate blood. You take
+      double Damage from Silver Weapons and regain Stamina half as effectively
+      from all sources. You must Test your Luck if outside in the rain, are made
+      wet, are close to open flames, or suffer generally grievous wounds. A
+      failure will see your skin ruined. If your skin is compromised you are
+      very obviously a walking corpse.
+    items:
+      - 1d6 Rolls of Parchment
+      - Vials of Pigments and Powders
+      - Collection of Brushes
+      - Sword Cane
+    skills:
+      - 2 Disguise
+      - 2 Second Sight
+      - 1 Healing
+    spells:
+      - 2 Protection From Rain
+      - 2 Callous Strike
+      - 2 Quench
+      - 2 True Seeing
+      - 1 Undo
+      - 1 Random
+  - id: 43
+    name: Poorly Made Dwarf
+    desc: >-
+      Dwarfs are known for being the finest artisans of the million spheres.
+      Give a Dwarf a rock and they will make gold, give a Dwarf a boulder and
+      they will make a Dwarf. You were supposed to be the finest expression of
+      Dwarfy craftsmanship, a true masterpiece, a brand new Dwarf like those
+      made by the old masters, but you were deemed imperfect and abandoned.
+    special:
+      - >-
+        Dwarfs may eat gems and rare metals as food replacements. You, in fact,
+        vastly prefer the taste of rare minerals to mundane food.
+      - >-
+        Dwarfs are genderless. You are immune to all compulsions that play on a
+        creature’s desire for sex. This also means you don’t have sexual organs.
+        Instead of urinating you excrete through sweating, thus explaining your
+        odour.
+      - >-
+        Other Dwarfs will completely ignore you as though you were a piece of
+        furniture or somebody’s abandoned hat. Very occasionally they may openly
+        examine and comment thoughtfully to themselves on your unforgivable
+        flaws, possibly while marking areas for improvement on your body with a
+        grease pen. To non-Dwarfy eyes you probably look like any other Dwarf.
+        You have +4 Sneak versus Dwarfs.
+    items:
+      - Woodman's Axe
+      - Empty Firkin
+    skills:
+      - 4 Sneak (only versus dwarfs)
+      - 3 Fist Fighting
+      - 3 Awareness
+      - 2 Strength
+      - 2 Wrestling
+      - 2 Axe Fighting
+  - id: 44
+    name: Questing Knight
+    desc: >-
+      You are on a quest for the grail, or the sword, or the throne, or for god,
+      or a lost love, or some other significant object. Your sort are common
+      enough, wandering the worlds, acting out your romantic melodrama, accusing
+      good folk of being demons or faeries. Questing Knights are generally
+      considered to be harmless.
+    items:
+      - Heavy Armour
+      - Horse
+      - Lance (Damage as Spear)
+      - Sword
+      - Shield
+      - A Quixotic Undertaking
+    skills:
+      - 3 Jousting
+      - 2 Sword Fighting
+      - 2 Spear Fighting
+      - 1 Shield Fighting
+      - 1 Awareness
+  - id: 45
+    name: Red Priest
+    desc: >-
+      You are an evangelist of the Red Redemption, wandering confessor,
+      cauterizer of the festering wound of sin—the constant accumulation and
+      recreational consumption of Mass. How can your spirit fly free while
+      shackled and flabby?
+    items:
+      - Red Robes
+      - Traditional faceless metal helmet of your order (Modest Armour)
+      - >-
+        Symbolic (but fully sized and fully functional) Single headed Greataxe,
+        to help batter down the door to sin (Damage as Greatsword)
+    skills:
+      - 2 Greataxe Fighting
+      - 1 Second Sight
+    spells:
+      - 2 Ember
+      - 2 Fire Bolt
+      - 2 Flash
+      - 1 Exorcism
+  - id: 46
+    name: Rhino-Man
+    desc: >-
+      The original Rhino-Men were created by an insane sorcerer several
+      centuries ago but rebelled and killed him. They are fairly rare creatures,
+      serving as formidable and loyal guards to those who can afford their
+      services.
+    items:
+      - Horn (damage as Knife)
+      - Thick Skin (Modest Armour)
+      - Undersized Spear
+      - 'Tiny, Useless Helmet'
+      - Knuckle Dice
+      - Half-full Firkin of Rhino Beer (20 provisions worth)
+    skills:
+      - 3 Spear Fighting
+      - 2 Run
+      - 2 Strength
+      - 1 Gambling
+  - id: 51
+    name: Sceptical Lamassu
+    desc: >-
+      With the body of a bull, the head of a man, the forelegs of a cat, and the
+      wings of a swan you are the sweetest of the children of the gods. You,
+      however, were not content to rest on your cloud and instead descended from
+      the heavens or crawled up from the abyss and set about finding your own
+      path among the stars.
+    items:
+      - Incidental Sacred Jewelry (worth 10d6 silver pence if traded)
+      - Pillbox Hat
+      - Claws (damage as Sword)
+      - Hooves (damage as Club)
+      - Wings (able to fly as fast as a running man over clear ground)
+    skills:
+      - 3 Fly
+      - 2 Claw Fighting
+      - 1 Hoof Fighting
+    spells:
+      - 3 Random
+      - 3 Random
+      - 3 Random
+  - id: 52
+    name: Sorcerer of the Academy of Doors
+    desc: >-
+      You are a student at Troika’s most prestigious wizarding academy (pride of
+      the city, experts in pan-dimensional mobility) you were finally able to
+      penetrate the (2d6)th door. You are no master but few outside your peers
+      can claim to know more about the vagaries of skyward travel than you.
+    items:
+      - >-
+        Small Functional Door worn on your forehead through which you channel
+        your magic
+      - Flashy Robes
+    skills:
+      - 3 Astrology
+      - 2 Second Sight
+    spells:
+      - 2 Astral Reach
+      - 1 Teleport
+      - 1 Web
+      - 1 Random
+      - 1 Random
+      - 1 Random
+  - id: 53
+    name: Sorcerer of the College of Friends
+    desc: >-
+      As an integral part of your tutelage in the sub-dimensional academy of the
+      Cordial Wizard God you spent your childhood learning about the fate of
+      pixies, the colour of magic, ritual grammar, and endless other theoretical
+      topics. Now you’re out in the world, discovering that your education
+      hardly accounted for any of the things that you’ve seen.
+    items:
+      - Pointed Wizard Hat you received at graduation
+      - 'Pocket Full of Wizard Biscuits (2d6, each counts as a provision)'
+      - 'Wand used to focus new apprentices, now kept for sentimental reasons'
+    skills:
+      - 4 Secret Signs (Witching Words)
+      - 2 Run
+      - 1 Climb
+      - 1 Sleight of Hand
+      - 1 Swim
+      - 1 Sneak
+      - 1 Second Sight
+    spells:
+      - 1 Jolt
+      - 1 Amity
+      - 1 Mirror Selves
+      - 1 Protection from Rain
+      - 1 Helping Hands
+      - 1 Purple Lens
+      - 1 Random
+  - id: 54
+    name: Fellow of the Sublime Society of Beef Steaks
+    desc: >-
+      Brawlers believe the application of might and a good beef steak is the
+      universal truth. Words have no power and can no more define the universe
+      than they can build a house, lift a cup, or sear a steak. Might can!
+      Really, they have thought a lot about this.
+    items:
+      - Weapon of your choice
+      - Small Gridiron
+      - 2kg of Premium Meat Cuts
+      - Waistcoat
+      - Bottle of Strong but Fancy Wine
+    skills:
+      - 2 in a Fighting Skill of your choice
+      - 2 Wrestling
+      - 2 Swim
+      - 2 Climb
+      - 2 Run
+      - 2 Fist Fighting
+      - 1 Grilling
+  - id: 55
+    name: Temple Knight of Telak the Swordbringer
+    desc: >-
+      You were once (and possibly still are) a fanatical monk set to maintain
+      constant, vigilant martial readiness in preparation for the end times,
+      when all doorways crumble inwards. You are always prepared and never
+      unready.
+    special:
+      - >-
+        The blessing of Telak awards you Armour equal to half (rounded down) the
+        number of Swords you carry. If you carried 6 Swords your Armour would be
+        3 while if you carried 9 it would be 4.
+      - >-
+        You must be overtly armed at all times or else Telak will take this
+        blessing away until you forge and donate to the unarmed a brand new
+        Sword.
+    items:
+      - The Blessing of Telak
+      - 6 Swords of Your Choice
+    skills:
+      - 3 Awareness
+      - 2 Blacksmithing
+      - 1 Sword Fighting
+      - 1 Greatsword Fighting
+  - id: 56
+    name: Thaumaturge
+    desc: >-
+      Wandering miracle workers, the depths of whose clothes are filled with
+      pouches of unguents, holy icons and herbs. No matter the metaphysical
+      need, you are always prepared.
+    special: >-
+      You may Test your Luck to just so happen to have exactly the (common)
+      mystic tchotchke, bauble, or gewgaw the situation requires.
+    items:
+      - Thaumaturgic Fez
+      - >-
+        Staff, bedecked with charms and bells. May reroll one die on the Oops!
+        table if using this staff, but can never sneak up on everybody because
+        it makes too much noise
+      - Curled Shoes
+      - Voluminous Robes
+    skills:
+      - 1 Second Sight
+      - 1 Astrology
+    spells:
+      - 3 Undo
+      - 2 Assume Shape
+      - 2 Thunder
+      - 2 Random
+      - 1 Brittle Twigs
+      - 1 Random
+  - id: 61
+    name: Thinking Engine
+    desc: >-
+      Your eyes are dull ruby spheres, your skin is hard and smooth like ivory
+      but brown and whorled like wood. You are clearly broken, you have no
+      memory of your creation or purpose, and some days your white internal
+      juices ooze thickly from cracks in your skin.
+    special:
+      - >-
+        You don’t recover Stamina by resting in the usual manner—instead you
+        must spend a full rest period with a hot iron welding your skin back
+        together like putty. For each hour of rest with access to the right
+        tools you regain 3 Stamina.
+      - >-
+        You may recharge plasmic machines by hooking your fluids to them and
+        spending Stamina at a rate of 1 Stamina and 6 minutes per charge.
+      - You always count as being at least Lightly Armoured.
+    items:
+      - Soldering iron
+      - Choose one
+        - Detachable Autonomous Hands
+        - Centaur Body (+4 Run)
+        - Inbuilt Particle Detector (+4 Second Sight)
+        - One random spell at rank 3
+    skills:
+      - 3 Golden Barge Pilot
+      - 2 Astrology
+      - 2 Pistolet Fighting
+      - 2 Healing
+      - 1 Run
+      - 1 Strength
+      - 1 Cooking
+  - id: 62
+    name: Vengeful Child
+    desc: >-
+      Your village was burnt down by ruffians, or your mother was beheaded by
+      snake cultists, or your father was hung by corrupt officials. Either way
+      you took umbrage and entered the world with a chip on one shoulder and an
+      oversized Sword on the other.
+    items:
+      - >-
+        Too-Large Sword that provides +1 to Longsword Fighting and Damage while
+        using it. Only you may benefit from this bonus; it’s not magic, just
+        sentimental.
+      - Old Hunting Bow
+      - 12 Arrows
+    skills:
+      - 3 Longsword Fighting
+      - 1 Awareness
+      - 1 Climb
+      - 1 Bow Fighting
+      - 1 Run
+      - 1 Swim
+      - 1 Vengeance
+  - id: 63
+    name: Venturesome Academic
+    desc: >-
+      You’re a classically trained Academic, a product of the universities of
+      the Brass City, the Palace of Tigers, or some other less prestigious
+      centre of learning among the spheres.
+    special: >-
+      You may Test your Luck to recall facts that you might reasonably be
+      expected to have encountered relating to the natural sciences and
+      humanities.
+    items:
+      - Reading Glasses in a sturdy case (you cannot read without them)
+      - Small Sword
+      - Bundle of Candles and Matches
+      - Writing Materials
+      - Journal
+    skills:
+      - 2 Evaluate
+      - 2 Astrology
+      - 1 Healing
+      - 1 Sword Fighting
+      - 1 Sleight of Hand
+    spells:
+      - 1 Random
+  - id: 64
+    name: Wizard Hunter
+    desc: >-
+      Some people say man is the most dangerous prey. They’re wrong. Can men
+      ignite the air and freeze your blood? Can men turn into flocks of seagulls
+      when cornered in an alley? No, they can’t. Wizards are the most dangerous
+      prey.
+    items:
+      - Large Sack
+      - Witch-Hair Rope
+      - Crossbow
+      - 12 Crossbow Bolts
+      - Sword
+      - 1d6 Pocket Gods
+      - Ruby Lorgnette
+    skills:
+      - 2 Tracking
+      - 2 Disguise
+      - 2 Crossbow Fighting
+      - 1 Sword Fighting
+      - 1 Sneak
+      - 1 Locks
+      - 1 Etiquette
+  - id: 65
+    name: Yongardy Lawyer
+    desc: >-
+      Down in Yongardy they do things differently. They respect the Law. Every
+      day there is a queue outside the courts to get a seat to see the latest up
+      and coming barrister defend their case with a metre of steel. The people
+      follow the careers of their favourite solicitors, watch all their cases,
+      collect their portraits, and sneak into the court after hours to dab the
+      patches of blood on white handkerchiefs.
+
+      In Yongardy, they love the Law.
+    items:
+      - Choose one
+        - Rapier (damage as Sword) and Puffy Shirt
+        - Sjambok (damage as Club) and Lots Of Scars
+        - Longsword and Heavy Armour
+        - Hammer and Gargantuan Shield
+      - Manual on Yongardy Law
+      - Barrister's Wig
+    skills:
+      - 4 Fighting in your chosen Weapon
+      - 2 Etiquette
+      - 1 Healing
+  - id: 66
+    name: Zoanthrop
+    desc: >-
+      At some point in your past you decided you didn’t need it anymore: you
+      found a Zoanthropologist and paid them well to remove your troublesome
+      forebrain and elevate you to the pure and unburdened beast you are today.
+    special:
+      - You are immune to all mind altering effects.
+      - You are able to speak but usually choose not to.
+      - >-
+        When making Advancement Checks for Skills related to abstract thought,
+        such as Spells or Astrology, you must roll twice and succeed on both to
+        improve them.
+    items:
+      - >-
+        No Starting Possessions (you have thrown off the shackles of
+        civilisation. You are probably nude.)
+    skilla:
+      - 3 Climb
+      - 3 Run
+      - 2 Strength
+      - 2 Fist Fighting
+      - 2 Club Fighting
+      - 2 Wrestling
+spells:
+  - name: Affix
+    cost: 3
+    desc: >-
+      Cause a subject to be fixed in place. While they are so held they do not
+      move, breathe, fall, perspire, acquire, or otherwise change. They are
+      totally immune to harm, in fact. Lasts for 3 minutes.
+  - name: Amity
+    cost: 4
+    desc: >-
+      The College of Friends always sends out its Factotums on nights after
+      Amity classes. Clearing out the bars and brothels of their drunken
+      apprentices is tiring work. Use of this Spell causes the target to Test
+      their Luck (or Skill for Enemies) or become very friendly towards the
+      wizard, as though they were an old friend. They will not act irrationally,
+      though, and if they were already a bit of a boor this might not change
+      much.
+  - name: Animate
+    cost: 2
+    desc: >-
+      Cause inanimate objects to question their place. One object up to the size
+      of a human baby may be caused to hop around and do whatever else the
+      wizard wishes.
+  - name: Assassin’s Dagger
+    cost: 3
+    desc: >-
+      Evocatively named but actually quite mundane. The wizard whispers to an
+      object and that object then seeks out and vigorously and repeatedly bumps
+      into the desired target. Obviously if you whisper to a poisoned dagger the
+      result is one thing while doing it to a letter is another. Travels any
+      distance and always arrives (eventually).
+  - name: Assume Shape
+    cost: 4
+    desc: >-
+      The wizard undergoes a distressing transformation into an inanimate object
+      no larger than a piano and no smaller than a cup. Lasts until ended.
+  - name: Astral Reach
+    cost: 1
+    desc: >-
+      The Sorcerers of the Academy of Doors are most famous for this one Spell.
+      With it they may reach through any portal and into another known
+      receptacle. For example they might use it to reach through to a safe in
+      their manse via their purse. This Spell only allows partial translocation—
+      the wizard cannot fully or permanently enter.
+  - name: Babble
+    cost: 2
+    desc: >-
+      The wizard speaks nonsense while watching the intended target, causing
+      their words to trip and confuse. This may be done under their breath and
+      relatively subtly.
+  - name: Banish Spirit
+    cost: 6
+    desc: >-
+      The wizard explains, clearly, sternly, why it is impossible that the
+      spirit could be here at this time. The spirit must Test its Luck (or Skill
+      for Enemies) or be sent to somewhere less improbable.
+  - name: Befuddle
+    cost: 1
+    desc: >-
+      A wizard’s touch can shake up someone’s mind like a snow globe. The target
+      makes all rolls at a -1 penalty until their head clears. Lasts for 3
+      minutes.
+  - name: Blood Shroud
+    cost: 4
+    desc: >-
+      Smear a small amount of a demon’s blood on yourself to become completely
+      invisible to them, even if you attack or speak to them, for 6 hours.
+  - name: Breach
+    cost: 2
+    desc: >-
+      The wizard’s hands work elemental material as though it were soft clay.
+      Fire, stone, goo, earth, fog, all of it behaves like clay under their
+      touch. Lasts for 9 minutes.
+  - name: Brittle Twigs
+    cost: 2
+    desc: >-
+      You snap a twig or other brittle object to cause an injury in another.
+      They must Test their Luck (or Skill for Enemies) or suffer a broken bone.
+  - name: Callous Strike
+    cost: 1
+    desc: >-
+      The Wizard-Knights are most famous for their remote combat whereby they
+      swing their Silver Swords seemingly at nothing only for their opponents,
+      many metres away, to be torn to tatters. This Spell can be used in place
+      of a melee attack by Rolling Versus as normal and inflicting Damage
+      according to the Weapon used. May only be used against targets within
+      clear sight.
+  - name: Coal Resolve
+    cost: 1
+    desc: >-
+      This Spell turns one’s heart into a burning ember of grief. Those under
+      its effect are so consumed by grief that they are immune to mind
+      controlling effects and the non-physical impact of pain. Lasts until the
+      next rest.
+  - name: Cockroach
+    cost: 5
+    desc: >-
+      A popular Spell that turns troublesome folk into humiliated animals. The
+      target must Test their Luck (or Skill for Enemies) or be turned into an
+      insignificant creature of the wizard’s choice. Lasts forever.
+  - name: Cone of Air
+    cost: 2
+    desc: >-
+      Creates a mysterious and specifically shaped cone of air focused on a
+      touched target’s head. They may continue to breathe the freshest of air
+      for 12 minutes.
+  - name: Darkness
+    cost: 3
+    desc: >-
+      Summon a stationary, perfect sphere of darkness up to five metres from the
+      wizard for up to 3 minutes.
+  - name: Darksee
+    cost: 1
+    desc: >-
+      The wizard reaches into their sockets and extricates their eyes. Thus
+      freed, the dark void behind can see perfectly well in pitch blackness and
+      suffer excruciating pain in light (-4 penalty to all rolls). Be careful
+      not to lose those eyeballs as re-inserting them is the only way to end the
+      Spell.
+  - name: Diminish
+    cost: 2
+    desc: >-
+      Cause something to Test its Luck (or Skill for Enemies) or reduce its size
+      by half. Lasts 3 minutes.
+  - name: Drown
+    cost: 4
+    desc: >-
+      Cause a target’s lungs to fill with water. They must Test their Luck (or
+      Skill for Enemies). If they fail they start to Drown (7.9) and are
+      incapacitated as water pours from their mouth. They may Test again once
+      per Turn until they pass, at which point the Spell ends.
+  - name: Earthquake
+    cost: 5
+    desc: >-
+      The wizard hikes up their wizard robe and stomps their wizard feet. An
+      area 30 metres around them suffers a massive earthquake. Everyone must
+      Test their Luck (or Skill for Enemies) or fall through a crack in the
+      earth, taking falling Damage and being stuck in a bloody great big hole
+      (7.8.1). Buildings may be wrecked unless especially sturdy.
+  - name: Ember
+    cost: 2
+    desc: >-
+      A simple but effective summoning of fire. Flames the size of a small
+      bonfire appear somewhere within 12 metres of the wizard. Once present
+      there is no accounting for its actions.
+  - name: Exchange Shape
+    cost: 5
+    desc: >-
+      What looks like a hug is in fact fell wizardry! The wizard bumps into
+      another and exchanges bodies. Lasts until the wizard chooses to end it but
+      they must be within sight of their own body for this to happen.
+  - name: Exorcism
+    cost: 1
+    desc: >-
+      The Red Priests posit that all negative behaviour is a symptom of some
+      level of possession, or at least direct influence, by the forces of
+      Change, unwitting agents of Mass in need of healing. The wizard throws
+      salt at their target and Rolls Versus the possessing spirit to cast it
+      out. In the case of a Fumble the spirit is drawn into and possesses the
+      wizard.
+  - name: Explode
+    cost: 5
+    desc: >-
+      So simple that it’s arguably not even a Spell but rather a premeditated
+      failure of catastrophic proportions. The wizard causes a one cubic metre
+      object to explode and deal Damage to everyone within 24 metres depending
+      on proximity. Those within 6 metres take Damage as a Gigantic Beast,
+      within 12 as a Large Beast, 18 as a Modest Beast and 24 as a Small Beast.
+  - name: Farseeing
+    cost: 2
+    desc: >-
+      Endows the wizard with engorged, plate-like eyes that are able to see in
+      minute detail for miles around but are unable to see anything up close.
+      Lasts until ended.
+  - name: Fear
+    cost: 1
+    desc: >-
+      In the eyes of one poor target the wizard grows into a primal monster from
+      the depths of their lizard brain. They will attempt to flee and if flight
+      is impossible they will curl up in a ball and whimper. They may Test their
+      Luck (or Skill for Enemies) to resist the illusion.
+  - name: Find
+    cost: 2
+    desc: >-
+      When wizards lose their glasses they mumble to themselves until they turn
+      up. The thing being sought must be a specific object, not a general
+      category or type, and the direction is only given in terms of compass
+      points.
+  - name: Fire Bolt
+    cost: 1
+    desc: >-
+      Shoot impressive flames from your fingertips, dealing Damage to one target
+      within 20 metres.
+  - name: Flash
+    cost: 3
+    desc: >-
+      The wizard claps neatly and issues forth the light of a thousand suns from
+      their hands. All within 20 metres must Test their Luck (or Skill for
+      Enemies) or be blinded for 1d6 minutes.
+  - name: Gills
+    cost: 3
+    desc: >-
+      The wizard may permanently gift a touched subject with gills, replacing
+      their usual breathing arrangement if they fail to Test their Luck (or
+      Skill for Enemies). Useful for underwater excursions but less so when
+      inflicted upon a chap in the middle of town. The wizard may end this at
+      will.
+  - name: Grow
+    cost: 2
+    desc: >-
+      Cause an item to grow half its size again if it fails to Test its Luck (or
+      Skill for Enemies). Lasts for 3 minutes.
+  - name: Helping Hands
+    cost: 1
+    desc: >-
+      Animate hands spring forth from an inanimate surface and perform any task
+      the wizard requires but are limited to being rooted to the spot from which
+      they sprang. They last until the wizard wills it or leaves the location.
+  - name: Hurricane
+    cost: 5
+    desc: >-
+      The wizard waves their hands in the air like they just don’t care, which,
+      being wizards, they likely don’t. A mighty gust knocks everyone over
+      within 30 metres who fails to Test their Luck (or Skill for Enemies),
+      dealing 1d3 Damage and making an awful mess. Lasts for 10 minutes. Test
+      Luck every Turn if not taking cover or else take further Damage.
+  - name: Illusion
+    cost: 2 per viewer
+    desc: >-
+      Those viewing this illusion may Test their Luck (or Skill for Enemies) to
+      unveil the trickery. Lasts until the wizard leaves or falls asleep.
+  - name: Invisibility
+    cost: 3
+    desc: >-
+      The wizard turns flesh into refractive crystal sheets. It’s very
+      uncomfortable and you make a slight shish-ing sound as you move but are
+      quite invisible and don’t suffer from the usual limitations of illusions.
+      Lasts for 3 minutes after which you noisily reform into dull and
+      frustratingly opaque flesh.
+  - name: Ironhand
+    cost: 3
+    desc: >-
+      The common man does not appreciate exactly how close flesh and iron are
+      when considered relative to, say, flesh and the smell of hot tea. With
+      some slight convincing the wizard may cause a target’s flesh to behave as
+      though it had the desirable properties of metal. They get +1 Skill and
+      immunity to modestly proportioned fires for 3 minutes.
+  - name: Jolt
+    cost: 1
+    desc: >-
+      The mischievous apprentice’s favourite Spell, Jolt sends an arc of
+      electricity from the wizard’s outstretched hand towards a target. Ignores
+      Armour.
+  - name: Languages
+    cost: 1
+    desc: >-
+      The wizard forms a mouth with their hands through which they can speak any
+      language. They can simultaneously cup their other hand to their ear to
+      understand them in return. Lasts for one conversation.
+  - name: Leech
+    cost: 2
+    desc: >-
+      The necromancer must place their hands on a living subject and allow their
+      fingertips to transform into sucking apertures which drain the victim of
+      blood. Deal `2d6` Damage to your victim and regain half as much Stamina.
+  - name: Levitate
+    cost: 2
+    desc: >-
+      Elevates the wizard or another on the backs of tiny invisible sprites who
+      answer only to their summoner. May float about for 3 minutes.
+  - name: Life Line
+    cost: 1
+    desc: >-
+      Created by the Horizon Knights to enable them to take the fight to the
+      Nothing, they would cast this on their squires and dive off the edge of
+      creation. While this Spell lasts the wizard’s essential bodily functions
+      are linked to another, thereby enabling them to breath or eat for the
+      recipient. They will need to breathe and eat for two, which makes it hard
+      to do anything useful while linked. The Spell lasts for a day, until
+      cancelled, or until the death of the linked person. Note if the linked
+      person dies, starves, or is choked you will suffer equally.
+  - name: Light
+    cost: 1
+    desc: >-
+      Create an ethereal orb of light that glows like a torch. Lasts 6 hours and
+      can be extinguished at will.
+  - name: Lock
+    cost: 1
+    desc: >-
+      Magically lock an object. The object must have a lockable aspect to it but
+      is now magically sealed. Permanent until undone or dismissed.
+  - name: Mirror Selves
+    cost: 3
+    desc: >-
+      In the minds of others the wizard appears to be, in fact, three wizards.
+      All three will perform the same actions in unison, offering attackers only
+      a 1 in 3 chance of targeting the right wizard. Lasts for 12 minutes.
+  - name: Natter
+    cost: 1
+    desc: >-
+      As everyone knows, wizards are excellent ventriloquists, so good, in fact,
+      that they can throw their voice inside another’s mouth. They can target
+      anyone within sight and transmit a short sentence.
+  - name: Open
+    cost: 1
+    desc: >-
+      The wizard chooses a reality wherein the lock was open all along. May be
+      used to open any mundane door or container and counteract a Lock Spell.
+  - name: Peace
+    cost: 2
+    desc: >-
+      Open up the mind to universal love and cause two subjects to Test their
+      Luck (or Skill for Enemies) or cease hostilities. They will still defend
+      themselves if attacked but will at least appreciate the pettiness of it.
+  - name: Poison
+    cost: 1
+    desc: >-
+      When cast upon a liquid this Spell causes it to become deadly poison. The
+      liquid deals 4 Damage if drunk and 1 Damage per Turn until the target
+      successfully Tests their Luck (or Skill for Enemies). The liquid loses its
+      potency after an hour.
+  - name: Posthumous Vitality
+    cost: 5
+    desc: >
+      Necromancers, known for their social inadequacy, often find themselves
+      having to make friends. This Spell requires a fresh, or at least whole and
+      lubricated, corpse. The wizard rolls `2d6` plus their Posthumous Vitality
+      Skill Total and consults the following chart (13+ counts for an
+      Advancement tick): * 4-12 Nothing happens. * 13-14 The vitality is
+      clumsily applied, causing the body to explode messily. A new one will need
+      to be found. * 15-16 The creature is animated and will last for 24 hours
+      before literally falling to pieces. * 17+ Perfect reanimation. The
+      creature will last until destroyed.
+  - name: Presence
+    cost: 1
+    desc: >-
+      This Spell creates the sense of being watched by a patriarchal figure.
+      Some find it comforting, others, not so much.
+  - name: Protection from Rain
+    cost: 1
+    desc: This Spell prevents the wizard from getting rained upon for one shower.
+  - name: Purple Lens
+    cost: 1
+    desc: >-
+      The recipient’s eyes glow purple as they experience an alternative reality
+      where people are kind, their surroundings are beautiful, their food is
+      indulgent, and so on. This doesn’t change the reality of things but it
+      does make them more palatable. Lasts until they want it to end.
+  - name: Quench
+    cost: 1
+    desc: Snuff a small flame with the wave of a hand.
+  - name: Read Entrails
+    cost: 1
+    desc: >-
+      The wizard can get the answer to one question from the entrails of a
+      living creature. The size and importance of the creature influences the
+      level of knowledge gained. Small, common animals are able to offer yes or
+      no answers, oxen can predict things obtusely, lamassu may offer explicit
+      and thorough advice.
+  - name: Read Stars
+    cost: 1
+    desc: >-
+      Rather than physical stars the wizard navigates by astral starlight that
+      peeks through the veil. This Spell enables the wizard to get a reasonable
+      sense of direction regardless of any obscuring factors.
+  - name: See Through
+    cost: 1
+    desc: >-
+      The wizard rubs a surface vigorously, making it translucent. Can penetrate
+      up to 12 inches of material. Lead and Silver are immune.
+  - name: Sentry
+    cost: 1
+    desc: >-
+      The wizard plucks a bit of their mind out like candy floss and leaves it
+      stuck to a wall somewhere. This psychic presence is invisible to the naked
+      eye but extends the wizard’s senses to that spot for the duration. While
+      it lasts the wizard suffers -1 to all rolls due to the incredible
+      confusion this generates. If the shard is discovered and harmed the wizard
+      will lose `2d6` Stamina due to the shock.
+  - name: Shatter
+    cost: 3
+    desc: >-
+      The wizard may wildly gesticulate at a brittle object no larger than an
+      umbrella and cause it to shatter into a million pieces. Living targets may
+      Test their Luck to avoid this unpleasant Spell.
+  - name: Skeletal Counsel
+    cost: 3
+    desc: >-
+      Necromancers often talk to skulls. Sometimes they talk back. Use of this
+      Spell enables speaking with the dead, who answer one question per casting.
+      Requires a skull.
+  - name: Sleep
+    cost: 2
+    desc: >-
+      The wizard convinces a target to forgo wakefulness for a time, causing
+      them to sleep until woken unless they successfully Test their Luck.
+      Remember: fighting is loud.
+  - name: Slide Skywards
+    cost: 6
+    desc: >-
+      Requires mirrors or other highly reflective surfaces. The wizard stands
+      between two reflective surfaces so that they are infinitely repeated. They
+      then step out from between them but as a different incidence of
+      themselves. To those watching the wizard moves in the direction not seen
+      and reappears between two mirrors elsewhere. If the location has been
+      compromised the wizard arrives in a random mirrored location somewhere
+      across the million crystal spheres.
+  - name: Starry Orb
+    cost: 4
+    desc: >-
+      The wizard creates a 5th dimensional orb above their head. All intelligent
+      beings looking at it must Test their Luck or marvel at it for 3 minutes.
+  - name: Teleport
+    cost: 10
+    desc: >-
+      The wizard or a target of their choosing may travel to any location within
+      a single sphere instantly. If unfamiliar with the location they must Test
+      their Luck (or Skill for Enemies) or be thrown wildly off course to
+      potentially devastating results.
+  - name: Thought Vapour
+    cost: 1
+    desc: >-
+      The wizard can cause their nose to exist in multiple alternative
+      realities, travel through various spheres, and enable the olfactory
+      sensation of thought. Emotions, attitudes, and underlying feelings can be
+      smelled. No words or images are formed, just impressions. Any strong odour
+      will cause this Spell to fail.
+  - name: Thunder
+    cost: 2
+    desc: >-
+      The wizard raises their arms and shouts something suitably ominous. All
+      within 24 metres must Test their Luck (or Skill for Enemies) or be
+      deafened by a riotous roll of thunder. Luck or no, they will be mightily
+      impressed.
+  - name: Tongue Twister
+    cost: 2
+    desc: >-
+      Beware! If a wizard screws their nose and twists their fingers at you then
+      a Tongue Twister is coming your way. The target must Test their Luck (or
+      Skill for Enemies) or have their tongue literally tied in knots. This
+      requires some time and a fair bit of patience to disentangle.
+  - name: Torpor
+    cost: 3
+    desc: >-
+      Those who study the dead consider it necessary to develop a profound
+      sympathy with their subject—how can you speak with the dead if you don’t
+      understand the dead? Torpor helps build post-mortem empathy by causing the
+      necromancer to temporarily die. Bodily functions are halted, no food,
+      water, or air is needed, and they are, by most vulgar definitions of the
+      word, dead. The Spell lasts until ended by the wizard, who remains vaguely
+      aware of their surroundings to the extent of being conscious of sound and
+      movement but not of what is said or who is saying it. They will still take
+      Damage from bodily abuse while under the effect and can indeed become
+      irretrievably dead.
+  - name: True Seeing
+    cost: 3
+    desc: >-
+      The wizard focuses their sight on the unambiguous truth of matter,
+      enabling them to see through illusions for the next 10 minutes.
+  - name: Undo
+    cost: _double cost of original Spell_
+    desc: >-
+      The wizard disentangles a Spell from this instance of reality. To do so
+      they must Roll Versus the original casting if disentanglement is possible
+      at all.
+  - name: Ward
+    cost: 1
+    desc: >-
+      A handy Spell only requiring the flick of a wrist. In response to being
+      fired upon the wizard may cast this Spell to cause the missile to be
+      deflected.
+  - name: Wall of Power
+    cost: 2
+    desc: >-
+      What they call a wall is in fact a dome, but wizards always have worked in
+      mysterious ways. The wall is a shimmering bubble that causes 1d6 Damage
+      when touched. Nothing may pass without the wizard’s permission (it is
+      recommended that they remember to allow air). Lasts for 12 minutes.
+  - name: Web
+    cost: 2
+    desc: >-
+      Whether this is opening a portal to the plane of slime or channelling the
+      sprites of sickness, all can agree that it is quite disgusting. The wizard
+      blows forth the “web” from their nose and all in a cone extending 12
+      metres in front of the wizard are trapped unless they Test their Luck (or
+      Skill for Enemies). Each Turn anything passing through or out of it must
+      repeat the Test or become stuck. Dries up after 12 rounds.
+  - name: Zed
+    cost: null
+    'null': null
+    desc: >-
+      No one knows what this does but everyone who has cast it disappears
+      instantly, never to be seen again.
+weapons:
+  - name: Sword
+    style: melee
+    damage: [4, 6, 6, 6, 6, 8, 10]
+  - name: Axe
+    style: melee
+    damage: [2, 2, 2, 2, 4, 8, 10]
+  - name: Staff
+    style: melee
+    damage: [2, 4, 4, 4, 4, 6, 8]
+  - name: Hammer
+    style: melee
+    ignore_armor: true
+    damage: [1, 2, 4, 6, 8, 10, 12]
+  - name: Spear
+    style: melee
+    damage: [4, 4, 6, 6, 8, 8, 10]
+  - name: Longsword
+    style: melee
+    aliases: ["long sword"]
+    damage: [4, 6, 8, 8, 10, 12, 14]
+  - name: Mace
+    style: melee
+    ignore_armor: true
+    damage: [2, 4, 4, 6, 6, 8, 10]
+  - name: Polearm
+    style: melee
+    ignore_armor: true
+    two_handed: true
+    damage: [2, 4, 4, 8, 12, 14, 18]
+  - name: Maul
+    style: melee
+    ignore_armor: true
+    two_handed: true
+    damage: [1, 2, 3, 6, 12, 13, 14]
+  - name: Greatsword
+    style: melee
+    two_handed: true
+    aliases: ['great sword']
+    damage: [2, 4, 8, 10, 12, 14, 18]
+  - name: Club
+    style: melee
+    damage: [1, 1, 2, 3, 6, 8, 10]
+  - name: Unarmed
+    style: melee
+    aliases: ["punch", "kick", "fist", "fists", "foot", "feet", "none"]
+    damage: [1, 1, 1, 2, 2, 3, 4]
+  - name: Shield
+    style: melee
+    damage: [2, 2, 2, 4, 4, 6, 8]
+    # Ranged weapons
+  - name: Fusil
+    style: ranged
+    ignore_armor: true
+    two_handed: true
+    damage: [2, 4, 4, 6, 12, 18, 24]
+  - name: Bow
+    style: ranged
+    two_handed: true
+    damage: [2, 4, 6, 8, 8, 10, 12]
+  - name: Crossbow
+    style: ranged
+    two_handed: true
+    damage: [4, 4, 6, 8, 8, 8, 10]
+  - name: Pistolet
+    style: ranged
+    aliases: ["pistol"]
+    ignore_armor: true
+    damage: [2, 2, 4, 4, 6, 12, 16]
+    # Beastly weapons
+  - name: Small Beast
+    style: beastly
+    damage: [2, 2, 3, 3, 4, 5, 6]
+  - name: Modest Beast
+    style: beastly
+    damage: [4, 6, 6, 8, 8, 10, 12]
+  - name: Large Beast
+    style: beastly
+    ignore_armor: true
+    damage: [4, 6, 8, 10, 12, 14, 16]
+  - name: Gigantic Beast
+    style: beastly
+    ignore_armor: true,
+    damage: [4, 8, 12, 12, 16, 18, 24]
+    # Spells
+  - name: Jolt
+    style: spell
+    ignore_armor: true
+    damage: [2, 2, 3, 3, 5, 7, 9]
+  - name: Fire Bolt
+    style: spell
+    damage: [3, 3, 5, 7, 9, 12, 16]
+  - name: Dragon Fire
+    style: spell
+    damage: [6, 8, 12, 16, 18, 24, 36]
+creatures:
+  - name: Alzabo
+    skill: 10
+    stamina: 21
+    initiative: 4
+    armour: 1
+    weapon: Large Beast
+    mien:
+      - Hungry
+      - Confused
+      - Protective
+      - Patient
+      - Watchful
+      - Evasive
+    desc: >-
+      The red furred ghoul-bear, which at its shoulder stands as tall as a
+      horse, would be a frightful creature for no other reason than its
+      immediate physical impression. The Alzabo can produce — for it is not
+      truly mimicking, rather recalling — the exact sound of any creature it has
+      ever eaten. Crying out in the night, it draws its prey from safety,
+      typically by imitating a recently eaten family member and calling to its
+      children or parents. Even if the devoured is human, and those listening
+      know that it’s not truly them, the sound of a daughter you know to be dead
+      tapping at your cottage door and begging to be let in from the cold is
+      more than most can bear.
+  - name: Boggart
+    skill: 6
+    stamina: 9
+    initiative: 2
+    armour: 0
+    mien:
+      - Belligerent
+      - Obstinate
+      - Petulant
+      - Insolent
+      - Sullen
+      - Smug
+    desc: >-
+      You could be forgiven for thinking a boggart was a rangy man with an
+      exceedingly bristly beard, but no, once upon a time it sprung fully formed
+      from a Hole and has been ungrateful and ill prepared for everything since.
+      They rarely travel far from their birth hole although there is no pixie
+      compulsion to do so, it’s more a point of principle and lack of
+      imagination on their part. They can, if provoked, be violent in the
+      defence of the land which they consider to be theirs but they are
+      prideful, stupid, and easily tricked.
+  - name: Bonshad
+    skill: 12
+    stamina: 20
+    initiative: 3
+    armour: 2
+    damage: Gigantic Beast
+    mien:
+      - Wrathful
+      - Virulent
+      - Spiteful
+      - Nauseated
+      - Acquisitive
+      - Imperious
+    desc: >-
+      The Bonshad is the source of an amusing piece of trivia amongst
+      diabolists. While it is well known that the Bonshads know the method of
+      creating the Elixir of Shazmazm it is less well known (at least amongst
+      impatient apprentices) that The 17th Incantation of Ignis Baxter: Bring Up
+      What Bonshad Come contains a typo in the 5th chorus. You can imagine the
+      embarrassment this would have caused Master Baxter had he not been
+      tragically caught up in the Oblation Wars soon after completing his
+      seminal work. Regardless, calling up this hook-beaked betentacled fiend
+      without the reformed texts will see one dragged off to the bottom of the
+      Demon Sea to work their curious mines. What a lark!
+  - name: Cyclops
+    skill: 9
+    stamina: 14
+    initiative: 3
+    armour: 2
+    damage: Large Beast
+    mien:
+      - Tearful
+      - Depressed
+      - Melancholic
+      - Sombre
+      - Resigned
+      - Mercurial
+    desc: >-
+      Once upon a time a nation of man asked one of the Aeons to grant them the
+      power of immortality and foresight. The Aeons, being an arbitrary bunch,
+      took one eye from each as fair exchange. The men found that their
+      foresight was indeed present but extended only to knowledge of their
+      eventual deaths by accident or violence. Feeling positively monkey-pawed,
+      they agreed to go their separate ways and to never speak of it again.
+    special: >-
+      When a cyclops is given Initiative it may draw the next three Initiatives
+      in order, thus granting them knowledge of who is going next. They know
+      when and how they die and this might not be it.
+  - name: Dolm
+    skill: 7
+    stamina: 21
+    initiative: 2
+    armour: 1
+    damage: Large Beast
+    mien:
+      - Unperturbed
+      - Detached
+      - Tranquil
+      - Tired
+      - Curious
+      - Perturbed
+    desc: >-
+      Somewhere beneath the earth they sit suspended in their cavities,
+      peacefully contemplating the movements of the surface world. A witness to
+      their intercrevice ambling would see a large, saggy-skinned humanoid with
+      soulful grey eyes staggering as though carrying a heavy basin of water.
+      The dolm never stops growing, as far as anyone can tell, and the oldest
+      and wisest of their sort can tower above a typical townhouse while still
+      being able to squeeze themselves under the door.
+    special: >-
+      A dolm can compress itself to fit in any crack through which they can pass
+      their eyes. These, unlike the rest of them, never grow beyond the size of
+      a typical human eye.
+  - name: Donestre
+    skill: 9
+    stamina: 14
+    initiative: 3
+    armour: 0
+    damage: Modest Beast
+    mien:
+      - Gregarious
+      - Urbane
+      - Exhilarated
+      - Impassioned
+      - Shameful
+      - Grieving
+    desc: >-
+      There is a certain race of a solitary nature whose multitudinous heads are
+      all lions and flowing manes. They glitter with numinous light and speak
+      the language of all thinking beings. They dazzle travellers with knowledge
+      of their past and the places they have been and are going. Indeed their
+      knowledge seems deep, broad, and generously given. Their hunger for
+      company is an honest one, their enthusiasm is endless, but they can’t
+      control themselves. As the conversation flows they become more and more
+      fervent until their passion ignites and they devour their companion up to
+      the neck. They continue to sadly converse with the head for a time before
+      shamefully burying it and moving on.
+  - name: Drock
+    skill: 6
+    stamina: 13
+    initiative: 2
+    armour: 0
+    damage: Small Beast
+    mien:
+      - Happy
+      - Contemplative
+      - Hungry
+      - Tired
+      - Unhappy
+      - Confused
+    desc: >-
+      Dwarfs are creatures of purpose; they set their minds on a course and
+      follow it until they finish or run aground. Occasionally a Dwarf is
+      forcibly prevented from finishing a project, possibly by dropping dead at
+      an inopportune moment; it happens. Usually this is a sad but
+      inconsequential occasion, but sometimes it happens while they pursue the
+      highest art a Dwarf can engage in: creation of a new Dwarf. The sight of
+      these half formed monstrosities moves any sane Dwarf to revulsion,
+      sickening them to the core with their unhewn surfaces, untreated stucco,
+      blatant displays of brass armature, and soggy wet clay. They are
+      nightmares of Dwarfen body horror!
+  - name: Dragon
+    skill: 16
+    stamina: 32
+    initiative: 8
+    armour: 4
+    damage:
+      - as: Gigantic Beast
+      - name: Dragon Fire
+        damage: [6, 8, 12, 16, 18, 24, 36]
+        desc: >-
+          Once per Round they may douse a 24 foot area in beautiful Dragon-Fire.
+          Everyone in the area is automatically hit but may Test their Luck to
+          reduce the Damage Roll by 1.
+    mien:
+      - Sleeping
+      - “Playful”
+      - Hungry
+      - Quizzical
+      - Aggressive
+      - Paranoid
+    desc: >-
+      Dragons are creatures of hyper-light, unburdened by base matter, able to
+      soar across the dark sea of sky between worlds. Since their spirits are
+      immortal and illuminated by the black-suns they may, and often do, indulge
+      in base activities such as wanton slaughter, accumulating needless wealth,
+      and plumbing the depths of forbidden knowledge. They do this because they
+      know that nothing of these wicked spheres can harm them or their objective
+      spiritual and physical perfection.
+    special: >-
+      Dragons are immune to high temperatures, including Dragon-Fire.
+  - name: Ekodat
+    skill: 8
+    stamina: 43
+    initiative: 3
+    armour: 2
+    damage: Spear
+    mien:
+      - Dormant
+      - Stationary
+      - Unstable
+      - Probing
+      - Tentative
+      - Cautious
+    desc: >-
+      The Ekodat is a series of crystalline protrusions emanating from a clouded
+      crystal core. These “tentacles” don’t move; instead they grow rapidly
+      through the air like roots. Natural philosophers have been back and forth
+      about the categorisation of the Ekodat. While all agree it is a chimera of
+      mineral and some other substance they cannot confirm the matter of the
+      other. The popular attitude is that it is a divine emanation caught and
+      refracted in some unusually dense crystal matrix, causing what would
+      otherwise be an angelic visitation to become a mineralogical hazard.
+    special: >-
+      The tentacles remain after an attack. When an individual is successfully
+      injured by the Ekodat they are immediately attacked again by the sudden
+      growth of additional spurs brought on by the sufusion of vital fluids.
+
+  - name: Feathered Folk
+    skill: 7
+    stamina: 6
+    initiative: 2
+    armour: 0
+    damage: Bow
+    mien:
+      - Pious
+      - Sincere
+      - Beatific
+      - Rapt
+      - Abstracted
+      - Doubting
+    desc: >-
+      Profoundly religious though unfocused. Their civilisation worshiped the
+      Egg of Time, which sat at the heart of their temple city on their holy
+      mountain, until the day the Egg cracked and the god that leaped forth
+      instantly shattered into a trillion shards of glass that flew off into the
+      cosmos. Since then they have been eager to join any religion founded after
+      that point, believing it to be a shard of the Born God.
+  - name: Goblin
+    skill: 5
+    stamina: 6
+    initiative: 1
+    armour: 1
+    damage: Weapon
+    mien:
+      - Curious
+      - Dismissive
+      - Preoccupied
+      - Gossipy
+      - Overly Friendly
+      - Paranoid
+    desc: >-
+      Goblins are the vanguard of civilisation. The moment a sphere bobs to the
+      surface the goblins will creep out of the nooks and crannies to start
+      expanding their labyrinth. Left to their own devices they will eventually
+      tame and cover every surface in walls and hedges and tunnels and steel and
+      whatever else is in goblin-vogue, though more usually they are distracted
+      with an accidentally awakened evil, or recalled by the Goblin King, or cut
+      off from the centre of the labyrinth and turned feral to live in the
+      man-cities. A most terrible fate. Better to bury their labyrinths and
+      leave.
+
+  - name: Gremlin
+    skill: 3
+    stamina: 4
+    initiative: 3
+    armour: 0
+    damage: Small Beast
+    mien:
+      - Inveigling
+      - Fearful
+      - Fearful
+      - Aggressive
+      - Aggressive
+      - Fake Inveigling (Aggressive)
+    desc: >-
+      Vicious little creatures dressed in potato sacks they stole from an old
+      mother’s cupboards. When you see footprints in the pie crust it’s time to
+      call the Gremlin Catcher because where there’s one there’s a hundred and
+      underneath your home will be a veritable maze of warrens stretching off to
+      gods know where. No proven link between the gremlins’ habit of appearing
+      seemingly everywhere and the goblins’ interdimensional labyrinth have been
+      made but fingers are firmly pointed.
+
+  - name: Harpy
+    skill: 8
+    stamina: 12
+    initiative: 3
+    armour: 0
+    damage: Modest Beast
+    mien:
+      - Spiteful
+      - Malicious
+      - Cruel
+      - Hateful
+      - Vicious
+      - Barbaric
+    desc: >-
+      Immortal creatures of bitterness and spite, they look like vultures with
+      human heads and unusually large claws. Their immortal nature precludes the
+      need to eat yet they hunt mercilessly, most usually by lifting their
+      quarry up into the sky and dropping them after spending some time verbally
+      tormenting them. A greater pleasure still is when their victims survive
+      the fall, whereupon they descend and eat the exposed sweetmeats and cackle
+      with their mouths full. Altogether a reprehensible blight on creation.
+    special: >-
+      Harpies are natural sorcerers, each knowing Read Entrails and any other
+      Spells you might deem appropriate.
+
+  - name: Khaibit
+    skill: 9
+    stamina: 10
+    armour: 1
+    initiative: 3
+    damage: Weapon
+    mien:
+      - Austere
+      - Bemused
+      - Ecstatic
+      - Bored
+      - Impassive
+      - Arresting
+    desc: >-
+      The Shadow Exultants make up the bulk of the Autarch’s lower nobility,
+      being the handmaids and officers filling out attendance at highborn social
+      events. Each one possesses an uncanny resemblance to one Exultant or
+      other, blood of their very blood as they are. They live in hope that their
+      clone-parent dies and passes their Exultancy on to them but it is far more
+      likely that they are at some point harvested for their life-extending
+      component parts. Such is the noblesse oblige.
+
+  - name: Knight of the Road
+    skill: 7
+    stamina: 7
+    initiative: 2
+    armour: 1
+    damage: Weapon
+    mien:
+      - Curious
+      - Wary
+      - Drunk
+      - Rowdy
+      - Predatory
+      - Friendly
+    desc: >-
+      Contrary to what the farmers tell you the life of a vagabond is not an
+      easy one. First you must find a road, but not a quiet road or else you’ll
+      wait for weeks without a client, nor should it be too busy or else you’ll
+      no sooner have belayed the first about the bonce before another comes
+      along and interrupts your exchange. After all that you go back to your
+      camp in the woods to sleep on the filthy ground and eat your meagre meals.
+      Farmers should have more respect for a hard day’s work.
+
+  - name: Living Dead
+    skill: 6
+    stamina: 12
+    initiative: 1
+    armour: 0
+    damage:
+      - as: Weapon
+      - as: Modest Beast
+    mien:
+      - Oblivious
+      - Pondering
+      - Distracted
+      - Hungry
+      - Aggressive
+      - Distressed
+    desc: >-
+      The definition of ‘dead’ varies from place to place. In some spheres you
+      might be considered dead when unconscious or still living until buried.
+      Now consider the ambulatory deceased and the definition is even more
+      nebulous and near the point of irrelevance. Let’s just say they have a
+      fluid vitality.
+    special: >-
+      They take double Damage from Silver.
+
+  - name: Lizard-Man
+    skill: 8
+    stamina: 8
+    initiative: 2
+    armour: 2
+    damage:
+      - as: Weapon
+      - as: Modest Beast
+    mien:
+      - Severe
+      - Hostile
+      - Suspicious
+      - Intolerant
+      - Threatening
+      - Inquisitive
+    desc: >-
+      Imagine a fat man but this man is a crocodile. Stand him on his hind legs,
+      yank his head into a civilised position, shorten his snout, and give him
+      some short horns and a large Weapon. This is a lizard-man, a
+      preternaturally militaristic race who spontaneously regiment themselves
+      from the moment they goose-step their way out of the egg. Their only
+      social structure and interest is the army, making them excruciatingly dull
+      dinner guests.
+
+  - name: Loathsome Wurm That Will Consume The Sun
+    skill: 12
+    stamina: 46
+    initiative: 7
+    armour: 3
+    damage: Gigantic Beast
+    mien:
+      - Tormented
+      - Writhing
+      - Envious
+      - Phlegmatic
+      - Rancorous
+      - Malevolent
+    desc: >-
+      Once upon a distant time the gods banded together to mould the dripping
+      flesh of the Monad into all the creatures of the earth. One Divine
+      Architect, sneaky, lazy, or mad, consistently came up short on their daily
+      quota of flesh-given-shape. At this point an exceptional storyteller would
+      usually improvise a series of didactic vignettes of gods or animals asking
+      why the god’s work was lacking until finally the god revealed that they
+      were saving scraps to create the Loathsome Wurm. The Thief-God was usually
+      punished and their mad unfinished creature confined to the veins of the
+      earth since destroying either was beyond the scope of their siblings’
+      combined godly might. A trite story about the permanence of evil, but a
+      popular and partially true tale. In reality the Loathsome Wurm is the
+      width of an elephant, with great tusks and grinding scales. Its
+      unfinished, infinite body coils back into the depths and it can surely
+      level the sunlit world were it not confined to the darkness from which it
+      stares. If one listens closely at the thresholds of caves they may hear
+      its whispers and promises. Treasures thrown down pits and left in cave
+      mouths temporarily silence it.
+    special: >-
+      If killed, the stub of the creature’s neck can be descended and used as an
+      entry to the Primary Underworld. The Wurm will reform in 5,125 years.
+
+  - name: Man-Beast
+    skill: 8
+    stamina: 11
+    initiative: 2
+    armour: 1
+    damage:
+      - as: Fusil
+      - as: Modest Beast
+    mien:
+      - Heedful
+      - Observing
+      - Watchful
+      - Questioning
+      - Challenging
+      - Aggressive
+    desc: >-
+      The Autarchs couldn’t rely on the aristocracy for delicate or
+      controversial matters; even for thoroughly mundane requests they were
+      worshipful in word and recalcitrant in action and so towards the beginning
+      of their reign an Autarch had their vizier fabricate armies of beastly
+      chimera, utterly loyal to the Phoenix Throne, obeying orders to the letter
+      unto death. The man-beasts are far from mindless, rather they never
+      question their lot in life, being unable to comprehend an alternative
+      existence. Indeed, you might find man-beast guards still defending
+      doorways to caches of Weapons and treasure the Autarchs are known to have
+      hidden away for times of trouble, vigilant as a sleepless, incorruptible
+      watchdog.
+
+  - name: Manticore
+    skill: 12
+    stamina: 18
+    initiative: 5
+    armour: 3
+    damage: Large Beast
+    mien:
+      - Lazy
+      - Bored
+      - Hungry
+      - Busy
+      - Aggressive
+      - Bored and Aggressive
+    desc: >-
+      Manticores are rarely encountered outside of their homes, which they tend
+      to construct on mountain sides, far out of reach of the common folk. The
+      servants that attend them are kidnapped travellers plucked from the backs
+      of wagons or dragged from their beds during the night. If you have been
+      hired by a patron to retrieve a stolen son from a manticore’s manse be
+      sure to take some books. They are inveterate culture fiends and love
+      nothing more than having new literature for the help to read to them.
+    special: >-
+      If a manticore strikes the same person twice in one Round they have been
+      hit by the creature’s tail. They must Test their Luck (or skill: for
+      Enemies) or become paralysed for 2d6 minutes.
+
+  - name: Notule
+    skill: 9
+    stamina: 3
+    armour: 3
+    initiative: 3
+    damage: Large Beast
+    mien:
+      - Dormant
+      - Probing
+      - Flighty
+      - Recoiling
+      - Aggressive
+      - Intent
+    desc: >-
+      A star-creature, sometimes caught roosting in the rigging of golden
+      barges, formless, freezing to the touch, and valued for its utility as a
+      tool of murder. By utilizing only the smallest bit of physical remains a
+      knowledgeable sorcerer may set the creature hunting. It will fly by night
+      until it reaches the intended victim, whereupon it will envelop them,
+      suffocating and freezing their target all at once and leaving a relatively
+      unmarked corpse before sluggishly returning home to enjoy its newfound
+      warmth.
+    special: >-
+      Anyone successfully hit by a notule must Test their Luck (or skill: for
+      Enemies) or start to Drown. The notule wraps itself around their face and
+      begins to suffocate them.
+
+  - name: Ogre
+    skill: 9
+    stamina: 18
+    initiative: 3
+    armour: 1
+    damage:
+      - Weapon
+      - Large Beast
+    mien:
+      - Smug
+      - Generous
+      - Covetous
+      - Gregarious
+      - Duplicitous
+      - Offensive
+    desc: >-
+      The ogre is a phenomenon common across the universe. A child will be born
+      with a scowl on its face and a corded knot where their heart should be.
+      They won’t play with the other children, preferring to steal their toys
+      and break them in privacy. As it ages it becomes worse, larger, severe,
+      and monstrous. The scowl never leaves its face and it takes no sincere joy
+      in anything other than the acquisition of wealth and the suffering of
+      others. Some cultures drive them into the woods and mountains to live out
+      their days somewhat harmlessly whereas in others they are rewarded. Their
+      complete lack of shame and willingness to do anything in pursuit of their
+      selfish goals makes them well suited for certain societies; an ogre
+      governor, magnate, or baronet is a sadly common occurrence.
+  - name: Orc
+    skill: 7
+    stamina: 8
+    initiative: 2
+    armour: 0
+    damage: Club
+    mien:
+      - Industrious
+      - Confused
+      - Homesick
+      - Angry
+      - Frustrated
+      - Violent
+    desc: >-
+      Classical colleges of magic consider the orc to be an educational hazard.
+      All young wizards will have seen posters in the common room warning of the
+      dangers of unprotected sorcery, “Remember your wards!” “1 in 10 sorcerers
+      know someone who has been affected by orcs!” and so on. Orcs themselves
+      are a pitiable lot. Who can blame them for their aggression? Being
+      accidentally summoned across the cosmos by an adolescent wizard is a
+      distressing situation in which to find oneself.
+  - name: Owl
+    skill: 4
+    stamina: 4
+    armour: 0
+    initiative: 1
+    damage: Small Beast
+    mien:
+      - Curious
+      - Watchful
+      - Aggressive
+      - Hungry
+      - Guarded
+      - Defensive
+    desc: >-
+      The rooftops of Troika are crenelated by owls. They watch the streets with
+      dumb spite, waiting for a vole, a rat, or an errant, fat finger to come to
+      their attention. They swoop after it, followed by other owls blindly
+      responding to the motion. Together they descend like a rabid flock of razor
+      sharp gulls blindly grasping. A perennial pest that the citizens of Troika
+      are morbidly proud of tolerating.
+
+  - name: Parchment Witch
+    skill: 8
+    stamina: 14
+    initiative: 2
+    armour: 1
+    damage: Weapon
+    mien:
+      - Admiring
+      - Infatuated
+      - Obsessed
+      - Paranoid
+      - Skulking
+      - Violent
+    desc: >-
+      Parchment Witches are an unusual breed of living dead both for having
+      usually chosen the state of their own volition and for their staunch
+      denial of it. They cover their rotting skin in a layer of leather, vellum,
+      or, if no other option is available, paper. They then paint it, decorate
+      it, and top it with a wig, thus completing the illusion. The most talented
+      can walk among us and we’d never know it. The only tell-tale signs of a
+      Parchment Witch among you would be the distinct smell of leather rendering
+      in the house next door and the disappearance of a few handsome
+      townspeople.
+    special: >-
+      Parchment Witches have 5 Spells rolled randomly or chosen ahead of time.
+      They take double Damage from Silver. If given suitable time and supplies
+      the Witch can completely change their appearance. They can also use the
+      skin of another person to impersonate them for a week after which time it
+      starts to rot.
+
+  - name: Piscean
+    skill: 3
+    stamina: 6
+    initiative: 2
+    armour: 0
+    damage: Modest Beast
+    mien:
+      - Mewling
+      - Childish
+      - Playful
+      - Mischievous
+      - Hungry
+      - Starving
+    desc: >-
+      Legs of a man, torso and tail of a fish. They break into granaries, batter
+      the nightguards with their blubbery tails, stuff their bellies full of
+      feed, and run off into the night to digest in a local lake. They are
+      menaces!
+    special: >-
+      If they incapacitate a party member all Pisceans that are able will
+      descend on them and eat all their Provisions. Each will consume one per
+      Turn.
+
+  - name: Night Pig
+    skill: 7
+    stamina: 14
+    initiative: 2
+    armour: 0
+    damage: Modest Beast
+    mien:
+      - Sinister
+      - Suspicious
+      - Unreal
+      - Inquisitive
+      - Shameful
+      - Cowardly
+    desc: >-
+      There are those witches that don the skin of a pig and walk abroad amongst
+      their sleeping neighbours. Through the power imbued by that most sinister
+      animal they rub themselves against the exteriors of houses and snuffle at
+      their hedges, thereby ensorcelling the household’s wealth to them. As the
+      night goes on they grow increasingly fat, limited only by their greed.
+      When they return home and remove their pig cape all the treasure they have
+      stolen tumbles out. For this reason it’s wise to demand answers from any
+      pig you see out at night. Their intentions will never be good.
+
+  - name: Salamander
+    skill: 8
+    stamina: 16
+    initiative: 3
+    armour: 3
+    damage: Large Beast
+    mien:
+      - Convulsing
+      - Expanding
+      - Retracting
+      - Surging
+      - Revolving
+      - Blooming
+    desc: >-
+      A star creature that sailors are accustomed to removing from their golden
+      ships like terrestrial barnacles. They are attracted to the heat of the
+      sails and interfere with their correct operation if not dealt with. When
+      removed they are low and squat, so dark as to force your eyes to run off
+      them, so hot that you can feel it from across a room. They move like tar,
+      slow then fast, able to expand themselves to attack, in the moment looking
+      like a quickly blooming rose. Even fatalistic golden sailors are careful
+      when poking at shadows.
+
+  - name: Separator
+    skill: 9
+    stamina: 12
+    initiative: 2
+    armour: 0
+    damage: Medium Beast
+    mien:
+      - Uncanny
+      - Hagridden
+      - Withdrawn
+      - Unassuming
+      - Ravenous
+      - Cruel
+    desc: >-
+      In an infinite universe there are infinite witches, amongst which is a
+      rich spectrum of awfulness. Separators are some of the foulest. They live
+      like normal people by day but by night feed their sorcery through teratic
+      transformations. Sat in their home, their bodies pull away at the
+      breastbone, tongues lengthen and hang to the ground, and wings sprout from
+      their spinal columns. They fly invisibly in search of sleeping victims so
+      as to force their tongues down their gullets to feast upon the innards.
+      Their victims awaken mysteriously sick while the witch remains healthy and
+      young.
+    special: >-
+      Sleeping victims lose 1d6 permanent stamina: daily unless magically
+      restored. By day they are indistinguishable from a normal person. By night
+      the flying portion is invisible at will, only visible through Second Sight
+      or magic. Destroying their dormant home-body traps them in their flying
+      aspect.
+
+  - name: Sympathy Serpent
+    skill: 5
+    stamina: 6
+    initiative: 2
+    armour: 0
+    damage: Small Beast
+    mien:
+      - Shy
+      - Friendly
+      - Sympathetic
+      - Fearful
+      - Sad
+      - Inconsolable
+    desc: >-
+      Dark, thick as a man’s thigh, and as long as three destriers, they crush
+      their prey as you’d expect such a snake to do but their hunting style is
+      idiosyncratic: they do not wrestle with their quarry but offer a gentle
+      embrace, telling them it’s okay to let go, they’re here now. Together prey
+      and predator mourn the crushing awfulness of reality as one swallows the
+      other whole.
+    special: >-
+      Sleeping or unsuspecting targets must Test their Luck (or skill: for
+      Enemies) or be paralysed with misery and allow the serpent to quietly eat
+      them.
+
+  - name: Thinking Engine
+    skill: 8
+    stamina: 14
+    initiative: 2
+    armour: 1
+    damage: Weapon
+    mien:
+      - Absent Minded
+      - Distracted
+      - Enthusiastic
+      - Maudlin
+      - Sentimental
+      - Engrossed
+    desc: >-
+      Built in the time of the First Empire, commissioned by the will of the
+      Other Lords to pilot the golden ships of their cosmic civilisation. Each
+      one is unfathomably ancient but by design or fault they don’t remember
+      more than a lifetime’s worth of existence. We think of them in their
+      common form of bakelite and chrome androids but their variety is a result
+      of the chthonic imagination of the Other Lords and endless in its
+      diversity. Most have been broken over their lifetimes and replaced their
+      parts, some with new mechanical contrivances and others with organic
+      flesh. Some have lost their original form altogether and walk the earth as
+      flesh while others are large and hollow, waiting for an operator with dead
+      knowledge.
+
+  - name: Tiger
+    skill: 8
+    stamina: 12
+    initiative: 2
+    armour: 0
+    damage: Large Beast
+    mien:
+      - Playful
+      - Stalking
+      - Hungry
+      - Tired
+      - Austere
+      - Aggressive
+    desc: >-
+      It is common knowledge that all tigers come from the Palace of Tigers. You
+      may see one in a jungle somewhere and think they are at home, maybe they
+      are even raising kittens and leading rich full tiger lives, but they are
+      as alien to that forest as you or I, and the kittens are invariably stolen
+      from lesser cats. They were born to leisure, to stalk fat little coati in
+      palatial gardens, and to bask in crystal solariums. Take pity on these
+      angry animals for they are lost and not used to your rude ways.
+
+  - name: Tower Wizard
+    skill: 10
+    stamina: 12
+    initiative: 3
+    armour: 0
+    damage: Weapon
+    mien:
+      - Offensive
+      - Confused
+      - Friendly
+      - Suspicious
+      - Inappropriate
+      - Transgressive
+    desc: >-
+      The majority of sorcery enthusiasts are either members of a college or
+      well respected freelance lecturers with a nice manse in a seaside town,
+      esteemed members of society who buy their groceries the same as us.
+      However, when people think “wizard” they most likely go straight to the
+      tower wizards, those feral old men who have given up all pretence of
+      civility and fled to the wilderness. There they build their eponymous
+      towers to work on unpleasant projects and terrorise the neighbourhood.
+      They give magic a bad name.
+    special: >-
+      The Tower Wizard has access to Jolt or Ember and 4 other Spells rolled
+      randomly or chosen ahead of time.
+
+  - name: Troll
+    skill: 7
+    stamina: 12
+    initiative: 1
+    armour: 2
+    damage: Weapon
+    mien:
+      - Rude
+      - Standoffish
+      - Spiteful
+      - Disrespectful
+      - Sarcastic
+      - Sullen
+    desc: >-
+      Trolls are ill-tempered creatures often spied leaning on a pike in the
+      town square, gabbing with other guards while taking the occasional break
+      to shout at a child, or tripping up an old lady. You’d think they’d stop
+      hiring them.
+    special: >-
+      Trolls regenerate 1 stamina: every time they hold the Initiative. They
+      will regenerate back from anything other than decapitation or fire.
+
+  - name: Ven
+    skill: 8
+    stamina: 8
+    initiative: 2
+    armour: 2
+    damage: Super Weapon
+    mien:
+      - Frustrated
+      - Scared
+      - Curious
+      - Fascinated
+      - Quixotic
+      - Depressed
+    desc: >-
+      The million spheres have not been counted, it’s just understood that there
+      are a lot — countless by every useful standard. Eventually, in a future
+      further from now than the birth of the Monad is from here, the hump-backed
+      sky will fold in on itself and one crystal sphere will remain. On that
+      sphere will be the last culture, the Ven, pale skinned, dressed in rubber
+      and peaked caps, spending the time left before the Monad rests in obscure
+      and pointless pursuits. Their arts can do anything but prevent the End of
+      All Things. Some amongst their race, not content to wait, fling themselves
+      and some small portion of their arts back through time to live in a more
+      vigorous era. There they try to achieve some imitation of their old lives,
+      setting themselves up as demi-gods and tyrants obsessed with preventing
+      the future they fled.
+
+  - name: Zoanthrop
+    skill: 7
+    stamina: 12
+    initiative: 2
+    armour: 0
+    damage: Modest Beast
+    mien:
+      - Playful
+      - Stalking
+      - Hungry
+      - Tired
+      - Plagued by Thought
+      - Aggressive
+    desc: >-
+      In the reign of the 35th Autarch it became fashionable to be seen as
+      in-touch with the natural world. One could often witness Exultants
+      abstaining from artificial cloth, conspicuously forgoing their flyers on
+      shorter journeys, and walking barefoot through their palaces whilst their
+      servants laid down petals in their path. This trend escalated until the
+      more desperate social climbers ultimately committed to having their
+      prefrontal cortexes partially removed in the pursuit of the greatest
+      animal verisimilitude. While the results were undeniable, it prevented
+      participation in even the most basic functions of state. The Autarch
+      applauded their commitment but tastes soon moved on.

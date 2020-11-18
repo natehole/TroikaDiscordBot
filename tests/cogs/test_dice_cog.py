@@ -133,6 +133,5 @@ async def test_roll_character(mocker):
         """SKILL d3 (2)+3 = `5`
 STAMINA 2d6 (1+4)+12 = `17`
 LUCK d6 (4)+6 = `10`
-BACKGROUND d66 = `21`
-COIN: `5` silver pence"""
+BACKGROUND d66 = `21`"""
     )
