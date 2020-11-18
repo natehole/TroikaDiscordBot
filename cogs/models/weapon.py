@@ -1,5 +1,8 @@
 from cogs.utils import dice
 
+MIGHTY_BLOW_ROLL = 12
+FUMBLE_ROLL = 2
+
 ARMOR_OFFSETS = {
     "no": 0,
     "none": 0,
@@ -46,25 +49,25 @@ class Weapon:
     def roll_damage(self, armor="No", damage_bonus=0):
         '''Computes a damage roll, adjusting various modifiers'''
         roll = dice.roll_d6()
-        roll_display = f"1d6 (**{roll}**)"
+        roll_display = f"1d6 ({roll})"
 
         armor_offset = self.lookup_armor_offset(armor)
-        roll_display += f" -{armor_offset} [_{armor.lower()} armor_]"
+        roll_display += f" -{armor_offset} [{armor.lower()} armor]"
         roll -= armor_offset
 
         if armor_offset > 0 and self.ignore_armor:
-            roll_display += " +1 [_ignore armor_]"
+            roll_display += " +1 [ignore armor]"
             roll += 1
 
         if damage_bonus > 0:
-            roll_display += f" +{damage_bonus} [_damage roll bonus_]"
+            roll_display += f" +{damage_bonus} [damage roll bonus]"
             roll += damage_bonus
 
         if roll < 1:
-            roll_display += f" = {roll} [**min value must be 1**]"
+            roll_display += f" = {roll} [min value must be 1]"
             roll = 1
 
-        roll_display += f" = `{roll}`"
+        roll_display += f" = {roll}"
 
         return dice.RollResult(roll, roll_display)
 
