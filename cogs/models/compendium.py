@@ -20,7 +20,8 @@ class Compendium:
     author: Optional[str] = None
     backgrounds: Dict[int, Background] = field(default_factory=dict)
     weapons: List[Weapon] = field(default_factory=list)
-    spells: List[Spell] = field(default_factory=list)
+    spells: Dict[str, Spell] = field(default_factory=dict)
+    base_items: List[str] = field(default_factory=list)
     # creatures: List[Creature] = field(default_factory=list)
     # tables: List[RollTable] = field(default_factory=list)
 
@@ -58,13 +59,15 @@ class Compendium:
                 weapon = Weapon.parse(in_weapon)
                 weapons.append(weapon)
 
-        spells: List[Spell] = []
+        spells: Dict[str, Spell] = {}
         if 'spells' in infile:
             for in_spell in infile['spells']:
                 spell = Spell.parse(in_spell)
-                spells.append(spell)
+                spells[spell.name] = spell
 
-        return cls(key=key, title=title, url=url, author=author, backgrounds=backgrounds, weapons=weapons, spells=spells)
+        base_items = infile.get('base_items', [])
+
+        return cls(key=key, title=title, url=url, author=author, backgrounds=backgrounds, weapons=weapons, spells=spells, base_items=base_items)
 
     def lookup_weapon(self, name: str) -> Union[Weapon, None]:
         '''Looks up a weapon by name'''

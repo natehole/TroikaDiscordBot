@@ -19,4 +19,4 @@ discord-py = "==1.4.1"
 pyyaml = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"

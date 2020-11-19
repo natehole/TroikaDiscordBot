@@ -13,13 +13,13 @@ class Library:
     def load_compendium(self, path: str) -> None:
         self.compendiums.append(Compendium.load(path))
 
-    def find_compendium(self, key: str) -> Optional[Compendium, None]:
+    def find_compendium(self, key: str = 'base') -> Optional[Compendium]:
         for c in self.compendiums:
             if c.key == key:
                 return c
         return None
 
-    def lookup_weapon(self, name: str) -> Optional[Weapon, None]:
+    def lookup_weapon(self, name: str) -> Optional[Weapon]:
         pass
 
     def lookup_background(self, roll: int, key: str = None) -> List[Background]:

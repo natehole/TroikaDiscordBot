@@ -858,7 +858,7 @@ backgrounds:
       - >-
         No Starting Possessions (you have thrown off the shackles of
         civilisation. You are probably nude.)
-    skilla:
+    skills:
       - 3 Climb
       - 3 Run
       - 2 Strength

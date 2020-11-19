@@ -3,7 +3,7 @@ from discord.ext import commands
 from discord.ext.commands import ArgumentParsingError
 
 from cogs.utils import dice
-
+from cogs.models.character import Character
 
 def modifier_string(modifier):
     if modifier == 0:
@@ -24,8 +24,9 @@ class DiceCog(commands.Cog):
         brief="Roll dice manually",
         usage="roll d6|d6+4|2d6|d66|d3",
     )
-    async def roll(self, ctx, roll_string: str):
+    async def roll(self, ctx, *, roll_string: str):
         """Rolls the dice"""
+        CHARACTER_REGEXP = re.compile("char(acter)?( [^0-9][^ ]*)?( [0-9]+)?")
         D2_REGEXP = re.compile("1?d2([+-][0-9]+)?$")
         D3_REGEXP = re.compile("1?d3([+-][0-9]+)?$")
         D6_REGEXP = re.compile("1?d6([+-][0-9]+)?$")
@@ -37,29 +38,30 @@ class DiceCog(commands.Cog):
         regexp_matched = False
         modifier = 0
 
-        if roll_string == "character":
-            regexp_matched = True
-            skill_roll = dice.roll_d3()
-            s1, s2, stamina_roll = dice.roll_2d6()
-            luck_roll = dice.roll_d6()
-            bg_roll = dice.roll_d66()
-            _, _, coin_roll = dice.roll_2d6()
-            backgrounds = self.bot.library.lookup_background(bg_roll)
-            if len(backgrounds) > 0:
-                # Pick one randomly eventually
-                background = backgrounds[0]
+        match = CHARACTER_REGEXP.match(roll_string)
+        if match:
+            if match.group(2):
+                key = match.group(2).lstrip()
             else:
-                background = "_No background found..._"
+                key = 'base'
 
-            await ctx.send(
-                f"""SKILL d3 ({skill_roll})+3 = `{skill_roll+3}`
-STAMINA 2d6 ({s1}+{s2})+12 = `{stamina_roll+12}`
-LUCK d6 ({luck_roll})+6 = `{luck_roll+6}`
-BACKGROUND d66 = `{bg_roll}`
+            if match.group(3):
+                bg_roll = int(match.group(3).lstrip())
+            else:
+                bg_roll = dice.roll_d66()
 
-{background}
-"""
-            )
+            regexp_matched = True
+            compendium = self.bot.library.find_compendium(key)
+
+            if compendium:
+                background = compendium.lookup_background(bg_roll)
+                if background:
+                    character = Character.generate(compendium, background)
+                    await ctx.send(character)
+                else:
+                    await ctx.send("BACKGROUND d66 = `{bg_roll}`\n_No background found..._")
+            else:
+                await ctx.send(f"No compendium found for `{key}`")
 
         match = D66_REGEXP.match(roll_string)
         if match:
@@ -132,11 +134,15 @@ BACKGROUND d66 = `{bg_roll}`
 
     @commands.command(name="d6", aliases=["1d6"], hidden=True)
     async def roll_d6(self, ctx):
-        await self.roll(ctx, "d6")
+        await ctx.invoke(self.bot.get_command("roll", query="d6"))
 
     @commands.command(name="2d6", hidden=True)
     async def roll_2d6(self, ctx):
-        await self.roll(ctx, "2d6")
+        await ctx.invoke(self.bot.get_command("roll"), query="2d6")
+
+    @commands.command(name="character", aliases=['char'], hidden=True)
+    async def roll_character(self, ctx):
+        await ctx.invoke(self.bot.get_command("roll"), query="character")
 
 
 def setup(bot):
