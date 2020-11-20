@@ -1,23 +1,34 @@
 from __future__ import annotations
 from typing import List, Union, Optional
-from dataclasses import dataclass, field
 
 from cogs.models.weapon import Weapon
 from cogs.models.background import Background
+from cogs.models.compendium_link import CompendiumLink
 from cogs.models.compendium import Compendium
 
-@dataclass
+
 class Library:
-    compendiums: List[Compendium] = field(default_factory=list)
+    def __init__(self):
+        self.compendiums: Dict[str, Compendium] = {}
 
     def load_compendium(self, path: str) -> None:
-        self.compendiums.append(Compendium.load(path))
+        compendium = Compendium.load(path)
+
+        # Resolve inherits
+        if compendium.inherits:
+            parent_compendium = self.find_compendium(compendium.inherits)
+            if not parent_compendium:
+                raise ValueError(f"This compendium (`{compendium.key}`) inherits from a parent compendium (`{compendium.inherits}`) that must be loaded first.")
+            compendium.parent_compendium = CompendiumLink(self.compendiums, compendium.inherits)
+
+        self.validate_compendium(compendium)
+        self.compendiums[compendium.key] = compendium
+
+    def validate_compendium(self, compendium: Compendium):
+        pass
 
     def find_compendium(self, key: str = 'base') -> Optional[Compendium]:
-        for c in self.compendiums:
-            if c.key == key:
-                return c
-        return None
+        return self.compendiums.get(key, None)
 
     def lookup_weapon(self, name: str) -> Optional[Weapon]:
         pass

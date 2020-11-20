@@ -28,8 +28,8 @@ class ItemChoice:
     choices: List[Item]
 
     def __str__(self) -> str:
-        choices = "\n".join([f"  - {c.name}" for c in self.choices])
-        return f"_One of:_\n{choices}\n"
+        choices = "\n".join([f"    - {c.name}" for c in self.choices])
+        return f"_One of:_\n{choices}"
 
     @classmethod
     def parse(cls, yaml: Union[str, dict]) -> Union[Item, ItemChoice]:
@@ -52,7 +52,7 @@ class Skill:
 
     @classmethod
     def parse(cls, skill: str) -> Skill:
-        r = re.match(r'([0-9]+) (.+)', skill)
+        r = re.match(r'(-?[0-9]+) (.+)', skill)
         if not r:
             raise ValueError(f"Unable to parse skill: {skill}")
 
@@ -63,14 +63,18 @@ class RandomSpellPicker:
     def __init__(self, compendium: Compendium, spells: List[str]):
         spells = [s.split(' ', 1)[1] for s in spells] # Go from 1 Jolt -> Jolt
         self.compendium = compendium
-        self.available_spells: List[str] = list(compendium.spells.keys())
-        self.available_spells = [s for s in self.available_spells if s not in spells]
+        self.available_spells: List[str] = list([s.name for s in compendium.list_spells()])
+        print(self.available_spells)
         random.shuffle(self.available_spells)
 
     def fetch_spell(self, spell_name: str) -> Spell:
         if spell_name == 'Random':
             spell_name = self.available_spells.pop()
-        return self.compendium.spells[spell_name]
+        spell = self.compendium.lookup_spell(spell_name)
+        if not spell:
+            raise ValueError(f"Unable to find spell `{spell_name}` in compendium `{self.compendium.key}` (or parent compendium). Check its spelling?")
+
+        return spell
 
 
 @dataclass
@@ -112,7 +116,7 @@ class Character:
 
         skills: List[Skill] = [Skill.parse(s) for s in background.skills]
         items: List[Union[Item, ItemChoice]] = [ItemChoice.parse(i) for i in background.items]
-        items += [Item.parse(i) for i in compendium.base_items]
+        items += [Item.parse(i) for i in compendium.list_base_items()]
 
         spell_picker = RandomSpellPicker(compendium, background.spells)
         spells: List[Spell] = [SpellSkill.parse(s, spell_picker) for s in background.spells]
