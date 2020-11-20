@@ -1,5 +1,5 @@
 import pytest
-from cogs.models.background import Background, Skill, Item, ItemChoice, SpellSkill
+from cogs.models.background import Background
 import yaml
 
 BACKGROUND_YAML = """
@@ -36,16 +36,13 @@ def test_background_parse():
     assert background.description is not None
 
     assert background.items
-    assert len(background.items) == 8
+    assert len(background.items) == 3
     item1 = background.items[0]
-    assert isinstance(item1, ItemChoice)
-    assert len(item1.choices) == 4
-    assert background.items[1] == Item('Manual on Yongardy Law')
-    assert background.items[7] == Item('6 Provisions')
+    assert isinstance(item1, list)
+    assert background.items[1] == 'Manual on Yongardy Law'
 
     assert background.skills
     assert len(background.skills) == 3
-    assert background.skills[0].rank == 4
-    assert background.skills[0].name == 'Fighting in your chosen Weapon'
+    assert background.skills[0] == '4 Fighting in your chosen Weapon'
 
     assert background.spells == []

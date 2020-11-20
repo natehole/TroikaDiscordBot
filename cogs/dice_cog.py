@@ -24,7 +24,7 @@ class DiceCog(commands.Cog):
         brief="Roll dice manually",
         usage="roll d6|d6+4|2d6|d66|d3",
     )
-    async def roll(self, ctx, *, roll_string: str):
+    async def roll(self, ctx, *, query: str):
         """Rolls the dice"""
         CHARACTER_REGEXP = re.compile("char(acter)?( [^0-9][^ ]*)?( [0-9]+)?")
         D2_REGEXP = re.compile("1?d2([+-][0-9]+)?$")
@@ -38,7 +38,7 @@ class DiceCog(commands.Cog):
         regexp_matched = False
         modifier = 0
 
-        match = CHARACTER_REGEXP.match(roll_string)
+        match = CHARACTER_REGEXP.match(query)
         if match:
             if match.group(2):
                 key = match.group(2).lstrip()
@@ -63,13 +63,13 @@ class DiceCog(commands.Cog):
             else:
                 await ctx.send(f"No compendium found for `{key}`")
 
-        match = D66_REGEXP.match(roll_string)
+        match = D66_REGEXP.match(query)
         if match:
             regexp_matched = True
             total = dice.roll_d66()
             await ctx.send(f"d66 = `{total}`")
 
-        match = D2_REGEXP.match(roll_string)
+        match = D2_REGEXP.match(query)
         if not regexp_matched and match:
             regexp_matched = True
             roll = dice.roll_d2()
@@ -81,7 +81,7 @@ class DiceCog(commands.Cog):
                 f"d2 ({roll}){modifier_string(modifier)} = `{roll+modifier}`"
             )
 
-        match = D3_REGEXP.match(roll_string)
+        match = D3_REGEXP.match(query)
         if not regexp_matched and match:
             regexp_matched = True
             roll = dice.roll_d3()
@@ -93,7 +93,7 @@ class DiceCog(commands.Cog):
                 f"d3 ({roll}){modifier_string(modifier)} = `{roll+modifier}`"
             )
 
-        match = D6_REGEXP.match(roll_string)
+        match = D6_REGEXP.match(query)
         if not regexp_matched and match:
             regexp_matched = True
             roll = dice.roll_d6()
@@ -105,7 +105,7 @@ class DiceCog(commands.Cog):
                 f"d6 ({roll}){modifier_string(modifier)} = `{roll+modifier}`"
             )
 
-        match = TWO_D6_REGEXP.match(roll_string)
+        match = TWO_D6_REGEXP.match(query)
         if not regexp_matched and match:
             regexp_matched = True
             r1, r2, total = dice.roll_2d6()
@@ -117,7 +117,7 @@ class DiceCog(commands.Cog):
                 f"2d6 ({r1}+{r2}){modifier_string(modifier)} = `{total+modifier}`"
             )
 
-        match = D20_REGEXP.match(roll_string)
+        match = D20_REGEXP.match(query)
         if not regexp_matched and match:
             regexp_matched = True
             roll = dice.roll_d20()
@@ -130,11 +130,11 @@ class DiceCog(commands.Cog):
             )
 
         if not regexp_matched:
-            raise ArgumentParsingError("Unable to understand your command")
+            raise ArgumentParsingError(f"Unable to understand your command: `{query}`")
 
     @commands.command(name="d6", aliases=["1d6"], hidden=True)
     async def roll_d6(self, ctx):
-        await ctx.invoke(self.bot.get_command("roll", query="d6"))
+        await ctx.invoke(self.bot.get_command("roll"), query="d6")
 
     @commands.command(name="2d6", hidden=True)
     async def roll_2d6(self, ctx):

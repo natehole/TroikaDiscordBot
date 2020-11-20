@@ -19,7 +19,7 @@ class Library:
             parent_compendium = self.find_compendium(compendium.inherits)
             if not parent_compendium:
                 raise ValueError(f"This compendium (`{compendium.key}`) inherits from a parent compendium (`{compendium.inherits}`) that must be loaded first.")
-            compendium.parent_compendium = CompendiumLink(self.compendiums, compendium.inherits)
+            compendium.link_parent(CompendiumLink(self.compendiums, compendium.inherits))
 
         self.validate_compendium(compendium)
         self.compendiums[compendium.key] = compendium
@@ -36,10 +36,18 @@ class Library:
     def lookup_background(self, roll: int, key: str = None) -> List[Background]:
         backgrounds: List[Background] = []
 
-        for comp in self.compendiums:
+        for comp in self.compendiums.values():
             if key is None or comp.key == key:
                 b = comp.lookup_background(roll)
                 if b:
                     backgrounds.append(b)
 
         return backgrounds
+
+    def lookup_spell(self, spell_name: str) -> Spell:
+        for comp in self.compendiums.values():
+            spell = comp.lookup_own_spell(spell_name)
+            if spell:
+                return spell
+
+        return None

@@ -11,4 +11,4 @@ def test_load():
     assert c.url == 'https://docs.google.com/document/d/1haUfSVekt2gNab3V2CrL1Pg_sZ-ZlskphwXmSnGT9aw/edit'
     assert c.key == 'base'
 
-    assert len(c.backgrounds.keys()) == 36
+    assert len(c._backgrounds.keys()) == 36

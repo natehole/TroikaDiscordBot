@@ -63,8 +63,7 @@ class RandomSpellPicker:
     def __init__(self, compendium: Compendium, spells: List[str]):
         spells = [s.split(' ', 1)[1] for s in spells] # Go from 1 Jolt -> Jolt
         self.compendium = compendium
-        self.available_spells: List[str] = list([s.name for s in compendium.list_spells()])
-        print(self.available_spells)
+        self.available_spells: List[str] = list([s.name for s in compendium.spells])
         random.shuffle(self.available_spells)
 
     def fetch_spell(self, spell_name: str) -> Spell:
@@ -116,7 +115,7 @@ class Character:
 
         skills: List[Skill] = [Skill.parse(s) for s in background.skills]
         items: List[Union[Item, ItemChoice]] = [ItemChoice.parse(i) for i in background.items]
-        items += [Item.parse(i) for i in compendium.list_base_items()]
+        items += [Item.parse(i) for i in compendium.base_items]
 
         spell_picker = RandomSpellPicker(compendium, background.spells)
         spells: List[Spell] = [SpellSkill.parse(s, spell_picker) for s in background.spells]

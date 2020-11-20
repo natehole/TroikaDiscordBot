@@ -5,9 +5,9 @@ class CompendiumLink:
        link points to the new compendium."""
 
     def __init__(self, compendiums: dict, key: str):
-        self.compendiums = compendiums
-        self.key = key
+        self._compendiums = compendiums
+        self._key = key
 
     @property
     def ref(self):
-        return self.compendiums[self.key]
+        return self._compendiums[self._key]
