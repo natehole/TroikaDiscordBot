@@ -16,7 +16,7 @@ class SpellCog(commands.Cog):
         return oops.roll_oops()
 
     @commands.command()
-    async def spell(self, ctx, name: str):
+    async def spell(self, ctx, *, name: str):
         spell = self.bot.library.lookup_spell(name)
         if spell:
             await ctx.send(f"**{spell.name}** ({spell.cost})\n_{spell.description}_")
@@ -32,7 +32,7 @@ class SpellCog(commands.Cog):
         skill_points = int(r.group(1))
 
         if r.group(2):
-            await self.spell(ctx, r.group(2))
+            await self.spell(ctx, name=r.group(2))
 
         # Look up spell in the library
         roll = dice.roll_under(skill_points)
