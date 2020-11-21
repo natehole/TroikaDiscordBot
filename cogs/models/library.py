@@ -1,6 +1,7 @@
 from __future__ import annotations
-from typing import List, Union, Optional
+from typing import Dict, List, Union, Optional
 
+from cogs.models.spell import Spell
 from cogs.models.weapon import Weapon
 from cogs.models.background import Background
 from cogs.models.compendium_link import CompendiumLink

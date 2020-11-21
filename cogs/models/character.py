@@ -84,7 +84,7 @@ class SpellSkill(Skill):
         return f"{self.rank} {self.name} ({self.spell.cost})"
 
     @classmethod
-    def parse(cls, text: str, spell_picker: SpellPicker) -> SpellSkill:
+    def parse(cls, text: str, spell_picker: RandomSpellPicker) -> SpellSkill:
         skill = Skill.parse(text)
         spell = spell_picker.fetch_spell(skill.name)
         return cls(name=spell.name, rank=skill.rank, spell=spell)
