@@ -1,6 +1,12 @@
 import pytest
 
-from cogs.models.compendium import Compendium
+from cogs.models.compendium import Compendium, normalize
+
+def test_normalize():
+    assert normalize("Fear") == "fear"
+    assert normalize("Read Entrails") == "read-entrails"
+    assert normalize("Assassin's Dagger") == "assassins-dagger"
+    assert normalize("The Big One") == "big-one"
 
 def test_load():
     c = Compendium.load("base")

@@ -4,6 +4,7 @@ from urllib.parse import urlparse
 from urllib.request import urlopen
 from typing import List, Union, Optional, Dict
 import yaml
+from slugify import slugify
 
 from cogs.models.spell import Spell
 from cogs.models.background import Background
@@ -11,7 +12,7 @@ from cogs.models.weapon import Weapon
 from cogs.models.compendium_link import CompendiumLink
 
 def normalize(name: str) -> str:
-    return name.strip().lower().replace(" ", "-")
+    return slugify(name, replacements=[["'", ""]], stopwords=['a', 'an', 'the'])
 
 class Compendium:
     '''Represents a single data file loaded from the data directory'''
