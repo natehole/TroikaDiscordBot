@@ -1,4 +1,6 @@
+import re
 from discord.ext import commands
+from discord.ext.commands import ArgumentParsingError
 from cogs.utils import oops, dice
 
 SUCCESS_TOTAL = 2
@@ -14,7 +16,26 @@ class SpellCog(commands.Cog):
         return oops.roll_oops()
 
     @commands.command()
-    async def spell(self, ctx, skill_points: int):
+    async def spell(self, ctx, *, name: str):
+        library = self.bot.get_cog('LibraryCog')
+        spell = library.lookup_spell(name)
+        if spell:
+            await ctx.send(f"**{spell.name}** ({spell.cost})\n_{spell.description}_")
+        else:
+            await ctx.send(f"_Spell **{name}** not found. Check your spelling?_")
+
+    @commands.command()
+    async def cast(self, ctx, *, spell_str: str):
+        r = re.match(r'([0-9]+)[ ]?(.+)?', spell_str)
+        if not r:
+            raise ArgumentParsingError("Usage: skill_points [spell_name]")
+
+        skill_points = int(r.group(1))
+
+        if r.group(2):
+            await self.spell(ctx, name=r.group(2))
+
+        # Look up spell in the library
         roll = dice.roll_under(skill_points)
         if roll.total == SUCCESS_TOTAL:
             await ctx.send("**GUARANTEED SUCCESS** 2d6(1+1)")
