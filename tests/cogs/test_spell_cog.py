@@ -4,6 +4,7 @@ import pytest
 
 from cogs.utils import dice
 from cogs.spell_cog import SpellCog
+from cogs.library_cog import LibraryCog
 
 
 @pytest.mark.asyncio
@@ -11,6 +12,7 @@ async def test_spell_cog(mocker):
     tbot = bot.TroikaBot('!')
     oops_cog = SpellCog(tbot)
     tbot.add_cog(oops_cog)
+    tbot.add_cog(LibraryCog(tbot))
 
     mocker.patch.object(oops_cog, 'roll_oops', return_value=(23, "A very surprised orc appears."))
     dpytest.configure(tbot)

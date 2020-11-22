@@ -3,16 +3,21 @@ import pytest
 
 from bot import TroikaBot
 from cogs.utils import dice
+from cogs.library_cog import LibraryCog
 from cogs.dice_cog import DiceCog
 
+@pytest.fixture(scope="function")
+def bot():
+   bot = TroikaBot('!')
+   bot.add_cog(LibraryCog(bot))
+   bot.add_cog(DiceCog(bot))
+   return bot
 
 @pytest.mark.asyncio
-async def test_roll_d2(mocker):
-    tbot = TroikaBot("!")
+async def test_roll_d2(bot, mocker):
     mocker.patch.object(dice, "roll_d2", return_value=2)
-    tbot.add_cog(DiceCog(tbot))
 
-    dpytest.configure(tbot)
+    dpytest.configure(bot)
 
     await dpytest.message("!roll d2")
     dpytest.verify_message("d2 (2) = `2`")
@@ -25,12 +30,10 @@ async def test_roll_d2(mocker):
 
 
 @pytest.mark.asyncio
-async def test_roll_d3(mocker):
-    tbot = TroikaBot("!")
+async def test_roll_d3(bot, mocker):
     mocker.patch.object(dice, "roll_d3", return_value=2)
-    tbot.add_cog(DiceCog(tbot))
 
-    dpytest.configure(tbot)
+    dpytest.configure(bot)
 
     await dpytest.message("!roll d3")
     dpytest.verify_message("d3 (2) = `2`")
@@ -43,12 +46,10 @@ async def test_roll_d3(mocker):
 
 
 @pytest.mark.asyncio
-async def test_roll_d6(mocker):
-    tbot = TroikaBot("!")
+async def test_roll_d6(bot, mocker):
     mocker.patch.object(dice, "roll_d6", return_value=4)
-    tbot.add_cog(DiceCog(tbot))
 
-    dpytest.configure(tbot)
+    dpytest.configure(bot)
 
     await dpytest.message("!roll d6")
     dpytest.verify_message("d6 (4) = `4`")
@@ -67,12 +68,10 @@ async def test_roll_d6(mocker):
 
 
 @pytest.mark.asyncio
-async def test_roll_2d6(mocker):
-    tbot = TroikaBot("!")
+async def test_roll_2d6(bot, mocker):
     mocker.patch.object(dice, "roll_2d6", return_value=(1, 4, 5))
-    tbot.add_cog(DiceCog(tbot))
 
-    dpytest.configure(tbot)
+    dpytest.configure(bot)
 
     await dpytest.message("!roll 2d6")
     dpytest.verify_message("2d6 (1+4) = `5`")
@@ -88,24 +87,20 @@ async def test_roll_2d6(mocker):
 
 
 @pytest.mark.asyncio
-async def test_roll_d66(mocker):
-    tbot = TroikaBot("!")
+async def test_roll_d66(bot, mocker):
     mocker.patch.object(dice, "roll_d66", return_value=23)
-    tbot.add_cog(DiceCog(tbot))
 
-    dpytest.configure(tbot)
+    dpytest.configure(bot)
 
     await dpytest.message("!roll d66")
     dpytest.verify_message("d66 = `23`")
 
 
 @pytest.mark.asyncio
-async def test_roll_d20(mocker):
-    tbot = TroikaBot("!")
+async def test_roll_d20(bot, mocker):
     mocker.patch.object(dice, "roll_d20", return_value=2)
-    tbot.add_cog(DiceCog(tbot))
 
-    dpytest.configure(tbot)
+    dpytest.configure(bot)
 
     await dpytest.message("!roll d20")
     dpytest.verify_message("d20 (2) = `2`")

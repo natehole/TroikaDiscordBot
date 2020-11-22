@@ -17,7 +17,8 @@ class SpellCog(commands.Cog):
 
     @commands.command()
     async def spell(self, ctx, *, name: str):
-        spell = self.bot.library.lookup_spell(name)
+        library = self.bot.get_cog('LibraryCog')
+        spell = library.lookup_spell(name)
         if spell:
             await ctx.send(f"**{spell.name}** ({spell.cost})\n_{spell.description}_")
         else:

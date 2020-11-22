@@ -51,7 +51,8 @@ class DiceCog(commands.Cog):
                 bg_roll = dice.roll_d66()
 
             regexp_matched = True
-            compendium = self.bot.library.find_compendium(key)
+            library = self.bot.get_cog('LibraryCog')
+            compendium = library.find_compendium(key)
 
             if compendium:
                 background = compendium.lookup_background(bg_roll)

@@ -25,6 +25,7 @@ class Compendium:
         self.parent_compendium: Optional[CompendiumLink] = None
         self._backgrounds: Dict[int, Background] = {}
         self._weapons: Dict[str, Weapon] = {}
+        self._weapon_aliases: Dict[str, Weapon] = {}
         self._spells: Dict[str, Spell] = {}
         self._base_items: List[str] = []
 
@@ -33,8 +34,13 @@ class Compendium:
         self._backgrounds[background.roll] = background
 
     def add_weapon(self, weapon: Weapon):
-        self._weapons[normalize(weapon.name)] = Weapon
-        # Add aliases here
+        if not weapon.name:
+            return
+
+        normalized_name = normalize(weapon.name)
+        self._weapons[normalized_name] = weapon
+        for alias in weapon.aliases:
+            self._weapon_aliases[normalize(alias)] = weapon
 
     def add_spell(self, spell: Spell):
         self._spells[normalize(spell.name)] = spell
@@ -92,7 +98,8 @@ class Compendium:
 
     def lookup_weapon(self, name: str) -> Union[Weapon, None]:
         '''Looks up a weapon by name'''
-        weapon = self._weapons.get(normalize(name), None)
+        normalized = normalize(name)
+        weapon = self._weapons.get(normalized, None) or self._weapon_aliases.get(normalized, None)
         if weapon:
             return weapon
 

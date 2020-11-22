@@ -13,7 +13,6 @@ from discord.ext.commands import NoPrivateMessage, ArgumentParsingError, BadArgu
 from discord.ext.commands.errors import CommandInvokeError
 from dotenv import load_dotenv
 
-from cogs.models.library import Library
 
 # Stuff to set up the discord bot
 load_dotenv()
@@ -21,16 +20,20 @@ DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 DISCORD_PREFIX = os.getenv("DISCORD_PREFIX") or "!"
 
 COGS = (
-    "cogs.initiative_cog", "cogs.battle_cog", "cogs.spell_cog", "cogs.luck_cog", "cogs.dice_cog", "cogs.skill_cog", "cogs.define_cog"
+    "cogs.library_cog",
+    "cogs.initiative_cog",
+    "cogs.battle_cog",
+    "cogs.spell_cog",
+    "cogs.luck_cog",
+    "cogs.dice_cog",
+    "cogs.skill_cog",
+    "cogs.define_cog"
 )
 
 
 class TroikaBot(commands.Bot):
     def __init__(self, prefix, description=None, **options):
         super(TroikaBot, self).__init__(prefix, description=description, **options)
-
-        self.library = Library()
-        self.library.load_compendium('base')
 
 
 desc = '''
