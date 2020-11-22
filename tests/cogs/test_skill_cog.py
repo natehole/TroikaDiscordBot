@@ -4,15 +4,22 @@ import pytest
 from bot import TroikaBot
 from cogs.utils import dice
 from cogs.skill_cog import SkillCog
+from cogs.library_cog import LibraryCog
+
+
+@pytest.fixture(scope="function")
+def bot():
+   bot = TroikaBot('!')
+   bot.add_cog(LibraryCog(bot))
+   bot.add_cog(SkillCog(bot))
+   return bot
 
 
 @pytest.mark.asyncio
-async def test_skill(mocker):
-    tbot = TroikaBot('!')
+async def test_skill(bot, mocker):
     mocker.patch.object(dice, "roll_2d6", return_value=(1, 3, 4))
-    tbot.add_cog(SkillCog(tbot))
 
-    dpytest.configure(tbot)
+    dpytest.configure(bot)
 
     await dpytest.message("!skill 4")
     dpytest.verify_message("**SUCCESS** 2d6(1+3) = `4` ≤ `4`")
@@ -22,12 +29,10 @@ async def test_skill(mocker):
 
 
 @pytest.mark.asyncio
-async def test_better(mocker):
-    tbot = TroikaBot('!')
+async def test_better(bot, mocker):
     mocker.patch.object(dice, "roll_2d6", return_value=(4, 3, 7))
-    tbot.add_cog(SkillCog(tbot))
 
-    dpytest.configure(tbot)
+    dpytest.configure(bot)
 
     await dpytest.message("!better 6")
     dpytest.verify_message("**SUCCESS** 2d6(4+3) = `7` > `6`. Increase advanced skill by 1")
@@ -37,12 +42,10 @@ async def test_better(mocker):
 
 
 @pytest.mark.asyncio
-async def test_better_more(mocker):
-    tbot = TroikaBot('!')
+async def test_better_more(bot, mocker):
     mocker.patch.object(dice, "roll_2d6", return_value=(6, 6, 12))
-    tbot.add_cog(SkillCog(tbot))
 
-    dpytest.configure(tbot)
+    dpytest.configure(bot)
 
     await dpytest.message("!better 13")
     dpytest.verify_message("**SUCCESS** 2d6(6+6)+2d6(6+6) = `24`. Increase advanced skill by 1")

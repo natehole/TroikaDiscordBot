@@ -31,7 +31,8 @@ Originally developed by AwkwardTurtle42, with contributions from natehole and ha
 |`!roll 2d6-1`|2d6 (4+5)-1 = `8`||
 |`!roll 1d20`|d20 (7) = `7`||
 |`!roll d66`|d66 = `23`|`!d66`|
-|`!roll character`|_rolls starting statistics for a character/bg||
+|`!roll character`|_rolls starting statistics for a character_|`!character`, `!char`|
+|`!roll char 23`|_can shorten character to char and request a specific background_|
 
 ### Luck & Skill
 
@@ -49,7 +50,9 @@ Rolls under a spell's skill and computes success or failure. It also handles cri
 
 |Command|Output|Alias|
 |-----|----|----|
-|`!spell 9`|**SUCCESS** 2d6(1+2) = `3` ≤ `9`||
+|`!spell earthquake`|_Prints a description of the spell_||
+|`!cast 9 earthquake`|_Rolls a spell-casting roll and prints the spell info_||
+|`!cast 9`|_Just does the spell roll by itself_|
 |`!oops`|OOPS (**23**): `A very surprised orc appears.`||
 
 ### Battle Commands

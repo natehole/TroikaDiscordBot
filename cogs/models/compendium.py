@@ -3,25 +3,53 @@ import os
 from urllib.parse import urlparse
 from urllib.request import urlopen
 from typing import List, Union, Optional, Dict
-from dataclasses import dataclass, field
 import yaml
+from slugify import slugify
 
+from cogs.models.spell import Spell
 from cogs.models.background import Background
 from cogs.models.weapon import Weapon
+from cogs.models.compendium_link import CompendiumLink
 
+def normalize(name: str) -> str:
+    return slugify(name, replacements=[["'", ""]], stopwords=['a', 'an', 'the'])
 
-@dataclass
 class Compendium:
     '''Represents a single data file loaded from the data directory'''
-    title: str
-    key: str
-    url: Optional[str] = None
-    author: Optional[str] = None
-    backgrounds: Dict[int, Background] = field(default_factory=dict)
-    weapons: List[Weapon] = field(default_factory=list)
-    # spells: List[Spell] = field(default_factory=list)
-    # creatures: List[Creature] = field(default_factory=list)
-    # tables: List[RollTable] = field(default_factory=list)
+    def __init__(self, key: str, title: str, url: str = None, author: str = None, inherits: str = None):
+        self.title = title
+        self.key = key
+        self.url = url
+        self.author = author
+        self.inherits = inherits
+        self.parent_compendium: Optional[CompendiumLink] = None
+        self._backgrounds: Dict[int, Background] = {}
+        self._weapons: Dict[str, Weapon] = {}
+        self._weapon_aliases: Dict[str, Weapon] = {}
+        self._spells: Dict[str, Spell] = {}
+        self._base_items: List[str] = []
+
+    def add_background(self, background: Background):
+        # FIXME: Do background validation here?
+        self._backgrounds[background.roll] = background
+
+    def add_weapon(self, weapon: Weapon):
+        if not weapon.name:
+            return
+
+        normalized_name = normalize(weapon.name)
+        self._weapons[normalized_name] = weapon
+        for alias in weapon.aliases:
+            self._weapon_aliases[normalize(alias)] = weapon
+
+    def add_spell(self, spell: Spell):
+        self._spells[normalize(spell.name)] = spell
+
+    def add_base_item(self, item: str):
+        self._base_items.append(item)
+
+    def link_parent(self, parent: CompendiumLink):
+        self.parent_compendium = parent
 
     @classmethod
     def load(cls, path: str) -> Compendium:
@@ -44,25 +72,82 @@ class Compendium:
         title = infile['title']
         url = infile.get('url', None)
         author = infile.get('author', None)
+        inherits = infile.get('inherits', None)
 
-        backgrounds: Dict[int, Background] = {}
+        compendium = cls(key, title, url, author, inherits)
         if 'backgrounds' in infile:
             for in_bg in infile['backgrounds']:
                 background = Background.parse(in_bg)
-                backgrounds[background.roll] = background
+                compendium.add_background(background)
 
-        weapons: List[Weapon] = []
         if 'weapons' in infile:
             for in_weapon in infile['weapons']:
                 weapon = Weapon.parse(in_weapon)
-                weapons.append(weapon)
+                compendium.add_weapon(weapon)
 
-        return cls(key=key, title=title, url=url, author=author, backgrounds=backgrounds, weapons=weapons)
+        if 'spells' in infile:
+            for in_spell in infile['spells']:
+                spell = Spell.parse(in_spell)
+                compendium.add_spell(spell)
+
+        if 'base_items' in infile:
+            for base_item in infile['base_items']:
+                compendium.add_base_item(base_item)
+
+        return compendium
 
     def lookup_weapon(self, name: str) -> Union[Weapon, None]:
         '''Looks up a weapon by name'''
-        pass
+        normalized = normalize(name)
+        weapon = self._weapons.get(normalized, None) or self._weapon_aliases.get(normalized, None)
+        if weapon:
+            return weapon
+
+        if self.parent_compendium:
+            return self.parent_compendium.ref.lookup_weapon(name)
+
+        return None
 
     def lookup_background(self, roll: int) -> Union[Background, None]:
         '''Looks up a background by ID or returns None if not found'''
-        return self.backgrounds.get(roll, None)
+        bg = self._backgrounds.get(roll, None)
+        if bg:
+            return bg
+
+        # FIXME?
+        if self.parent_compendium:
+            return self.parent_compendium.ref.lookup_background(roll)
+
+        return None
+
+    def lookup_spell(self, name: str) -> Union[Spell, None]:
+        spell = self.lookup_own_spell(name)
+        if spell:
+            return spell
+
+        if self.parent_compendium:
+            return self.parent_compendium.ref.lookup_spell(name)
+
+        return None
+
+    def lookup_own_spell(self, name: str) -> Union[Spell, None]:
+        return self._spells.get(normalize(name), None)
+
+    @property
+    def base_items(self) -> List[str]:
+        if len(self._base_items) > 0:
+            return self._base_items
+
+        if self.parent_compendium:
+            return self.parent_compendium.ref.base_items
+
+        return []
+
+    @property
+    def spells(self) -> List[Spell]:
+        spells = list(self._spells.values())
+
+        if self.parent_compendium:
+            spells += self.parent_compendium.ref.spells
+
+        return spells

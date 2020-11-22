@@ -3,7 +3,7 @@ from discord.ext import commands
 from discord.ext.commands import ArgumentParsingError
 
 from cogs.utils import dice
-
+from cogs.models.character import Character
 
 def modifier_string(modifier):
     if modifier == 0:
@@ -24,8 +24,9 @@ class DiceCog(commands.Cog):
         brief="Roll dice manually",
         usage="roll d6|d6+4|2d6|d66|d3",
     )
-    async def roll(self, ctx, roll_string: str):
+    async def roll(self, ctx, *, query: str):
         """Rolls the dice"""
+        CHARACTER_REGEXP = re.compile("char(acter)?( [^0-9][^ ]*)?( [0-9]+)?")
         D2_REGEXP = re.compile("1?d2([+-][0-9]+)?$")
         D3_REGEXP = re.compile("1?d3([+-][0-9]+)?$")
         D6_REGEXP = re.compile("1?d6([+-][0-9]+)?$")
@@ -37,28 +38,39 @@ class DiceCog(commands.Cog):
         regexp_matched = False
         modifier = 0
 
-        if roll_string == "character":
+        match = CHARACTER_REGEXP.match(query)
+        if match:
+            if match.group(2):
+                key = match.group(2).lstrip()
+            else:
+                key = 'base'
+
+            if match.group(3):
+                bg_roll = int(match.group(3).lstrip())
+            else:
+                bg_roll = dice.roll_d66()
+
             regexp_matched = True
-            skill_roll = dice.roll_d3()
-            s1, s2, stamina_roll = dice.roll_2d6()
-            luck_roll = dice.roll_d6()
-            bg_roll = dice.roll_d66()
-            _, _, coin_roll = dice.roll_2d6()
+            library = self.bot.get_cog('LibraryCog')
+            compendium = library.find_compendium(key)
 
-            await ctx.send(
-                f"""SKILL d3 ({skill_roll})+3 = `{skill_roll+3}`
-STAMINA 2d6 ({s1}+{s2})+12 = `{stamina_roll+12}`
-LUCK d6 ({luck_roll})+6 = `{luck_roll+6}`
-BACKGROUND d66 = `{bg_roll}`"""
-            )
+            if compendium:
+                background = compendium.lookup_background(bg_roll)
+                if background:
+                    character = Character.generate(compendium, background)
+                    await ctx.send(character)
+                else:
+                    await ctx.send("BACKGROUND d66 = `{bg_roll}`\n_No background found..._")
+            else:
+                await ctx.send(f"No compendium found for `{key}`")
 
-        match = D66_REGEXP.match(roll_string)
+        match = D66_REGEXP.match(query)
         if match:
             regexp_matched = True
             total = dice.roll_d66()
             await ctx.send(f"d66 = `{total}`")
 
-        match = D2_REGEXP.match(roll_string)
+        match = D2_REGEXP.match(query)
         if not regexp_matched and match:
             regexp_matched = True
             roll = dice.roll_d2()
@@ -70,7 +82,7 @@ BACKGROUND d66 = `{bg_roll}`"""
                 f"d2 ({roll}){modifier_string(modifier)} = `{roll+modifier}`"
             )
 
-        match = D3_REGEXP.match(roll_string)
+        match = D3_REGEXP.match(query)
         if not regexp_matched and match:
             regexp_matched = True
             roll = dice.roll_d3()
@@ -82,7 +94,7 @@ BACKGROUND d66 = `{bg_roll}`"""
                 f"d3 ({roll}){modifier_string(modifier)} = `{roll+modifier}`"
             )
 
-        match = D6_REGEXP.match(roll_string)
+        match = D6_REGEXP.match(query)
         if not regexp_matched and match:
             regexp_matched = True
             roll = dice.roll_d6()
@@ -94,7 +106,7 @@ BACKGROUND d66 = `{bg_roll}`"""
                 f"d6 ({roll}){modifier_string(modifier)} = `{roll+modifier}`"
             )
 
-        match = TWO_D6_REGEXP.match(roll_string)
+        match = TWO_D6_REGEXP.match(query)
         if not regexp_matched and match:
             regexp_matched = True
             r1, r2, total = dice.roll_2d6()
@@ -106,7 +118,7 @@ BACKGROUND d66 = `{bg_roll}`"""
                 f"2d6 ({r1}+{r2}){modifier_string(modifier)} = `{total+modifier}`"
             )
 
-        match = D20_REGEXP.match(roll_string)
+        match = D20_REGEXP.match(query)
         if not regexp_matched and match:
             regexp_matched = True
             roll = dice.roll_d20()
@@ -119,15 +131,19 @@ BACKGROUND d66 = `{bg_roll}`"""
             )
 
         if not regexp_matched:
-            raise ArgumentParsingError("Unable to understand your command")
+            raise ArgumentParsingError(f"Unable to understand your command: `{query}`")
 
     @commands.command(name="d6", aliases=["1d6"], hidden=True)
     async def roll_d6(self, ctx):
-        await self.roll(ctx, "d6")
+        await ctx.invoke(self.bot.get_command("roll"), query="d6")
 
     @commands.command(name="2d6", hidden=True)
     async def roll_2d6(self, ctx):
-        await self.roll(ctx, "2d6")
+        await ctx.invoke(self.bot.get_command("roll"), query="2d6")
+
+    @commands.command(name="character", aliases=['char'], hidden=True)
+    async def roll_character(self, ctx):
+        await ctx.invoke(self.bot.get_command("roll"), query="character")
 
 
 def setup(bot):

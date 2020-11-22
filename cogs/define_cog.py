@@ -4,7 +4,6 @@ from discord.ext import commands
 from discord.ext.commands import ArgumentParsingError
 
 from cogs.models.weapon import Weapon
-from cogs.models.weapon_list import ALL_WEAPONS
 
 
 class DefineCog(commands.Cog):
@@ -29,7 +28,9 @@ class DefineCog(commands.Cog):
         ignore_armor = r.group(9) is not None
 
         weapon = Weapon(damage_table, name=weapon_name, ignore_armor=ignore_armor)
-        ALL_WEAPONS.add_weapon(weapon)
+
+        library = self.bot.get_cog('LibraryCog')
+        library.add_temp_weapon(weapon)
         await ctx.send(f"Added weapon `{weapon_name}` damage `{damage_table}` ignore_armor={ignore_armor}")
 
 

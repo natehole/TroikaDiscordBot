@@ -17,6 +17,7 @@ python-dotenv = "*"
 flake8 = "*"
 discord-py = "==1.4.1"
 pyyaml = "*"
+python-slugify = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.7"

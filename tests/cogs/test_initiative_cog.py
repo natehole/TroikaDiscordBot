@@ -1,17 +1,22 @@
 import discord.ext.test as dpytest
 import pytest
 
-import bot
+from bot import TroikaBot
 from cogs.models.initiative_tracker import InitiativeTracker, END_OF_ROUND_TOKEN
 from cogs.initiative_cog import InitiativeCog, NO_INIT_TRACKER_MESSAGE, NOT_IN_ROUND_MESSAGE
+from cogs.library_cog import LibraryCog
+
+@pytest.fixture(scope="function")
+def bot():
+   bot = TroikaBot('!')
+   bot.add_cog(LibraryCog(bot))
+   bot.add_cog(InitiativeCog(bot))
+   return bot
 
 
 @pytest.mark.asyncio
-async def test_init_cog_normal(mocker):
-    tbot = bot.TroikaBot('!')
-    tbot.add_cog(InitiativeCog(tbot))
-
-    dpytest.configure(tbot)
+async def test_init_cog_normal(bot, mocker):
+    dpytest.configure(bot)
 
     await dpytest.message("!i begin")
     dpytest.verify_message("Battle started. Now add tokens with !init add...")
@@ -51,11 +56,8 @@ async def test_init_cog_normal(mocker):
 
 
 @pytest.mark.asyncio
-async def test_init_call_when_ended():
-    tbot = bot.TroikaBot('!')
-    tbot.add_cog(InitiativeCog(tbot))
-
-    dpytest.configure(tbot)
+async def test_init_call_when_ended(bot):
+    dpytest.configure(bot)
 
     await dpytest.message("!i add 4 Ogre")
     dpytest.verify_message(NO_INIT_TRACKER_MESSAGE)
@@ -74,12 +76,9 @@ async def test_init_call_when_ended():
 
 
 @pytest.mark.asyncio
-async def test_init_cog_remove_tokens():
+async def test_init_cog_remove_tokens(bot):
     '''Test removing the exact number of tokens of a certain type'''
-    tbot = bot.TroikaBot('!')
-    tbot.add_cog(InitiativeCog(tbot))
-
-    dpytest.configure(tbot)
+    dpytest.configure(bot)
 
     await dpytest.message("!i begin")
     dpytest.verify_message("Battle started. Now add tokens with !init add...")

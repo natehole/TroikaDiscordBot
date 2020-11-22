@@ -5,9 +5,7 @@ from discord.ext.commands import NoPrivateMessage, ArgumentParsingError, BadArgu
 
 from cogs.utils import dice
 from cogs.models.weapon import ARMOR_REGEXP_STRING
-from cogs.models.weapon_list import ALL_WEAPONS
 from cogs.models.embeds import EmbedDamage, EmbedAttack
-
 
 class BattleCog(commands.Cog):
     def __init__(self, bot):
@@ -76,7 +74,8 @@ class BattleCog(commands.Cog):
         if not regexp_matched:
             raise ArgumentParsingError("Unable to parse the inputs. Please check what you wrote.")
 
-        weapon = ALL_WEAPONS.lookup_weapon(weapon_name)
+        library = self.bot.get_cog('LibraryCog')
+        weapon = library.lookup_weapon(weapon_name)
         if weapon is None:
             raise BadArgument(f"Unable to find a weapon definition for `{weapon_name}`. Check your spelling?")
 

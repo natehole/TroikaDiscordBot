@@ -2,6 +2,12 @@ title: Troika Numinous Edition
 author: Daniel Sell
 url: https://docs.google.com/document/d/1haUfSVekt2gNab3V2CrL1Pg_sZ-ZlskphwXmSnGT9aw/edit
 key: base
+base_items:
+  - 2d6 Silver Pence
+  - Knife
+  - Lantern & flask of oil
+  - Rucksack
+  - 6 Provisions
 backgrounds:
   - id: 11
     name: Ardent Giant of Corda
@@ -732,8 +738,7 @@ backgrounds:
       - You always count as being at least Lightly Armoured.
     items:
       - Soldering iron
-      - Choose one
-        - Detachable Autonomous Hands
+      - - Detachable Autonomous Hands
         - Centaur Body (+4 Run)
         - Inbuilt Particle Detector (+4 Second Sight)
         - One random spell at rank 3
@@ -826,8 +831,7 @@ backgrounds:
 
       In Yongardy, they love the Law.
     items:
-      - Choose one
-        - Rapier (damage as Sword) and Puffy Shirt
+      - - Rapier (damage as Sword) and Puffy Shirt
         - Sjambok (damage as Club) and Lots Of Scars
         - Longsword and Heavy Armour
         - Hammer and Gargantuan Shield
@@ -854,7 +858,7 @@ backgrounds:
       - >-
         No Starting Possessions (you have thrown off the shackles of
         civilisation. You are probably nude.)
-    skilla:
+    skills:
       - 3 Climb
       - 3 Run
       - 2 Strength
