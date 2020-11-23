@@ -5,10 +5,7 @@ from discord.ext.commands import NoPrivateMessage, ArgumentParsingError, BadArgu
 
 from cogs.utils import dice
 from cogs.models.weapon import ARMOR_REGEXP_STRING
-
-MIGHTY_BLOW_ROLL = 12
-FUMBLE_ROLL = 2
-
+from cogs.models.embeds import EmbedDamage, EmbedAttack
 
 class BattleCog(commands.Cog):
     def __init__(self, bot):
@@ -82,10 +79,8 @@ class BattleCog(commands.Cog):
         if weapon is None:
             raise BadArgument(f"Unable to find a weapon definition for `{weapon_name}`. Check your spelling?")
 
-        damage_roll = weapon.roll_damage(armor, bonus)
-        damage_amount = weapon.lookup_damage(damage_roll.total)
-
-        await ctx.send(f"ROLL {damage_roll.result} DAMAGE=`{damage_amount}`")
+        embed = EmbedDamage(ctx, weapon, armor, bonus)
+        await ctx.send(embed=embed)
 
     def roll_2d6(self):
         dice1, dice2, total = dice.roll_2d6()
@@ -106,29 +101,8 @@ class BattleCog(commands.Cog):
         attack_roll = self.roll_2d6()
         defense_roll = self.roll_2d6()
 
-        attack_total = attack_roll.total + attacker_mod
-        defense_total = defense_roll.total + defender_mod
-
-        message_output = f"Attacker: {attack_roll.result} + {attacker_mod} = `{attack_total}`\nDefender: {defense_roll.result} + {defender_mod} = `{defense_total}`\n"
-
-        if attack_roll.total == MIGHTY_BLOW_ROLL and defense_roll.total == MIGHTY_BLOW_ROLL:
-            await ctx.send(f"{message_output}**SPECTACULAR CLINCH!** Both weapons shatter! (beasts lose 1d6 stamina)")
-        elif attack_roll.total == MIGHTY_BLOW_ROLL:
-            await ctx.send(f"{message_output}**ATTACKER MIGHTY BLOW** Attacker wins and should score double damage")
-        elif defense_roll.total == MIGHTY_BLOW_ROLL:
-            await ctx.send(f"{message_output}**DEFENDER MIGHTY BLOW** Defender wins and should score double damage")
-        elif attack_roll.total == FUMBLE_ROLL and defense_roll.total == FUMBLE_ROLL:
-            await ctx.send(f"{message_output}**DOUBLE FUMBLE** Both sides roll damage with a +1 bonus")
-        elif attack_roll.total == FUMBLE_ROLL:
-            await ctx.send(f"{message_output}**ATTACKER FUMBLE** Attacker loses and defender adds a +1 bonus to their damage roll")
-        elif defense_roll.total == FUMBLE_ROLL:
-            await ctx.send(f"{message_output}**DEFENDER FUMBLE** Defender loses and attacker adds a +1 bonus to their damage roll")
-        elif attack_total > defense_total:
-            await ctx.send(f"{message_output}**ATTACKER WINS** Roll for damage")
-        elif defense_total > attack_total:
-            await ctx.send(f"{message_output}**DEFENDER WINS** Roll for damage")
-        else:
-            await ctx.send(f"{message_output}**TIE** Nobody takes damage")
+        embed = EmbedAttack(ctx, attack_roll, attacker_mod, defense_roll, defender_mod)
+        await ctx.send(embed=embed)
 
 
 def setup(bot):

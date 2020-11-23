@@ -32,7 +32,7 @@ class InitiativeCog(commands.Cog):
 
     @init.command(aliases=["start"])
     async def begin(self, ctx, *args):
-        """Begins combat in the channel. Users mst add tokens then start rounds"""
+        """Begins combat in the channel. Users must add tokens then start rounds"""
         self.init_tracker = InitiativeTracker()
         if len(args) == 0:
             await ctx.send("Battle started. Now add tokens with !init add...")

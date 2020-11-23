@@ -63,7 +63,7 @@ class Compendium:
             if not os.path.exists(path):
                 path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', f"{path}.yaml")
 
-            with open(path, 'r') as file_data:
+            with open(file=path, mode='r', encoding='UTF-8') as file_data:
                 yaml_data = file_data.read()
 
         infile = yaml.safe_load(yaml_data)
