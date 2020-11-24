@@ -17,8 +17,8 @@ backgrounds:
       enough but oh, what of today? We should drink and cheer, we’ll search once
       again in the morning!
     items:
-      - - an enormous Blue Star Map which can tell you where any portal leads (with a successful Astrology test)
-        - a pocket barometer for forecasting the weather (5 in 6 accuracy)
+      - - Enormous Blue Star Map which can tell you where any portal leads (with a successful Astrology test)i
+        - Pocket barometer for forecasting the weather (5 in 6 accuracy)
         - Ruby Lorgnette granting +2 Second Sight.
     skills:
       - 4 Strength
@@ -80,10 +80,15 @@ backgrounds:
       to the power and the glory at a generative time and it shows in your
       teratoid form.
     items:
-      - fusil
+      - Fusil
       - 2d6 plasmic cores
-      - sword
-      - velare
+      - Sword
+      - Velare
+    special: >-
+      The velare, when inactive, looks like an ornate piece of costume
+      jewellery, usually a brooch or a circlet. When active it produces a full
+      body disguise on the wearer formed from hard-light. Grants +4 Disguise.
+      Lasts for 24 hours before needing to be recharged with a Plasmic core.
     skills:
       - 2 Fusil Fighting
       - 2 Astrology
@@ -105,9 +110,9 @@ backgrounds:
       Name your patron. You may call upon your patron for aid once per day. To
       do so roll three 6s on `3d6`. The GM will interpret their intervention.
     items:
-      - ritual scars
-      - a huge maul
-      - assortment of ragged armour (counts as Modest Armour)
+      - Ritual scars
+      - Huge maul
+      - Assortment of ragged armour (counts as Modest Armour)
       - Dream Journal, almost full
     skills:
       - 6 Language (Kurgan)
@@ -127,8 +132,8 @@ backgrounds:
       entry.
     items:
       - Festooned with Keys (counts as Modest Armour)
-      - a distinguished Sledgehammer (Damage as Maul)
-      - lock picking tools
+      - Distinguished Sledgehammer (Damage as Maul)
+      - Lockpicking tools
     skills:
       - 4 Locks
       - 3 Strength
@@ -146,11 +151,11 @@ backgrounds:
       the Angel cults of the slums, all need to be driven back off the edge of
       the map and onto the shores of chaos.
     items:
-      - a Silver Sword
-      - a longbow
+      - Silver Sword
+      - Longbow
       - 16 silver arrows
       - Pouch of Salt
-      - vial of demon blood
+      - Vial of demon blood
     skills:
       - 5 Language (Abyssal)
       - 2 Second Sight
@@ -180,8 +185,8 @@ backgrounds:
         Instead of urinating you excrete through sweating, thus explaining your
         odour.
     items:
-      - Masonry Hammer
-      - Roll of Artist's Supplies
+      - Masonry hammer
+      - Roll of artist's supplies
     skills:
       - 3 Awareness
       - 2 Sculpting
@@ -205,12 +210,12 @@ backgrounds:
       the Epopt if their visions are accurate.
     items:
       - >-
-        yellow epopt outfit, padded for protection against unhappy clients
+        Yellow epopt outfit, padded for protection against unhappy clients
         (counts as Modest Armour).
       - >-
-        epopt staff, being a walking staff with seeing crystal on one end
+        Epopt staff, _being a walking staff with seeing crystal on one end_
         (Damage as Staff).
-      - 'collapsible tent, large enough for your stall'
+      - 'Collapsible tent, large enough for your stall'
     skills:
       - 2 Awareness
       - 2 Evaluate
@@ -225,12 +230,12 @@ backgrounds:
       are outrageous, and in a land jaded to the outlandish and new you still
       somehow manage to stand out.
     items:
-      - a weird & wonderful weapon
-      - strange clothes
-      - exciting accent
-      - - a tea Set
-        - 3 pocket gods
-        - astrological equipment
+      - Weird & wonderful weapon
+      - Strange clothes
+      - Exciting accent
+      - - Tea Set (_+1 to etiquette if you can make someone tea_)
+        - 3 Pocket Gods (_whisper a secret to one to gain +1 luck_)
+        - Astrological equipment (_grants +1 to Astrology_)
     skills:
       - 6 Language (Exotic Language)
       - 3 Fighting in your Weird Weapon
@@ -329,15 +334,17 @@ backgrounds:
       You are a mercenary retained in the exclusive service of the Phoenix
       Throne, handsomely paid and sent to distant spheres on golden ships to
       spread the ineffable glory of your lords at the tip of your flaming sword.
+    special: >-
+      Though frivolous looking, your clothing is in fact built with the Autarch’s divine
+      alchemy and considered Modest Armour while weighing the same as normal
+      clothing (takes no slots in your inventory).
     items:
-      - Exquisite Pistolet
+      - Exquisite pistolet
       - Bandolier with 18 Plasmic Cores
       - Greatsword
       - >-
-        Brightly coloured clothing with lots of tassels and bells (impossible to
-        sneak). Though frivolous looking it is in fact built with the Autarch’s
-        divine alchemy and considered Modest Armour while weighing the same as
-        normal clothing (takes no slots in your inventory).
+        Brightly coloured clothing with lots of tassels and bells (_impossible to
+        sneak_)
     skills:
       - 2 Greatsword Fighting
       - 2 Pistolet Fighting
@@ -505,8 +512,8 @@ backgrounds:
         grease pen. To non-Dwarfy eyes you probably look like any other Dwarf.
         You have +4 Sneak versus Dwarfs.
     items:
-      - Woodman's Axe
-      - Empty Firkin
+      - Woodman's axe
+      - Empty firkin
     skills:
       - 4 Sneak (only versus dwarfs)
       - 3 Fist Fighting
@@ -810,7 +817,7 @@ backgrounds:
       - 12 Crossbow Bolts
       - Sword
       - 1d6 Pocket Gods
-      - Ruby Lorgnette
+      - Ruby Lorgnette (_grants +2 Second Sight_)
     skills:
       - 2 Tracking
       - 2 Disguise
@@ -829,6 +836,7 @@ backgrounds:
       collect their portraits, and sneak into the court after hours to dab the
       patches of blood on white handkerchiefs.
 
+
       In Yongardy, they love the Law.
     items:
       - - Rapier (damage as Sword) and Puffy Shirt
@@ -843,6 +851,7 @@ backgrounds:
       - 1 Healing
   - id: 66
     name: Zoanthrop
+    base_items: []
     desc: >-
       At some point in your past you decided you didn’t need it anymore: you
       found a Zoanthropologist and paid them well to remove your troublesome

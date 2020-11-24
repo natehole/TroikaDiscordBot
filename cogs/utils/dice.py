@@ -66,7 +66,7 @@ def _replace_fragment(text):
             rolls = 1
 
         total = reduce(operator.add, [roll_d6() for r in range(rolls)])
-        return f"`{total}`"
+        return f"{total}"
     else:
         return text
 

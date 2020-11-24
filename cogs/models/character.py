@@ -19,17 +19,10 @@ class Item:
     def parse(cls, name: str) -> Item:
         return cls(name=interpolate_dice(name))
 
-    def __str__(self) -> str:
-        return interpolate_dice(self.name)
-
 
 @dataclass
 class ItemChoice:
     choices: List[Item]
-
-    def __str__(self) -> str:
-        choices = "\n".join([f"> {c.name}" for c in self.choices])
-        return f"_One of:_\n{choices}"
 
     @classmethod
     def parse(cls, yaml: Union[str, dict]) -> Union[Item, ItemChoice]:
@@ -46,9 +39,6 @@ class ItemChoice:
 class Skill:
     name: str
     rank: int
-
-    def __str__(self) -> str:
-        return f"{self.rank} {self.name}"
 
     @classmethod
     def parse(cls, skill: str) -> Skill:
@@ -115,7 +105,11 @@ class Character:
 
         skills: List[Skill] = [Skill.parse(s) for s in background.skills]
         items: List[Union[Item, ItemChoice]] = [ItemChoice.parse(i) for i in background.items]
-        items += [Item.parse(i) for i in compendium.base_items]
+
+        if background.base_items:
+            items += [Item.parse(i) for i in background.base_items]
+        elif compendium.base_items:
+            items += [Item.parse(i) for i in compendium.base_items]
 
         spell_picker = RandomSpellPicker(compendium, background.spells)
         spells: List[Spell] = [SpellSkill.parse(s, spell_picker) for s in background.spells]
