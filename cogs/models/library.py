@@ -1,5 +1,6 @@
 from __future__ import annotations
 from typing import Dict, List, Union, Optional, Tuple
+import random
 
 from cogs.models.spell import Spell
 from cogs.models.weapon import Weapon
@@ -51,6 +52,17 @@ class Library:
                 return spell
 
         return None
+
+    @property
+    def all_spells(self) -> List[Spell]:
+        spells: List[Spell] = []
+        for comp in self.compendiums.values():
+            spells += comp.own_spells
+
+        return spells
+
+    def random_spell(self) -> Spell:
+        return random.choice(self.all_spells)
 
     def lookup_weapon(self, weapon_name: str) -> Optional[Weapon]:
         normalized = normalize(weapon_name)

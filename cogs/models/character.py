@@ -28,7 +28,7 @@ class ItemChoice:
     choices: List[Item]
 
     def __str__(self) -> str:
-        choices = "\n".join([f"    - {c.name}" for c in self.choices])
+        choices = "\n".join([f"> {c.name}" for c in self.choices])
         return f"_One of:_\n{choices}"
 
     @classmethod
@@ -131,35 +131,18 @@ class Character:
             spells=spells
         )
 
-    def __str__(self):
-        items = "\n".join([f"- {i}" for i in self.items])
-        skills = "\n".join([f"- {s}" for s in self.skills])
+    @property
+    def description(self) -> str:
+        return self.background.description
 
-        output = f"""SKILL d3 ({self.skill-3})+3 = `{self.skill}`
-STAMINA 2d6 ({self.stamina-12})+12 = `{self.stamina}`
-LUCK d6 ({self.luck-6})+6 = `{self.luck}`
-BACKGROUND d66 = `{self.background.roll}`
+    @property
+    def background_name(self) -> str:
+        return self.background.name
 
-**{self.background.roll}** {self.background.name}
-_{self.background.description}_
-"""
-        if len(self.background.special) > 0:
-            special = "\n".join([f"- {s}" for s in self.background.special])
-            output += f"""
-SPECIAL:
-{special}
-"""
-        output += f"""
-ITEMS:
-{items}
+    @property
+    def background_roll(self) -> int:
+        return self.background.roll
 
-SKILLS:
-{skills}
-"""
-        if len(self.spells) > 0:
-            spells = "\n".join([f"- {s}" for s in self.spells])
-            output += f"""
-SPELLS:
-{spells}
-"""
-        return output
+    @property
+    def specials(self) -> List[str]:
+        return self.background.special

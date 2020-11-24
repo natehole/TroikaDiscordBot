@@ -2,6 +2,27 @@ import random
 import discord
 from cogs.models.weapon import MIGHTY_BLOW_ROLL, FUMBLE_ROLL
 
+from cogs.models.character import Item, ItemChoice, Skill, SpellSkill
+from cogs.models.spell import Spell
+from cogs.utils import oops
+from cogs.utils.dice import RollResult
+
+
+def render_item(item: Item) -> str:
+    if isinstance(item, ItemChoice):
+        choices = "\n".join([f"> {c.name}" for c in item.choices])
+        return f"_One of:_\n{choices}"
+    else:
+        return item.name
+
+
+def render_skill(skill: Skill) -> str:
+    return f"**{skill.rank}** {skill.name}"
+
+
+def render_spell_skill(skill: SpellSkill) -> str:
+    return f"**{skill.rank}** {skill.name} ({skill.spell.cost})"
+
 
 class EmbedWithAuthor(discord.Embed):
     """This was shamelessly borrowed from Avrae.
@@ -32,6 +53,40 @@ class EmbedDamage(EmbedWithAuthor):
 
         roll_breakdown_txt = f"Roll Breakdown:\n{roll.result}"
         self.description = f"\n{roll_breakdown_txt}\n\n{dmg_txt}"
+
+
+class EmbedSpell(EmbedWithAuthor):
+    def __init__(self, ctx, spell: Spell = None, cast: RollResult = None, **kwargs):
+        super(EmbedSpell, self).__init__(ctx, **kwargs)
+
+        if spell:
+            self.title = f"{spell.name} ({spell.cost})"
+            self.description = spell.description
+
+        if cast:
+            oops_triggered = False
+            self.title = self.title or "Spell Casting"
+            if cast.total == 2:
+                outcome = "**GUARANTEED SUCCESS** 2d6(1+1)"
+            elif cast.total == 12:
+                outcome = "**CATASTROPHIC FAILURE** 2d6(6+6)"
+                oops_triggered = True
+            else:
+                outcome = cast.result
+
+            self.add_field(name="Outcome", value=outcome, inline=False)
+
+            if oops_triggered:
+                roll, oops_str = oops.roll_oops()
+                self.add_field(name="Ooops!", value=f"**{roll}:** {oops_str}", inline=False)
+
+
+class EmbedOops(EmbedWithAuthor):
+    def __init__(self, ctx, roll, oops, **kwargs):
+        super(EmbedOops, self).__init__(ctx, **kwargs)
+
+        self.title = "Oops!"
+        self.description = f"**{roll}**: {self.oops}"
 
 
 class EmbedAttack(EmbedWithAuthor):
@@ -77,3 +132,35 @@ class EmbedInitShow(EmbedWithAuthor):
     """An embed to show a representation of the initiative bag."""
     def __init__(self, ctx, **kwargs):
         super(EmbedInitShow, self).__init__(ctx, **kwargs)
+
+
+class EmbedCharacter(EmbedWithAuthor):
+    """An embed to show a representative of a character"""
+    def __init__(self, ctx, character, **kwargs):
+        super(EmbedCharacter, self).__init__(ctx, **kwargs)
+
+        self.title = f"**{character.background_roll}** {character.background_name}"
+
+        self.description = f"""SKILL d3 ({character.skill-3})+3 = `{character.skill}`
+STAMINA 2d6 ({character.stamina-12})+12 = `{character.stamina}`
+LUCK d6 ({character.luck-6})+6 = `{character.luck}`
+BACKGROUND d66 = `{character.background_roll}`
+
+_{character.description}_
+"""
+
+        if len(character.specials) > 0:
+            special = "\n".join([f"> {s}" for s in character.specials])
+            self.add_field(name="Special", value=special, inline=False)
+
+        if len(character.items) > 0:
+            items = "\n".join([f"{render_item(i)}" for i in character.items])
+            self.add_field(name="Items", value=items, inline=False)
+
+        if len(character.skills) > 0:
+            skills = "\n".join([render_skill(s) for s in character.skills])
+            self.add_field(name="Skills", value=skills, inline=False)
+
+        if len(character.spells) > 0:
+            spells = "\n".join([render_spell_skill(s) for s in character.spells])
+            self.add_field(name="Spells", value=spells, inline=False)

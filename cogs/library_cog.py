@@ -2,7 +2,7 @@ from typing import Optional
 
 from discord.ext import commands
 
-from cogs.models.compendium import Compendium
+from cogs.models.compendium import Compendium, normalize
 from cogs.models.spell import Spell
 from cogs.models.weapon import Weapon
 from cogs.models.library import Library
@@ -31,7 +31,10 @@ class LibraryCog(commands.Cog):
         return self.library.lookup_weapon(weapon_name)
 
     def lookup_spell(self, spell_name: str) -> Optional[Spell]:
-        return self.library.lookup_spell(spell_name)
+        if normalize(spell_name) == "random":
+            return self.library.random_spell()
+        else:
+            return self.library.lookup_spell(spell_name)
 
 
 def setup(bot):
