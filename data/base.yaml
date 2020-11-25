@@ -17,9 +17,9 @@ backgrounds:
       enough but oh, what of today? We should drink and cheer, we’ll search once
       again in the morning!
     items:
-      - - Enormous Blue Star Map which can tell you where any portal leads (with a successful Astrology test)i
+      - - Enormous Blue Star Map (_can tell you where any portal leads with a successful Astrology test_)
         - Pocket barometer for forecasting the weather (5 in 6 accuracy)
-        - Ruby Lorgnette granting +2 Second Sight.
+        - Ruby Lorgnette (_grants +2 Second Sight_)
     skills:
       - 4 Strength
       - 3 Astrology
@@ -413,13 +413,18 @@ backgrounds:
       was no future in monkey meat. You wanted much more and so stepped off. Or
       you fell off. Either way you and some unlucky monkeys are here now and
       that’s all that matters.
+    base_items: false
     items:
       - Monkey Club
       - Butcher’s Knife
       - >-
         1d6 small monkeys that do not heed commands but are too scared and
         hungry to travel far from you
-      - a pocket full of monkey treats
+      - Pocket full of monkey treats
+      - 2d6 Silver Pence
+      - Lantern & flask of oil
+      - Rucksack
+      - 6 Provisions
     skills:
       - 4 Climb
       - 2 Trapping
@@ -851,7 +856,7 @@ backgrounds:
       - 1 Healing
   - id: 66
     name: Zoanthrop
-    base_items: []
+    base_items: false
     desc: >-
       At some point in your past you decided you didn’t need it anymore: you
       found a Zoanthropologist and paid them well to remove your troublesome

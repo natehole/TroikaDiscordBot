@@ -106,9 +106,7 @@ class Character:
         skills: List[Skill] = [Skill.parse(s) for s in background.skills]
         items: List[Union[Item, ItemChoice]] = [ItemChoice.parse(i) for i in background.items]
 
-        if background.base_items:
-            items += [Item.parse(i) for i in background.base_items]
-        elif compendium.base_items:
+        if background.has_base_items:
             items += [Item.parse(i) for i in compendium.base_items]
 
         spell_picker = RandomSpellPicker(compendium, background.spells)
