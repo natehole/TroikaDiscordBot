@@ -19,17 +19,10 @@ class Item:
     def parse(cls, name: str) -> Item:
         return cls(name=interpolate_dice(name))
 
-    def __str__(self) -> str:
-        return interpolate_dice(self.name)
-
 
 @dataclass
 class ItemChoice:
     choices: List[Item]
-
-    def __str__(self) -> str:
-        choices = "\n".join([f"    - {c.name}" for c in self.choices])
-        return f"_One of:_\n{choices}"
 
     @classmethod
     def parse(cls, yaml: Union[str, dict]) -> Union[Item, ItemChoice]:
@@ -46,9 +39,6 @@ class ItemChoice:
 class Skill:
     name: str
     rank: int
-
-    def __str__(self) -> str:
-        return f"{self.rank} {self.name}"
 
     @classmethod
     def parse(cls, skill: str) -> Skill:
@@ -115,7 +105,9 @@ class Character:
 
         skills: List[Skill] = [Skill.parse(s) for s in background.skills]
         items: List[Union[Item, ItemChoice]] = [ItemChoice.parse(i) for i in background.items]
-        items += [Item.parse(i) for i in compendium.base_items]
+
+        if background.has_base_items:
+            items += [Item.parse(i) for i in compendium.base_items]
 
         spell_picker = RandomSpellPicker(compendium, background.spells)
         spells: List[Spell] = [SpellSkill.parse(s, spell_picker) for s in background.spells]
@@ -131,35 +123,18 @@ class Character:
             spells=spells
         )
 
-    def __str__(self):
-        items = "\n".join([f"- {i}" for i in self.items])
-        skills = "\n".join([f"- {s}" for s in self.skills])
+    @property
+    def description(self) -> str:
+        return self.background.description
 
-        output = f"""SKILL d3 ({self.skill-3})+3 = `{self.skill}`
-STAMINA 2d6 ({self.stamina-12})+12 = `{self.stamina}`
-LUCK d6 ({self.luck-6})+6 = `{self.luck}`
-BACKGROUND d66 = `{self.background.roll}`
+    @property
+    def background_name(self) -> str:
+        return self.background.name
 
-**{self.background.roll}** {self.background.name}
-_{self.background.description}_
-"""
-        if len(self.background.special) > 0:
-            special = "\n".join([f"- {s}" for s in self.background.special])
-            output += f"""
-SPECIAL:
-{special}
-"""
-        output += f"""
-ITEMS:
-{items}
+    @property
+    def background_roll(self) -> int:
+        return self.background.roll
 
-SKILLS:
-{skills}
-"""
-        if len(self.spells) > 0:
-            spells = "\n".join([f"- {s}" for s in self.spells])
-            output += f"""
-SPELLS:
-{spells}
-"""
-        return output
+    @property
+    def specials(self) -> List[str]:
+        return self.background.special

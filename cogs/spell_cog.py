@@ -2,6 +2,7 @@ import re
 from discord.ext import commands
 from discord.ext.commands import ArgumentParsingError
 from cogs.utils import oops, dice
+from cogs.models.embeds import EmbedSpell, EmbedOops
 
 SUCCESS_TOTAL = 2
 OOPS_TOTAL = 12
@@ -20,7 +21,8 @@ class SpellCog(commands.Cog):
         library = self.bot.get_cog('LibraryCog')
         spell = library.lookup_spell(name)
         if spell:
-            await ctx.send(f"**{spell.name}** ({spell.cost})\n_{spell.description}_")
+            embed = EmbedSpell(ctx, spell=spell)
+            await ctx.send(embed=embed)
         else:
             await ctx.send(f"_Spell **{name}** not found. Check your spelling?_")
 
@@ -33,22 +35,19 @@ class SpellCog(commands.Cog):
         skill_points = int(r.group(1))
 
         if r.group(2):
-            await self.spell(ctx, name=r.group(2))
+            library = self.bot.get_cog('LibraryCog')
+            spell = library.lookup_spell(r.group(2))
 
         # Look up spell in the library
         roll = dice.roll_under(skill_points)
-        if roll.total == SUCCESS_TOTAL:
-            await ctx.send("**GUARANTEED SUCCESS** 2d6(1+1)")
-        elif roll.total == OOPS_TOTAL:
-            await ctx.send("**CATASTROPHIC FAILURE** 2d6(6+6)")
-            await self.oops(ctx)
-        else:
-            await ctx.send(roll.result)
+        embed = EmbedSpell(ctx, spell=spell, cast=roll)
+        await ctx.send(embed=embed)
 
     @commands.command()
     async def oops(self, ctx):
         roll, oops = self.roll_oops()
-        await ctx.send(f"OOPS (**{roll}**): `{oops}`")
+        embed = EmbedOops(ctx, roll, oops)
+        await ctx.send(embed=embed)
 
 
 def setup(bot):

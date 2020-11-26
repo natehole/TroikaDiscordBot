@@ -4,6 +4,8 @@ from discord.ext.commands import ArgumentParsingError
 
 from cogs.utils import dice
 from cogs.models.character import Character
+from cogs.models.embeds import EmbedCharacter
+
 
 def modifier_string(modifier):
     if modifier == 0:
@@ -58,7 +60,8 @@ class DiceCog(commands.Cog):
                 background = compendium.lookup_background(bg_roll)
                 if background:
                     character = Character.generate(compendium, background)
-                    await ctx.send(character)
+                    embed = EmbedCharacter(ctx, character)
+                    await ctx.send(embed=embed)
                 else:
                     await ctx.send("BACKGROUND d66 = `{bg_roll}`\n_No background found..._")
             else:

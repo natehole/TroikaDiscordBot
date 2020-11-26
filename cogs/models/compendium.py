@@ -130,6 +130,10 @@ class Compendium:
 
         return None
 
+    @property
+    def own_spells(self) -> List[Spell]:
+        return list(self._spells.values())
+
     def lookup_own_spell(self, name: str) -> Union[Spell, None]:
         return self._spells.get(normalize(name), None)
 
