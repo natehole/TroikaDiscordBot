@@ -1,10 +1,10 @@
 import random
 import discord
-from cogs.models.weapon import MIGHTY_BLOW_ROLL, FUMBLE_ROLL
 
 from cogs.models.character import Item, ItemChoice, Skill, SpellSkill
 from cogs.models.spell import Spell
-from cogs.utils import oops
+from cogs.models.weapon import Weapon
+from cogs.utils import oops, dice
 from cogs.utils.dice import RollResult
 
 
@@ -35,7 +35,7 @@ class EmbedWithAuthor(discord.Embed):
 
 class EmbedDamage(EmbedWithAuthor):
     """An embed to show the damage table for a given weapon."""
-    def __init__(self, ctx, weapon, armor, bonus, **kwargs):
+    def __init__(self, ctx, weapon: Weapon, armor: str, bonus: int, **kwargs):
         super(EmbedDamage, self).__init__(ctx, **kwargs)
         roll = weapon.roll_damage(armor, bonus)
         damage_dealt = weapon.lookup_damage(roll.total)
@@ -89,40 +89,65 @@ class EmbedOops(EmbedWithAuthor):
         self.description = f"**{roll}**: {self.oops}"
 
 
+def roll_2d6() -> dice.RollResult:
+    dice1, dice2, total = dice.roll_2d6()
+
+    dice_string = ''
+    if (dice1 == 6 and dice2 == 6) or (dice1 == 1 and dice2 == 1):
+        dice_string = f"**{dice1}+{dice2}**"
+    else:
+        dice_string = f"{dice1}+{dice2}"
+
+    return dice.RollResult(total, f"2d6({dice_string}) = {total}")
+
+
+MIGHTY_BLOW_ROLL: int = 12
+FUMBLE_ROLL: int = 2
+
+
 class EmbedAttack(EmbedWithAuthor):
     """An embed to show the attack result."""
-    def __init__(self, ctx, attack_roll, attacker_mod, defense_roll, defender_mod, **kwargs):
+    def __init__(self, ctx, attacker_skill: int, defender_skill: int, **kwargs):
         super(EmbedAttack, self).__init__(ctx, **kwargs)
 
-        attack_total = attack_roll.total + attacker_mod
-        defense_total = defense_roll.total + defender_mod
+        attack_roll = roll_2d6()
+        defense_roll = roll_2d6()
+        attack_total = attack_roll.total + attacker_skill
+        defense_total = defense_roll.total + defender_skill
 
-        description = f"**Attacker ({attack_total})**\n {attack_roll.result} + {attacker_mod} = {attack_total}\n\n"
-        description += f"**Defender ({defense_total})**\n {defense_roll.result} + {defender_mod} = {defense_total}\n\n"
+        description = f"**Attacker ({attack_total})**\n {attack_roll.result} + {attacker_skill} = {attack_total}\n\n"
+        description += f"**Defender ({defense_total})**\n {defense_roll.result} + {defender_skill} = {defense_total}\n\n"
 
-        winner = "ATTACKER" if attack_total > defense_total else "DEFENDER" if defense_total > attack_total else "TIE"
         mighty_blow = attack_roll.total == MIGHTY_BLOW_ROLL or defense_roll.total == MIGHTY_BLOW_ROLL
         fumble = attack_roll.total == FUMBLE_ROLL or defense_roll.total == FUMBLE_ROLL
 
-        if winner == "TIE":
-            if mighty_blow:
-                self.title = "SPECTACULAR CLINCH!"
-                description += " > Both Weapons shatter! (beasts lose 1d6 stamina)"
-            elif fumble:
-                self.title = "DOUBLE FUMBLE!"
-                description += " > Both parties deal Damage to the other, adding +1 to their Damage Roll"
-            else:
-                self.title = "TIE"
-                description += " > Nobody takes damage"
-        elif mighty_blow:
-            self.title = f"{winner} MIGHTY BLOW!"
-            description += f" > {winner} wins the exchange and inflicts Double Damage"
-        elif fumble:
-            loser = "ATTACKER" if winner == "DEFENDER" else "DEFENDER"
-            self.title = f"{loser} FUMBLE"
-            description += f" > {loser} loses the exchange and {winner} adds +1 to their Damage Roll"
+        # Mighty blows and fumbles affect outcome even if winner total is less than loser
+        if attack_roll.total == FUMBLE_ROLL and defense_roll.total == FUMBLE_ROLL:
+            self.title = "DOUBLE FUMBLE!"
+            description += " > Both parties deal Damage to the other, adding +1 to their Damage Roll"
+        elif attack_roll.total == MIGHTY_BLOW_ROLL and defense_roll.total == MIGHTY_BLOW_ROLL:
+            self.title = "SPECTACULAR CLINCH!"
+            description += " > Both Weapons shatter! (beasts lose 1d6 stamina)"
+        elif attack_roll.total == MIGHTY_BLOW_ROLL:
+            self.title = "ATTACKER MIGHTY BLOW!"
+            description += " > ATTACKER wins the exchange and inflicts Double Damage"
+        elif defense_roll.total == MIGHTY_BLOW_ROLL:
+            self.title = "DEFENDER MIGHTY BLOW!"
+            description += " > DEFENDER wins the exchange and inflicts Double Damage"
+        elif attack_roll.total == FUMBLE_ROLL:
+            self.title = "ATTACKER FUMBLE"
+            description += " > ATTACKER loses the exchange and DEFENDER adds +1 to their Damage Roll"
+        elif defense_roll.total == FUMBLE_ROLL:
+            self.title = "DEFENDER FUMBLE"
+            description += " > DEFENDER loses the exchange and ATTACKER adds +1 to their Damage Roll"
+        elif attack_total == defense_total:
+            self.title = "TIE"
+            description += " > Nobody takes damage"
+        elif attack_total > defense_total:
+            self.title = "ATTACKER WINS"
+            description += " > Roll for damage"
         else:
-            self.title = f"{winner} WINS"
+            self.title = "DEFENDER WINS"
             description += " > Roll for damage"
 
         self.description = description

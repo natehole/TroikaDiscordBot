@@ -42,7 +42,8 @@ class Skill:
 
     @classmethod
     def parse(cls, skill: str) -> Skill:
-        r = re.match(r'(-?[0-9]+) (.+)', skill)
+        interpolated = interpolate_dice(skill)
+        r = re.match(r'(-?[0-9]+) (.+)', interpolated)
         if not r:
             raise ValueError(f"Unable to parse skill: {skill}")
 

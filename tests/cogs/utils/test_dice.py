@@ -41,12 +41,13 @@ def test_roll_d20():
 
 
 @pytest.mark.parametrize('input,output', [
-    ('d6 monkeys', '3 monkeys'),
-    ('There are 3d6 monkeys', 'There are 9 monkeys'),
-    ('2d6 monkeys', '6 monkeys'),
-    ('`2d6` monkeys', '2d6 monkeys'),
-    ('10d6 silver pence', '30 silver pence')
+    ('d6 monkeys', '2 monkeys'),
+    ('There are 3d6 monkeys', 'There are 6 monkeys'),
+    ('2d6 monkeys', '4 monkeys'),
+    ('`2d6` monkeys', '`2d6` monkeys'),
+    ('10d6 silver pence', '20 silver pence'),
+    ('d3 Fighting', '2 Fighting')
 ])
 def test_interpolate_dice(mocker, input, output):
-    mocker.patch.object(dice, 'roll_d6', return_value=3)
+    mocker.patch.object(dice, 'roll_die', return_value=2)
     assert dice.interpolate_dice(input) == output

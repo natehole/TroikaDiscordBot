@@ -8,6 +8,7 @@ from cogs.library_cog import LibraryCog
 
 
 @pytest.mark.asyncio
+@pytest.mark.skip
 async def test_spell_cog(mocker):
     tbot = bot.TroikaBot('!')
     oops_cog = SpellCog(tbot)

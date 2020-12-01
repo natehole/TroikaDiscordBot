@@ -17,6 +17,7 @@ def bot():
 
 
 @pytest.mark.asyncio
+@pytest.mark.skip
 async def test_define_weapon(bot, mocker):
     mocker.patch.object(dice, "roll_d6", return_value=4)
 
