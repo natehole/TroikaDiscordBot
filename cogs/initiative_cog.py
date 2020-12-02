@@ -121,7 +121,7 @@ class InitiativeCog(commands.Cog):
     @commands.command(name="round", hidden=True)
     async def roundAlias(self, ctx):
         await ctx.invoke(self.bot.get_command("init round"))
-        
+
     @init.command()
     async def draw(self, ctx):
         """Returns a token drawn in the current round"""

@@ -5,6 +5,7 @@ from cogs.utils import dice
 
 # We test the embeds elsewhere. This is just testing we can call the functions
 
+
 @pytest.mark.asyncio
 async def test_damage_weapon_only(bot, mocker):
     mocker.patch.object(dice, "roll_d6", return_value=2)
@@ -23,11 +24,6 @@ async def test_damage_armor(bot, mocker, armor, offset, damage):
     dpytest.configure(bot)
 
     await dpytest.message(f"!damage Sword {armor}")
-
-    floor_text = ""
-    if 3 - offset < 1:
-        floor_text = f"= {3-offset} [**min value must be 1**] "
-
     dpytest.verify_embed(allow_text=True)
 
 

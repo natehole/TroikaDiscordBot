@@ -3,9 +3,9 @@ import re
 from discord.ext import commands
 from discord.ext.commands import NoPrivateMessage, ArgumentParsingError, BadArgument
 
-from cogs.utils import dice
 from cogs.models.weapon import ARMOR_REGEXP_STRING
 from cogs.models.embeds import EmbedDamage, EmbedAttack
+
 
 class BattleCog(commands.Cog):
     def __init__(self, bot):
@@ -81,8 +81,6 @@ class BattleCog(commands.Cog):
 
         embed = EmbedDamage(ctx, weapon, armor, bonus)
         await ctx.send(embed=embed)
-
-
 
     @commands.command(name="attack",
                       aliases=["a", "att"],

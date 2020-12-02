@@ -1,12 +1,13 @@
 import pytest
-
 from cogs.utils import dice
 from cogs.models.weapon import Weapon
 from cogs.models.embeds import EmbedDamage
 
+
 @pytest.fixture(scope="module")
 def sword():
     return Weapon(name='Sword', damage=[4, 6, 6, 6, 6, 8, 10])
+
 
 def sword_damage_table(roll: int) -> str:
     if roll == 1:
@@ -85,15 +86,15 @@ def test_damage_ignore_armor_no_armor(bot, ctx, maul, mocker):
 
     embed = EmbedDamage(ctx, maul, "No", 0)
 
-    roll_result = f"1d6 (5) -0 [no armor] = 5"
+    roll_result = "1d6 (5) -0 [no armor] = 5"
     assert embed.description == f"\nRoll Breakdown:\n{roll_result}\n\nDamage Dealt:\n{maul_damage_table(5)}\n\n**12** damage was dealt."
-    assert embed.title == f"Maul Damage (12)"
+    assert embed.title == "Maul Damage (12)"
 
 
 def test_damage_bonus(ctx, bot, maul, mocker):
     mocker.patch.object(dice, "roll_d6", return_value=3)
 
     embed = EmbedDamage(ctx, maul, "No", 2)
-    roll_result = f"1d6 (3) -0 [no armor] +2 [damage roll bonus] = 5"
+    roll_result = "1d6 (3) -0 [no armor] +2 [damage roll bonus] = 5"
     assert embed.description == f"\nRoll Breakdown:\n{roll_result}\n\nDamage Dealt:\n{maul_damage_table(5)}\n\n**12** damage was dealt."
-    assert embed.title == f"Maul Damage (12)"
+    assert embed.title == "Maul Damage (12)"

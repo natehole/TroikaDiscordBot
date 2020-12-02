@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import Dict, List, Union, Optional, Tuple
+from typing import Dict, List, Optional
 import random
 
 from cogs.models.spell import Spell

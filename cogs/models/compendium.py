@@ -11,8 +11,10 @@ from cogs.models.background import Background
 from cogs.models.weapon import Weapon
 from cogs.models.compendium_link import CompendiumLink
 
+
 def normalize(name: str) -> str:
     return slugify(name, replacements=[["'", ""]], stopwords=['a', 'an', 'the'])
+
 
 class Compendium:
     '''Represents a single data file loaded from the data directory'''

@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import List, Union
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 import re
 import random
 
@@ -52,7 +52,8 @@ class Skill:
 
 class RandomSpellPicker:
     def __init__(self, compendium: Compendium, spells: List[str]):
-        spells = [s.split(' ', 1)[1] for s in spells] # Go from 1 Jolt -> Jolt
+        # Split into skill and spell name
+        spells = [s.split(' ', 1)[1] for s in spells]
         self.compendium = compendium
         self.available_spells: List[str] = list([s.name for s in compendium.spells])
         random.shuffle(self.available_spells)
@@ -79,7 +80,6 @@ class SpellSkill(Skill):
         skill = Skill.parse(text)
         spell = spell_picker.fetch_spell(skill.name)
         return cls(name=spell.name, rank=skill.rank, spell=spell)
-
 
 
 @dataclass

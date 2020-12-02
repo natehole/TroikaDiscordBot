@@ -1,8 +1,7 @@
-import pytest
-
 from cogs.utils import dice, oops
 from cogs.models.embeds import EmbedSpell
 from cogs.models.spell import Spell
+
 
 def test_with_spell_name(ctx):
     spell = Spell(name="Zap", cost='3', description="The wizard makes things go boom!")

@@ -118,9 +118,6 @@ class EmbedAttack(EmbedWithAuthor):
         description = f"**Attacker ({attack_total})**\n {attack_roll.result} + {attacker_skill} = {attack_total}\n\n"
         description += f"**Defender ({defense_total})**\n {defense_roll.result} + {defender_skill} = {defense_total}\n\n"
 
-        mighty_blow = attack_roll.total == MIGHTY_BLOW_ROLL or defense_roll.total == MIGHTY_BLOW_ROLL
-        fumble = attack_roll.total == FUMBLE_ROLL or defense_roll.total == FUMBLE_ROLL
-
         # Mighty blows and fumbles affect outcome even if winner total is less than loser
         if attack_roll.total == FUMBLE_ROLL and defense_roll.total == FUMBLE_ROLL:
             self.title = "DOUBLE FUMBLE!"

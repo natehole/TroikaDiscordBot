@@ -3,6 +3,7 @@ import pytest
 
 from cogs.utils import dice
 
+
 @pytest.mark.asyncio
 async def test_skill(bot, mocker):
     mocker.patch.object(dice, "roll_2d6", return_value=(1, 3, 4))

@@ -1,9 +1,6 @@
 from dataclasses import dataclass
 import pytest
 
-from discord.user import BaseUser
-from discord.ext.commands import Context
-
 from bot import TroikaBot
 from cogs.battle_cog import BattleCog
 from cogs.library_cog import LibraryCog
@@ -27,7 +24,6 @@ def bot():
     bot.add_cog(SkillCog(bot))
     bot.add_cog(SpellCog(bot))
     return bot
-
 
 
 @dataclass
