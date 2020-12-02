@@ -1,17 +1,7 @@
 import discord.ext.test as dpytest
 import pytest
 
-from bot import TroikaBot
 from cogs.utils import dice
-from cogs.library_cog import LibraryCog
-from cogs.battle_cog import BattleCog
-
-@pytest.fixture(scope="function")
-def bot():
-   bot = TroikaBot('!')
-   bot.add_cog(LibraryCog(bot))
-   bot.add_cog(BattleCog(bot))
-   return bot
 
 # We test the embeds elsewhere. This is just testing we can call the functions
 

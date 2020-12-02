@@ -15,7 +15,7 @@ from cogs.skill_cog import SkillCog
 from cogs.spell_cog import SpellCog
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def bot():
     bot = TroikaBot('!')
     bot.add_cog(BattleCog(bot))
@@ -51,11 +51,11 @@ class MockContext:
         return self.user
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def user():
     return MockUser()
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def ctx(bot, user):
     return MockContext(bot, user)

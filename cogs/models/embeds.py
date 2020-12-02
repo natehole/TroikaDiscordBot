@@ -78,15 +78,15 @@ class EmbedSpell(EmbedWithAuthor):
 
             if oops_triggered:
                 roll, oops_str = oops.roll_oops()
-                self.add_field(name="Ooops!", value=f"**{roll}:** {oops_str}", inline=False)
+                self.add_field(name=f"Ooops! ({roll})", value=oops_str, inline=False)
 
 
 class EmbedOops(EmbedWithAuthor):
-    def __init__(self, ctx, roll, oops, **kwargs):
+    def __init__(self, ctx, roll: int, oops: str, **kwargs):
         super(EmbedOops, self).__init__(ctx, **kwargs)
 
         self.title = "Oops!"
-        self.description = f"**{roll}**: {self.oops}"
+        self.description = f"**{roll}**: {oops}"
 
 
 def roll_2d6() -> dice.RollResult:

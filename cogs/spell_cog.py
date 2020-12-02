@@ -1,8 +1,11 @@
+from typing import Optional
+
 import re
 from discord.ext import commands
 from discord.ext.commands import ArgumentParsingError
 from cogs.utils import oops, dice
 from cogs.models.embeds import EmbedSpell, EmbedOops
+from cogs.models.spell import Spell
 
 SUCCESS_TOTAL = 2
 OOPS_TOTAL = 12
@@ -11,10 +14,6 @@ OOPS_TOTAL = 12
 class SpellCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
-    # Lame but needed for mocks
-    def roll_oops(self):
-        return oops.roll_oops()
 
     @commands.command()
     async def spell(self, ctx, *, name: str):
@@ -32,7 +31,8 @@ class SpellCog(commands.Cog):
         if not r:
             raise ArgumentParsingError("Usage: skill_points [spell_name]")
 
-        skill_points = int(r.group(1))
+        skill_points: int = int(r.group(1))
+        spell: Optional[Spell] = None
 
         if r.group(2):
             library = self.bot.get_cog('LibraryCog')
@@ -45,8 +45,8 @@ class SpellCog(commands.Cog):
 
     @commands.command()
     async def oops(self, ctx):
-        roll, oops = self.roll_oops()
-        embed = EmbedOops(ctx, roll, oops)
+        roll, oops_str = oops.roll_oops()
+        embed = EmbedOops(ctx, roll, oops_str)
         await ctx.send(embed=embed)
 
 

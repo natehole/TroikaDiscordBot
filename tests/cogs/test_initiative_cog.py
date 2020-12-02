@@ -1,17 +1,8 @@
 import discord.ext.test as dpytest
 import pytest
 
-from bot import TroikaBot
 from cogs.models.initiative_tracker import InitiativeTracker, END_OF_ROUND_TOKEN
-from cogs.initiative_cog import InitiativeCog, NO_INIT_TRACKER_MESSAGE, NOT_IN_ROUND_MESSAGE
-from cogs.library_cog import LibraryCog
-
-@pytest.fixture(scope="function")
-def bot():
-   bot = TroikaBot('!')
-   bot.add_cog(LibraryCog(bot))
-   bot.add_cog(InitiativeCog(bot))
-   return bot
+from cogs.initiative_cog import NO_INIT_TRACKER_MESSAGE, NOT_IN_ROUND_MESSAGE
 
 
 @pytest.mark.asyncio

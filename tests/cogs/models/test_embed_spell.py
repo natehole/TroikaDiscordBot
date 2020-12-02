@@ -1,6 +1,6 @@
 import pytest
 
-from cogs.utils import dice
+from cogs.utils import dice, oops
 from cogs.models.embeds import EmbedSpell
 from cogs.models.spell import Spell
 
@@ -42,6 +42,7 @@ def test_with_spell_name_and_cast(ctx, mocker):
 def test_with_oops(ctx, mocker):
     spell = Spell(name="Zap", cost='3', description="The wizard makes things go boom!")
     mocker.patch.object(dice, 'roll_2d6', return_value=(6, 6, 12))
+    mocker.patch.object(oops, 'roll_oops', return_value=(61, "A calm and healthy pig appears in place of the Spell."))
 
     embed = EmbedSpell(ctx, spell, dice.roll_under(7))
 
@@ -53,4 +54,5 @@ def test_with_oops(ctx, mocker):
     assert embed.fields[0].value == "**CATASTROPHIC FAILURE** 2d6(6+6)"
     assert not embed.fields[0].inline
 
-    assert embed.fields[1].name == "Ooops!"
+    assert embed.fields[1].name == "Ooops! (61)"
+    assert embed.fields[1].value == "A calm and healthy pig appears in place of the Spell."

@@ -1,17 +1,8 @@
 import discord.ext.test as dpytest
 import pytest
 
-from bot import TroikaBot
 from cogs.utils import dice
-from cogs.library_cog import LibraryCog
-from cogs.dice_cog import DiceCog
 
-@pytest.fixture(scope="function")
-def bot():
-   bot = TroikaBot('!')
-   bot.add_cog(LibraryCog(bot))
-   bot.add_cog(DiceCog(bot))
-   return bot
 
 @pytest.mark.asyncio
 async def test_roll_d2(bot, mocker):
