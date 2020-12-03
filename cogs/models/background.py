@@ -1,8 +1,6 @@
 from __future__ import annotations
-from typing import List, Union, Optional
+from typing import List, Union
 from dataclasses import dataclass, field
-
-from cogs.utils.dice import interpolate_dice
 
 
 @dataclass

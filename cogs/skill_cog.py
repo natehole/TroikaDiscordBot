@@ -14,7 +14,6 @@ class SkillCog(commands.Cog):
     async def skill(self, ctx, skill: int):
         await ctx.send(dice.roll_under(skill).result)
 
-
     @commands.command(name="better",
                       aliases=["improve", "advance", "adv"],
                       brief="Test to see if you can improve a special skill by rolling over",
@@ -33,6 +32,7 @@ class SkillCog(commands.Cog):
                 await ctx.send(f"**SUCCESS** 2d6({d1}+{d2})+2d6({d3}+{d4}) = `{total+total2}`. Increase advanced skill by 1")
             else:
                 await ctx.send(f"**FAILURE** 2d6({d1}+{d2})+2d6({d3}+{d4}) = `{total+total2}`. Advanced skill unchanged")
+
 
 def setup(bot):
     bot.add_cog(SkillCog(bot))

@@ -13,19 +13,23 @@ class RollResult:
         self.result = result
 
 
+def roll_die(sides: int) -> int:
+    return random.randint(1, sides)
+
+
 def roll_d2():
     """Rolls a d2"""
-    return random.randint(1, 2)
+    return roll_die(2)
 
 
 def roll_d3():
     """Rolls a single d3"""
-    return random.randint(1, 3)
+    return roll_die(3)
 
 
 def roll_d6():
     """Rolls a single d6"""
-    return random.randint(1, 6)
+    return roll_die(6)
 
 
 def roll_2d6():
@@ -46,7 +50,7 @@ def roll_under(target):
 
 def roll_d20():
     """Rolls a d20"""
-    return random.randint(1, 20)
+    return roll_die(20)
 
 
 def roll_d66():
@@ -58,14 +62,15 @@ def roll_d66():
 
 
 def _replace_fragment(text):
-    r = re.match(r'([0-9]*)d6$', text)
+    r = re.match(r'([0-9]*)d([0-9]+)$', text)
     if r:
         if r.group(1):
             rolls = int(r.group(1))
         else:
             rolls = 1
 
-        total = reduce(operator.add, [roll_d6() for r in range(rolls)])
+        sides = int(r.group(2))
+        total = reduce(operator.add, [roll_die(sides) for r in range(rolls)])
         return f"{total}"
     else:
         return text
@@ -73,6 +78,6 @@ def _replace_fragment(text):
 
 def interpolate_dice(text):
     """Replace dice strings with rolls"""
-    pieces = re.split(r'([`]?[0-9]*d6[`]?)', text)
+    pieces = re.split(r'([`]?[0-9]*d[0-9]+[`]?)', text)
     out_pieces = [_replace_fragment(t) for t in pieces]
     return ''.join(out_pieces)

@@ -9,7 +9,6 @@ import discord
 from aiohttp import ClientOSError, ClientResponseError
 from discord.errors import Forbidden, HTTPException, InvalidArgument, NotFound
 from discord.ext import commands
-from discord.ext.commands import NoPrivateMessage, ArgumentParsingError, BadArgument
 from discord.ext.commands.errors import CommandInvokeError
 from dotenv import load_dotenv
 
@@ -40,7 +39,7 @@ desc = '''
 TroikaBot, a special bot for playing Troika on discord
 '''
 
-bot = TroikaBot(prefix=DISCORD_PREFIX, description=desc, activity=discord.Game(name=f'Troika! | !help'))
+bot = TroikaBot(prefix=DISCORD_PREFIX, description=desc, activity=discord.Game(name=f'Troika! | {DISCORD_PREFIX}help'))
 
 
 # Borrowed from avrae
@@ -67,11 +66,6 @@ async def on_resumed():
 @bot.event
 async def on_message(message):
     await bot.process_commands(message)
-
-
-@bot.event
-async def on_resumed():
-    log.info('resumed.')
 
 
 @bot.event
@@ -105,7 +99,7 @@ async def on_command_error(ctx, error):
                 )
             except HTTPException:
                 try:
-                    return await ctx.send(f"Error: I cannot send messages to this user.")
+                    return await ctx.send("Error: I cannot send messages to this user.")
                 except HTTPException:
                     return
 

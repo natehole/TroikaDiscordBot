@@ -1,4 +1,3 @@
-import pytest
 from cogs.models.background import Background
 import yaml
 
@@ -26,6 +25,7 @@ skills:
   - 2 Etiquette
   - 1 Healing
 """
+
 
 def test_background_parse():
     parsed = yaml.safe_load(BACKGROUND_YAML)

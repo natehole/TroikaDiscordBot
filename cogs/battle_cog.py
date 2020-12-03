@@ -3,9 +3,9 @@ import re
 from discord.ext import commands
 from discord.ext.commands import NoPrivateMessage, ArgumentParsingError, BadArgument
 
-from cogs.utils import dice
 from cogs.models.weapon import ARMOR_REGEXP_STRING
 from cogs.models.embeds import EmbedDamage, EmbedAttack
+
 
 class BattleCog(commands.Cog):
     def __init__(self, bot):
@@ -82,26 +82,12 @@ class BattleCog(commands.Cog):
         embed = EmbedDamage(ctx, weapon, armor, bonus)
         await ctx.send(embed=embed)
 
-    def roll_2d6(self):
-        dice1, dice2, total = dice.roll_2d6()
-
-        dice_string = ''
-        if (dice1 == 6 and dice2 == 6) or (dice1 == 1 and dice2 == 1):
-            dice_string = f"**{dice1}+{dice2}**"
-        else:
-            dice_string = f"{dice1}+{dice2}"
-
-        return dice.RollResult(total, f"2d6({dice_string}) = {total}")
-
     @commands.command(name="attack",
                       aliases=["a", "att"],
                       brief="Rolls and computes the winner of an attack. Arguments: attack attacker_skill_mod defender_skill_mod",
                       usage="attack attacker_skill_mod defender_skill_mod")
-    async def attack(self, ctx, attacker_mod: int, defender_mod: int):
-        attack_roll = self.roll_2d6()
-        defense_roll = self.roll_2d6()
-
-        embed = EmbedAttack(ctx, attack_roll, attacker_mod, defense_roll, defender_mod)
+    async def attack(self, ctx, attacker_skill: int, defender_skill: int):
+        embed = EmbedAttack(ctx, attacker_skill, defender_skill)
         await ctx.send(embed=embed)
 
 
